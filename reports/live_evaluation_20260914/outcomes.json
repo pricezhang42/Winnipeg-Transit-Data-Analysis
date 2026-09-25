@@ -1,0 +1,359 @@
+[
+  {
+    "row_id": "1665419019",
+    "stop_number": "10541",
+    "route_number": "BLUE",
+    "route_name": "Route BLUE BLUE",
+    "route_destination": "Unicity Shopping Centre",
+    "day_type": "Weekday",
+    "scheduled_time": "2026-09-14T19:02:00.000",
+    "deviation": "87",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -97.1408998244913,
+        49.8947340413821
+      ]
+    }
+  },
+  {
+    "row_id": "1665347577",
+    "stop_number": "11027",
+    "route_number": "BLUE",
+    "route_name": "Route BLUE BLUE",
+    "route_destination": "University of Manitoba",
+    "day_type": "Weekday",
+    "scheduled_time": "2026-09-14T19:02:51.000",
+    "deviation": "-215",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -97.1354506709188,
+        49.8807671844085
+      ]
+    }
+  },
+  {
+    "row_id": "1665388910",
+    "stop_number": "10541",
+    "route_number": "BLUE",
+    "route_name": "Route BLUE BLUE",
+    "route_destination": "Unicity Shopping Centre",
+    "day_type": "Weekday",
+    "scheduled_time": "2026-09-14T19:09:00.000",
+    "deviation": "44",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -97.1408998244913,
+        49.8947340413821
+      ]
+    }
+  },
+  {
+    "row_id": "1665376201",
+    "stop_number": "11027",
+    "route_number": "BLUE",
+    "route_name": "Route BLUE BLUE",
+    "route_destination": "St. Norbert",
+    "day_type": "Weekday",
+    "scheduled_time": "2026-09-14T19:10:51.000",
+    "deviation": "46",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -97.1354506709188,
+        49.8807671844085
+      ]
+    }
+  },
+  {
+    "row_id": "1665428421",
+    "stop_number": "10541",
+    "route_number": "BLUE",
+    "route_name": "Route BLUE BLUE",
+    "route_destination": "Unicity Shopping Centre",
+    "day_type": "Weekday",
+    "scheduled_time": "2026-09-14T19:16:00.000",
+    "deviation": "-163",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -97.1408998244913,
+        49.8947340413821
+      ]
+    }
+  },
+  {
+    "row_id": "1665376211",
+    "stop_number": "61205",
+    "route_number": "BLUE",
+    "route_name": "Route BLUE BLUE",
+    "route_destination": "St. Norbert",
+    "day_type": "Weekday",
+    "scheduled_time": "2026-09-14T19:19:00.000",
+    "deviation": "-74",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -97.1687011391651,
+        49.8422588088186
+      ]
+    }
+  },
+  {
+    "row_id": "1665422755",
+    "stop_number": "60066",
+    "route_number": "BLUE",
+    "route_name": "Route BLUE BLUE",
+    "route_destination": "Unicity Shopping Centre",
+    "day_type": "Weekday",
+    "scheduled_time": "2026-09-14T19:22:03.000",
+    "deviation": "-294",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -97.1572495456161,
+        49.7926041532432
+      ]
+    }
+  },
+  {
+    "row_id": "1665438536",
+    "stop_number": "11027",
+    "route_number": "BLUE",
+    "route_name": "Route BLUE BLUE",
+    "route_destination": "St. Norbert",
+    "day_type": "Weekday",
+    "scheduled_time": "2026-09-14T19:26:51.000",
+    "deviation": "-15",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -97.1354506709188,
+        49.8807671844085
+      ]
+    }
+  },
+  {
+    "row_id": "1665386600",
+    "stop_number": "11027",
+    "route_number": "BLUE",
+    "route_name": "Route BLUE BLUE",
+    "route_destination": "University of Manitoba",
+    "day_type": "Weekday",
+    "scheduled_time": "2026-09-14T19:34:51.000",
+    "deviation": "36",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -97.1354506709188,
+        49.8807671844085
+      ]
+    }
+  },
+  {
+    "row_id": "1665438546",
+    "stop_number": "61205",
+    "route_number": "BLUE",
+    "route_name": "Route BLUE BLUE",
+    "route_destination": "St. Norbert",
+    "day_type": "Weekday",
+    "scheduled_time": "2026-09-14T19:35:00.000",
+    "deviation": "28",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -97.1687011391651,
+        49.8422588088186
+      ]
+    }
+  },
+  {
+    "row_id": "1665428017",
+    "stop_number": "10541",
+    "route_number": "BLUE",
+    "route_name": "Route BLUE BLUE",
+    "route_destination": "Unicity Shopping Centre",
+    "day_type": "Weekday",
+    "scheduled_time": "2026-09-14T19:43:00.000",
+    "deviation": "-207",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -97.1408998244913,
+        49.8947340413821
+      ]
+    }
+  },
+  {
+    "row_id": "1665386610",
+    "stop_number": "61205",
+    "route_number": "BLUE",
+    "route_name": "Route BLUE BLUE",
+    "route_destination": "University of Manitoba",
+    "day_type": "Weekday",
+    "scheduled_time": "2026-09-14T19:43:00.000",
+    "deviation": "-37",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -97.1687011391651,
+        49.8422588088186
+      ]
+    }
+  },
+  {
+    "row_id": "1665444404",
+    "stop_number": "11027",
+    "route_number": "BLUE",
+    "route_name": "Route BLUE BLUE",
+    "route_destination": "University of Manitoba",
+    "day_type": "Weekday",
+    "scheduled_time": "2026-09-14T19:50:51.000",
+    "deviation": "-4",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -97.1354506709188,
+        49.8807671844085
+      ]
+    }
+  },
+  {
+    "row_id": "1665422793",
+    "stop_number": "10541",
+    "route_number": "BLUE",
+    "route_name": "Route BLUE BLUE",
+    "route_destination": "Unicity Shopping Centre",
+    "day_type": "Weekday",
+    "scheduled_time": "2026-09-14T19:54:00.000",
+    "deviation": "5",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -97.1408998244913,
+        49.8947340413821
+      ]
+    }
+  },
+  {
+    "row_id": "1665444414",
+    "stop_number": "61205",
+    "route_number": "BLUE",
+    "route_name": "Route BLUE BLUE",
+    "route_destination": "University of Manitoba",
+    "day_type": "Weekday",
+    "scheduled_time": "2026-09-14T19:59:00.000",
+    "deviation": "-27",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -97.1687011391651,
+        49.8422588088186
+      ]
+    }
+  },
+  {
+    "row_id": "1665410841",
+    "stop_number": "11027",
+    "route_number": "BLUE",
+    "route_name": "Route BLUE BLUE",
+    "route_destination": "St. Norbert",
+    "day_type": "Weekday",
+    "scheduled_time": "2026-09-14T19:59:51.000",
+    "deviation": "-77",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -97.1354506709188,
+        49.8807671844085
+      ]
+    }
+  },
+  {
+    "row_id": "1665410851",
+    "stop_number": "61205",
+    "route_number": "BLUE",
+    "route_name": "Route BLUE BLUE",
+    "route_destination": "St. Norbert",
+    "day_type": "Weekday",
+    "scheduled_time": "2026-09-14T20:08:00.000",
+    "deviation": "-189",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -97.1687011391651,
+        49.8422588088186
+      ]
+    }
+  },
+  {
+    "row_id": "1665438594",
+    "stop_number": "60066",
+    "route_number": "BLUE",
+    "route_name": "Route BLUE BLUE",
+    "route_destination": "Unicity Shopping Centre",
+    "day_type": "Weekday",
+    "scheduled_time": "2026-09-14T20:08:03.000",
+    "deviation": "-7",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -97.1572495456161,
+        49.7926041532432
+      ]
+    }
+  },
+  {
+    "row_id": "1665419128",
+    "stop_number": "11027",
+    "route_number": "BLUE",
+    "route_name": "Route BLUE BLUE",
+    "route_destination": "St. Norbert",
+    "day_type": "Weekday",
+    "scheduled_time": "2026-09-14T20:19:51.000",
+    "deviation": "-251",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -97.1354506709188,
+        49.8807671844085
+      ]
+    }
+  },
+  {
+    "row_id": "1665419138",
+    "stop_number": "61205",
+    "route_number": "BLUE",
+    "route_name": "Route BLUE BLUE",
+    "route_destination": "St. Norbert",
+    "day_type": "Weekday",
+    "scheduled_time": "2026-09-14T20:28:00.000",
+    "deviation": "-403",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -97.1687011391651,
+        49.8422588088186
+      ]
+    }
+  },
+  {
+    "row_id": "1665428530",
+    "stop_number": "11027",
+    "route_number": "BLUE",
+    "route_name": "Route BLUE BLUE",
+    "route_destination": "University of Manitoba",
+    "day_type": "Weekday",
+    "scheduled_time": "2026-09-14T20:29:51.000",
+    "deviation": "-58",
+    "location": {
+      "type": "Point",
+      "coordinates": [
+        -97.1354506709188,
+        49.8807671844085
+      ]
+    }
+  }
+]

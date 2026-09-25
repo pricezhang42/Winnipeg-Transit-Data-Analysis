@@ -1,0 +1,15 @@
+{
+  "horizons_minutes": [
+    5,
+    10,
+    20
+  ],
+  "max_snapshot_age_seconds": 90,
+  "matching": "Exact route, stop number, destination (case/whitespace normalization only), scheduled timestamp; require unique outcome and live event.",
+  "selection": "Latest received snapshot at or before scheduled departure minus horizon; no pooling repeated predictions.",
+  "prediction": "Previously captured Winnipeg Transit API departure estimate; no new model fitted.",
+  "baseline": "Scheduled departure / zero delay, scored on identical event rows.",
+  "actual_delay": "Negative of City deviation seconds.",
+  "eligibility": "Exclude events already measured as departed by the forecast cutoff; report exclusions.",
+  "date_policy": "Use full dated stop responses only. Clock-only trip responses excluded."
+}

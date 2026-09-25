@@ -1,0 +1,10 @@
+{
+  "retrieved_at_utc": "2026-09-15T14:37:57.296333+00:00",
+  "url": "https://data.winnipeg.ca/resource/gp3k-am4u.json?%24where=route_number%3D%27BLUE%27+AND+stop_number+in+%28%2711027%27%2C%2710541%27%2C%2761205%27%2C%2760066%27%29+AND+scheduled_time+%3E%3D+%272026-09-14T19%3A00%3A00%27+AND+scheduled_time+%3C+%272026-09-14T20%3A30%3A00%27&%24limit=5000&%24order=scheduled_time%2Cstop_number%2Crow_id",
+  "query": {
+    "$where": "route_number='BLUE' AND stop_number in ('11027','10541','61205','60066') AND scheduled_time >= '2026-09-14T19:00:00' AND scheduled_time < '2026-09-14T20:30:00'",
+    "$limit": 5000,
+    "$order": "scheduled_time,stop_number,row_id"
+  },
+  "rows": 21
+}

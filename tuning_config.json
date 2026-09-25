@@ -1,0 +1,24 @@
+{
+  "prepared_data": "data/processed/blue_clean.parquet",
+  "train_start": "2026-07-25",
+  "folds": [
+    {"validation_start": "2026-08-10", "validation_end_exclusive": "2026-08-17"},
+    {"validation_start": "2026-08-17", "validation_end_exclusive": "2026-08-24"},
+    {"validation_start": "2026-08-24", "validation_end_exclusive": "2026-08-31"}
+  ],
+  "final_training_end_exclusive": "2026-09-06",
+  "holdout_start": "2026-09-10",
+  "holdout_end_exclusive": "2026-09-13",
+  "candidates": [
+    {"name": "reference", "depth": 6, "iterations": 1200, "encoding": "one_hot"},
+    {"name": "longer_one_hot", "depth": 6, "iterations": 4000, "encoding": "one_hot"},
+    {"name": "native_depth6", "depth": 6, "iterations": 4000, "encoding": "native"},
+    {"name": "native_depth8", "depth": 8, "iterations": 4000, "encoding": "native"}
+  ],
+  "learning_rate": 0.05,
+  "l2_leaf_reg": 5,
+  "early_stopping_rounds": 150,
+  "random_seed": 42,
+  "thread_count": 4,
+  "minimum_group_observations": 20
+}

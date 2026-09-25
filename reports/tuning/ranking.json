@@ -1,0 +1,42 @@
+[
+  {
+    "candidate": "longer_one_hot",
+    "mean_validation_mae_seconds": 122.22367547451341,
+    "final_tree_count": 3998,
+    "fold_mae_seconds": [
+      128.33919112238405,
+      123.06146947448569,
+      115.2703658266705
+    ]
+  },
+  {
+    "candidate": "native_depth8",
+    "mean_validation_mae_seconds": 122.67106141279818,
+    "final_tree_count": 1698,
+    "fold_mae_seconds": [
+      128.57448885362254,
+      124.18926494772852,
+      115.24943043704347
+    ]
+  },
+  {
+    "candidate": "native_depth6",
+    "mean_validation_mae_seconds": 122.92235899049308,
+    "final_tree_count": 3397,
+    "fold_mae_seconds": [
+      128.64335671137474,
+      124.47057769755027,
+      115.65314256255424
+    ]
+  },
+  {
+    "candidate": "reference",
+    "mean_validation_mae_seconds": 123.93919809395521,
+    "final_tree_count": 1197,
+    "fold_mae_seconds": [
+      130.05448053422265,
+      124.55477910309064,
+      117.20833464455234
+    ]
+  }
+]

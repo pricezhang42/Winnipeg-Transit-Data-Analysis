@@ -1,0 +1,5 @@
+pandas==2.2.3
+numpy==2.3.5
+pyarrow==25.0.1
+matplotlib==3.11.2
+catboost==1.2.10

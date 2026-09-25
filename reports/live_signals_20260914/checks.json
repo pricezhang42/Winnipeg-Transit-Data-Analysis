@@ -1,0 +1,8 @@
+{
+  "unit_tests_passed": 34,
+  "causal_timestamp_checks": true,
+  "same_bus_and_trip_checks": true,
+  "prior_stop_order_checks": true,
+  "all_paired_maes_reconcile": true,
+  "features_contain_no_outcomes": true
+}

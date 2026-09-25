@@ -1,0 +1,12 @@
+{
+  "input_csv": "Recent_Transit_On-Time_Performance_Data_20260913.csv",
+  "route": "BLUE",
+  "chunksize": 300000,
+  "local_timezone": "America/Winnipeg",
+  "extreme_delay_seconds": 3600,
+  "minimum_group_observations": 20,
+  "train_start": "2026-07-25",
+  "validation_start": "2026-08-17",
+  "test_start": "2026-08-24",
+  "test_end_exclusive": "2026-08-31"
+}

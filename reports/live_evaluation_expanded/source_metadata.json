@@ -1,0 +1,52 @@
+{
+  "retrieved_at_utc": "2026-09-16T00:57:54.899760+00:00",
+  "rows_updated_utc": "2026-09-15T10:57:44+00:00",
+  "description": "Every Winnipeg Transit bus is equipped with an on-board computer and GPS that logs whether or not it is on time as it leaves a bus stop.\n\nThis raw data is available for download, showing the scheduled departure time from each bus stop, as well as the deviation (+/- in seconds; negative indicates late, and positive indicates early) from this scheduled departure time, for the most recent month.\n\nData is collected from buses on a daily basis.  However, due to transmission problems and data issues, a small percentage of bus data may be missing from Winnipeg Transit\u2019s data set.  As well, due to GPS and other errors, a small percentage of bus data may contain erroneous data.  This data set contains the data as it is reported by the on-board computer.\n\nMore transit data can be found on Winnipeg Transit's Open Data Web Service, located here: https://api.winnipegtransit.com/home/api/v3",
+  "columns": [
+    {
+      "name": "Row ID",
+      "fieldName": "row_id",
+      "dataTypeName": "text"
+    },
+    {
+      "name": "Stop Number",
+      "fieldName": "stop_number",
+      "dataTypeName": "text"
+    },
+    {
+      "name": "Route Number",
+      "fieldName": "route_number",
+      "dataTypeName": "text"
+    },
+    {
+      "name": "Route Name",
+      "fieldName": "route_name",
+      "dataTypeName": "text"
+    },
+    {
+      "name": "Route Destination",
+      "fieldName": "route_destination",
+      "dataTypeName": "text"
+    },
+    {
+      "name": "Day Type",
+      "fieldName": "day_type",
+      "dataTypeName": "text"
+    },
+    {
+      "name": "Scheduled Time",
+      "fieldName": "scheduled_time",
+      "dataTypeName": "calendar_date"
+    },
+    {
+      "name": "Deviation",
+      "fieldName": "deviation",
+      "dataTypeName": "number"
+    },
+    {
+      "name": "Location",
+      "fieldName": "location",
+      "dataTypeName": "point"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "created_at_utc": "2026-09-14T04:05:37.293321+00:00",
+  "python": "3.12.14",
+  "dependencies": {
+    "pandas": "2.2.3",
+    "numpy": "2.3.5",
+    "pyarrow": "25.0.1",
+    "matplotlib": "3.11.2"
+  },
+  "source_sha256": "b81aeac3785cc39bc42e1de8bc5d79ef5227dd6fc41d18a4dba6732bf2a6636a",
+  "config": {
+    "input_csv": "Recent_Transit_On-Time_Performance_Data_20260913.csv",
+    "route": "BLUE",
+    "chunksize": 300000,
+    "local_timezone": "America/Winnipeg",
+    "extreme_delay_seconds": 3600,
+    "minimum_group_observations": 20,
+    "train_start": "2026-07-25",
+    "validation_start": "2026-08-17",
+    "test_start": "2026-08-24",
+    "test_end_exclusive": "2026-08-31"
+  },
+  "checks": [
+    "Parquet round-trip preserves all columns, types, and values",
+    "Source route count reconciles",
+    "Valid observations sorted by local scheduled time",
+    "Training precedes evaluation",
+    "Every validation/test prediction is finite"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "route": "BLUE",
+  "seed_stops": ["11027", "10541", "61205", "60066"],
+  "database": "data/live/transit.sqlite",
+  "api_key_env": "WINNIPEG_TRANSIT_API_KEY",
+  "poll_interval_seconds": 60,
+  "requests_per_minute": 40,
+  "timeout_seconds": 20,
+  "max_retries": 2,
+  "lookback_minutes": 5,
+  "lookahead_minutes": 30,
+  "max_trip_requests_per_cycle": 8,
+  "trip_retention_minutes": 120
+}

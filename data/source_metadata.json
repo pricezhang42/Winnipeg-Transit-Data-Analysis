@@ -1,0 +1,64 @@
+{
+  "name": "Recent Transit On-Time Performance Data",
+  "description": "Every Winnipeg Transit bus is equipped with an on-board computer and GPS that logs whether or not it is on time as it leaves a bus stop.\n\nThis raw data is available for download, showing the scheduled departure time from each bus stop, as well as the deviation (+/- in seconds; negative indicates late, and positive indicates early) from this scheduled departure time, for the most recent month.\n\nData is collected from buses on a daily basis.  However, due to transmission problems and data issues, a small percentage of bus data may be missing from Winnipeg Transit\u2019s data set.  As well, due to GPS and other errors, a small percentage of bus data may contain erroneous data.  This data set contains the data as it is reported by the on-board computer.\n\nMore transit data can be found on Winnipeg Transit's Open Data Web Service, located here: https://api.winnipegtransit.com/home/api/v3",
+  "attribution": "Winnipeg Transit",
+  "rowsUpdatedAt": 1789294016,
+  "metadata_url": "https://data.winnipeg.ca/api/views/gp3k-am4u.json",
+  "retrieved_at_utc": "2026-09-14T02:56:15.864080+00:00",
+  "columns": [
+    {
+      "name": "Row ID",
+      "fieldName": "row_id",
+      "dataTypeName": "text",
+      "description": ""
+    },
+    {
+      "name": "Stop Number",
+      "fieldName": "stop_number",
+      "dataTypeName": "text",
+      "description": ""
+    },
+    {
+      "name": "Route Number",
+      "fieldName": "route_number",
+      "dataTypeName": "text",
+      "description": ""
+    },
+    {
+      "name": "Route Name",
+      "fieldName": "route_name",
+      "dataTypeName": "text",
+      "description": ""
+    },
+    {
+      "name": "Route Destination",
+      "fieldName": "route_destination",
+      "dataTypeName": "text",
+      "description": ""
+    },
+    {
+      "name": "Day Type",
+      "fieldName": "day_type",
+      "dataTypeName": "text",
+      "description": ""
+    },
+    {
+      "name": "Scheduled Time",
+      "fieldName": "scheduled_time",
+      "dataTypeName": "calendar_date",
+      "description": ""
+    },
+    {
+      "name": "Deviation",
+      "fieldName": "deviation",
+      "dataTypeName": "number",
+      "description": "In seconds"
+    },
+    {
+      "name": "Location",
+      "fieldName": "location",
+      "dataTypeName": "point",
+      "description": ""
+    }
+  ]
+}

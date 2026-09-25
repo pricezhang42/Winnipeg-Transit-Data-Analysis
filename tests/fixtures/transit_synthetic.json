@@ -1,0 +1,147 @@
+{
+  "origin": "synthetic_fixture",
+  "description": "Invented API-shaped records for offline tests; not observed transit data.",
+  "responses": [
+    {
+      "resource_type": "stop",
+      "resource_id": "11027",
+      "endpoint": "stops/11027/schedule.json",
+      "received_at_utc": "2026-09-14T13:00:00+00:00",
+      "payload": {
+        "stop-schedule": {
+          "stop": {
+            "key": 11027,
+            "number": "TEST-27"
+          },
+          "route-schedules": [
+            {
+              "route": {
+                "key": "BLUE",
+                "number": "BLUE"
+              },
+              "scheduled-stops": [
+                {
+                  "key": "fake-event-1",
+                  "trip-key": "fake-trip-1",
+                  "bus": {
+                    "key": "fake-bus-1"
+                  },
+                  "variant": {
+                    "key": "BLUE-test",
+                    "destination": "Synthetic destination"
+                  },
+                  "cancelled": false,
+                  "times": {
+                    "departure": {
+                      "scheduled": "2026-09-14T08:05:00",
+                      "estimated": "2026-09-14T08:07:00"
+                    }
+                  }
+                },
+                {
+                  "key": "fake-event-2",
+                  "trip-key": "fake-trip-2",
+                  "cancelled": true,
+                  "times": {
+                    "departure": {
+                      "scheduled": "2026-09-14T08:15:00"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "resource_type": "stop",
+      "resource_id": "11027",
+      "endpoint": "stops/11027/schedule.json",
+      "received_at_utc": "2026-09-14T13:01:00+00:00",
+      "payload": {
+        "stop-schedule": {
+          "stop": {
+            "key": 11027,
+            "number": "TEST-27"
+          },
+          "route-schedules": [
+            {
+              "route": {
+                "key": "BLUE",
+                "number": "BLUE"
+              },
+              "scheduled-stops": [
+                {
+                  "key": "fake-event-1",
+                  "trip-key": "fake-trip-1",
+                  "bus": {
+                    "key": "fake-bus-1"
+                  },
+                  "variant": {
+                    "key": "BLUE-test",
+                    "destination": "Synthetic destination"
+                  },
+                  "cancelled": false,
+                  "times": {
+                    "departure": {
+                      "scheduled": "2026-09-14T08:05:00",
+                      "estimated": "2026-09-14T08:08:00"
+                    }
+                  }
+                },
+                {
+                  "key": "fake-event-2",
+                  "trip-key": "fake-trip-2",
+                  "cancelled": true,
+                  "times": {
+                    "departure": {
+                      "scheduled": "2026-09-14T08:15:00"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "resource_type": "trip",
+      "resource_id": "fake-trip-1",
+      "endpoint": "trips/fake-trip-1.json",
+      "received_at_utc": "2026-09-14T13:01:02+00:00",
+      "payload": {
+        "trip": {
+          "key": "fake-trip-1",
+          "previous-trip-key": "fake-previous",
+          "schedule-type": "Weekday",
+          "scheduled-stops": [
+            {
+              "key": "fake-event-1",
+              "trip-key": "fake-trip-1",
+              "bus": {
+                "key": "fake-bus-1"
+              },
+              "variant": {
+                "key": "BLUE-test",
+                "destination": "Synthetic destination"
+              },
+              "cancelled": false,
+              "times": {
+                "departure": {
+                  "scheduled": "08:05:00",
+                  "estimated": "08:08:00"
+                }
+              },
+              "stop": {
+                "key": 11027,
+                "number": "TEST-27"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+{
+  "checked_at_utc": "2026-09-16T01:00:18.530095+00:00",
+  "latest_capture_in_read_transaction": "2026-09-16T01:00:00.661203+00:00",
+  "target": "arrival",
+  "measured_arrival_outcomes_available": false,
+  "reason": "City performance deviation is measured at departure; API arrival fields are estimates, not observed arrivals.",
+  "source_rows_updated_utc": "2026-09-15T10:57:44+00:00",
+  "published_departure_dates": [
+    "2026-09-14"
+  ],
+  "scope": "Consistent read-only SQLite transaction; growing collector database left unchanged.",
+  "dated_stop_snapshots": 6722,
+  "unresolved_scheduled_arrival_snapshots": 0,
+  "capture_days": {
+    "2026-09-14": {
+      "responses": 264,
+      "first_received_at_utc": "2026-09-14T23:58:27.414196+00:00",
+      "last_received_at_utc": "2026-09-15T00:43:09.273088+00:00",
+      "errors": {},
+      "http_statuses": {
+        "200": 264
+      }
+    },
+    "2026-09-15": {
+      "responses": 3324,
+      "first_received_at_utc": "2026-09-15T15:40:32.694563+00:00",
+      "last_received_at_utc": "2026-09-16T01:00:00.661203+00:00",
+      "errors": {},
+      "http_statuses": {
+        "200": 3324
+      }
+    }
+  },
+  "arrival_event_days": {
+    "2026-09-14": {
+      "snapshots": 309,
+      "distinct_scheduled_arrival_events": 37,
+      "distinct_trip_ids": 24,
+      "distinct_stop_numbers": 4,
+      "departure_outcomes_published_for_date": true,
+      "missing_or_unparseable_arrival_estimates": 0,
+      "arrival_departure_comparable_snapshots": 309,
+      "arrival_and_departure_estimates_differ": 0,
+      "negative_estimated_dwell_snapshots": 0,
+      "maximum_estimated_dwell_seconds": 0.0,
+      "horizons": {
+        "1": {
+          "forecast_candidates": 11,
+          "distinct_trip_ids": 8,
+          "exclusions": {
+            "no_snapshot_before_cutoff": 7,
+            "snapshot_stale": 19
+          }
+        },
+        "2": {
+          "forecast_candidates": 13,
+          "distinct_trip_ids": 10,
+          "exclusions": {
+            "no_snapshot_before_cutoff": 7,
+            "snapshot_stale": 17
+          }
+        },
+        "5": {
+          "forecast_candidates": 7,
+          "distinct_trip_ids": 6,
+          "exclusions": {
+            "no_snapshot_before_cutoff": 11,
+            "snapshot_stale": 19
+          }
+        },
+        "10": {
+          "forecast_candidates": 12,
+          "distinct_trip_ids": 10,
+          "exclusions": {
+            "no_snapshot_before_cutoff": 12,
+            "snapshot_stale": 13
+          }
+        },
+        "20": {
+          "forecast_candidates": 8,
+          "distinct_trip_ids": 7,
+          "exclusions": {
+            "no_snapshot_before_cutoff": 21,
+            "snapshot_stale": 8
+          }
+        }
+      }
+    },
+    "2026-09-15": {
+      "snapshots": 6413,
+      "distinct_scheduled_arrival_events": 223,
+      "distinct_trip_ids": 139,
+      "distinct_stop_numbers": 4,
+      "departure_outcomes_published_for_date": false,
+      "missing_or_unparseable_arrival_estimates": 0,
+      "arrival_departure_comparable_snapshots": 6413,
+      "arrival_and_departure_estimates_differ": 0,
+      "negative_estimated_dwell_snapshots": 0,
+      "maximum_estimated_dwell_seconds": 0.0,
+      "horizons": {
+        "1": {
+          "forecast_candidates": 175,
+          "distinct_trip_ids": 107,
+          "exclusions": {
+            "no_snapshot_before_cutoff": 9,
+            "snapshot_stale": 39
+          }
+        },
+        "2": {
+          "forecast_candidates": 176,
+          "distinct_trip_ids": 109,
+          "exclusions": {
+            "no_snapshot_before_cutoff": 10,
+            "snapshot_stale": 37
+          }
+        },
+        "5": {
+          "forecast_candidates": 177,
+          "distinct_trip_ids": 110,
+          "exclusions": {
+            "no_snapshot_before_cutoff": 13,
+            "snapshot_stale": 33
+          }
+        },
+        "10": {
+          "forecast_candidates": 182,
+          "distinct_trip_ids": 114,
+          "exclusions": {
+            "no_snapshot_before_cutoff": 17,
+            "snapshot_stale": 24
+          }
+        },
+        "20": {
+          "forecast_candidates": 186,
+          "distinct_trip_ids": 116,
+          "exclusions": {
+            "no_snapshot_before_cutoff": 26,
+            "snapshot_stale": 11
+          }
+        }
+      }
+    }
+  }
+}

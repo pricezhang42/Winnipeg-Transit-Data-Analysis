@@ -1,0 +1,38 @@
+{
+  "completed_at_utc": "2026-09-14T22:49:03.723747+00:00",
+  "config": {
+    "prepared_data": "data/processed/blue_clean.parquet",
+    "train_start": "2026-07-25",
+    "validation_start": "2026-08-24",
+    "test_start": "2026-08-31",
+    "test_end_exclusive": "2026-09-06",
+    "minimum_group_observations": 20,
+    "candidate_depths": [
+      4,
+      6
+    ],
+    "iterations": 1200,
+    "learning_rate": 0.05,
+    "l2_leaf_reg": 5,
+    "early_stopping_rounds": 80,
+    "random_seed": 42,
+    "thread_count": 4
+  },
+  "prepared_sha256": "d4c51bd1d5db6a1ee1f179a8a11e9cc348f663372d98f2a7b632e63f2dfc2100",
+  "model_sha256": "9a09eb7498be9df04ee2bd6f07f285cf55147d73e4a241fd4514d95694b22ad3",
+  "dependencies": {
+    "catboost": "1.2.10",
+    "pandas": "2.2.3",
+    "numpy": "2.3.5",
+    "pyarrow": "25.0.1",
+    "matplotlib": "3.11.2"
+  },
+  "checks": [
+    "Chronological boundaries and Row IDs do not overlap",
+    "Selection function receives no test data",
+    "Saved model reproduces validation predictions",
+    "All predictions finite",
+    "Parquet round-trip preserves predictions",
+    "Stored predictions reconcile with all test MAEs"
+  ]
+}

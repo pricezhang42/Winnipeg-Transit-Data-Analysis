@@ -1,0 +1,18 @@
+{
+  "url": "https://winnipeg-blue-trip-observatory.wasdpyzlp.chatgpt.site",
+  "access": "owner-private",
+  "trips": 173,
+  "snapshots": 2877,
+  "measured_stop_links": 388,
+  "data_mode": "exported_snapshot",
+  "checks": [
+    "JavaScript syntax",
+    "static assets",
+    "trip identity and chronology",
+    "stop-to-timeline alignment",
+    "measured-link provenance",
+    "credential exclusion"
+  ],
+  "browser_ui_qa": "not requested",
+  "webmcp_contract_validation": "not performed; no supported validation context used"
+}

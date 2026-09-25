@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.csv
+data/processed/
+reports/*.parquet
+reports/**/*.parquet
+models/**/*.cbm
+.DS_Store
+.env
+.env.*
+!.env.example
+data/live/
+reports/collector_test/
+data/dashboard_cache/

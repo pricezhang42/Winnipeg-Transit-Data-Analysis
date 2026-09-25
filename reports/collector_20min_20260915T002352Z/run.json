@@ -1,0 +1,11 @@
+{
+  "started_at_utc": "2026-09-15T00:23:52.308955+00:00",
+  "requested_duration_seconds": 1200,
+  "previous_snapshot_count": 24,
+  "database": "/home/linpu/workspace/WTDA/data/live/transit.sqlite",
+  "log": "/home/linpu/workspace/WTDA/reports/collector_20min_20260915T002352Z/collector.log",
+  "status": "duration_complete",
+  "finished_at_utc": "2026-09-15T00:43:52.319240+00:00",
+  "elapsed_seconds": 1200.01,
+  "collector_exit_code": 130
+}

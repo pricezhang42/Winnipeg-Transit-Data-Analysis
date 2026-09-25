@@ -1,0 +1,20 @@
+{
+  "records": 403511,
+  "flagged": 710,
+  "median_delay_seconds": 54,
+  "within_120_seconds": 0.6265554098896933,
+  "verified_against": "data/processed/blue_clean.parquet",
+  "checks": [
+    "record preservation",
+    "source aggregate reconciliation",
+    "filters",
+    "quality flags",
+    "distribution boundaries",
+    "date rollover",
+    "sorting",
+    "JavaScript syntax",
+    "local assets"
+  ],
+  "url": "https://winnipeg-blue-trip-observatory.wasdpyzlp.chatgpt.site/history.html",
+  "status": "published"
+}

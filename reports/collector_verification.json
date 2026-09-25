@@ -1,0 +1,18 @@
+{
+  "live_responses": 24,
+  "observations": 817,
+  "distinct_trips": 15,
+  "distinct_buses": 16,
+  "distinct_stops": 111,
+  "dated_departure_estimates": 42,
+  "clock_only_scheduled_departures": 775,
+  "errors": 0,
+  "continuous_process_started": false,
+  "checks": [
+    "24 unit tests passed",
+    "All saved live payloads reparse with current normalizer",
+    "Repeated snapshots preserved",
+    "No configured API key present in stored payloads or request parameters",
+    "Synthetic fixture stored in separate database"
+  ]
+}

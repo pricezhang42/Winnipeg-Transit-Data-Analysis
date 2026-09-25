@@ -1,0 +1,477 @@
+{
+  "counts": {
+    "train": 248650,
+    "validation": 64669,
+    "test": 60592
+  },
+  "selected_candidate": {
+    "depth": 6,
+    "tree_count": 1197,
+    "best_iteration_zero_based": 1196,
+    "training_seconds": 12.053599250000843,
+    "validation_all_valid": {
+      "n": 64669,
+      "mae_seconds": 117.20833464455234,
+      "rmse_seconds": 360.60059196323624,
+      "median_absolute_error_seconds": 74.55499190127463,
+      "p90_absolute_error_seconds": 227.87911634737364,
+      "mean_signed_error_seconds": -22.77524531125581,
+      "within_60_seconds": 0.4190725076930214,
+      "within_120_seconds": 0.7025004252423882,
+      "within_180_seconds": 0.8444231393712598
+    }
+  },
+  "validation": {
+    "all_valid": {
+      "scheduled_on_time": {
+        "n": 64669,
+        "mae_seconds": 141.56207765699176,
+        "rmse_seconds": 376.4627279828839,
+        "median_absolute_error_seconds": 84.0,
+        "p90_absolute_error_seconds": 307.0,
+        "mean_signed_error_seconds": -82.36147149329663,
+        "within_60_seconds": 0.3842490219425072,
+        "within_120_seconds": 0.6317710185714949,
+        "within_180_seconds": 0.772193786822125
+      },
+      "global_median": {
+        "n": 64669,
+        "mae_seconds": 131.50006958511807,
+        "rmse_seconds": 368.76556022896875,
+        "median_absolute_error_seconds": 84.0,
+        "p90_absolute_error_seconds": 261.0,
+        "mean_signed_error_seconds": -32.361471493296634,
+        "within_60_seconds": 0.3759297344941162,
+        "within_120_seconds": 0.656141273253027,
+        "within_180_seconds": 0.8085481451700196
+      },
+      "grouped_median": {
+        "n": 64669,
+        "mae_seconds": 118.00978830660749,
+        "rmse_seconds": 361.62037564921224,
+        "median_absolute_error_seconds": 76.0,
+        "p90_absolute_error_seconds": 233.60000000000218,
+        "mean_signed_error_seconds": -22.485193833212204,
+        "within_60_seconds": 0.4208353306839444,
+        "within_120_seconds": 0.6971191761122021,
+        "within_180_seconds": 0.8374646275649847
+      },
+      "catboost": {
+        "n": 64669,
+        "mae_seconds": 117.20833464455234,
+        "rmse_seconds": 360.60059196323624,
+        "median_absolute_error_seconds": 74.55499190127463,
+        "p90_absolute_error_seconds": 227.87911634737364,
+        "mean_signed_error_seconds": -22.77524531125581,
+        "within_60_seconds": 0.4190725076930214,
+        "within_120_seconds": 0.7025004252423882,
+        "within_180_seconds": 0.8444231393712598
+      }
+    },
+    "unflagged": {
+      "scheduled_on_time": {
+        "n": 64574,
+        "mae_seconds": 130.24706538235202,
+        "rmse_seconds": 199.1430055558426,
+        "median_absolute_error_seconds": 84.0,
+        "p90_absolute_error_seconds": 305.0,
+        "mean_signed_error_seconds": -89.61482949794035,
+        "within_60_seconds": 0.3847368910087651,
+        "within_120_seconds": 0.632607551026729,
+        "within_180_seconds": 0.7732059342769536
+      },
+      "global_median": {
+        "n": 64574,
+        "mae_seconds": 120.12912317651067,
+        "rmse_seconds": 182.19893993111023,
+        "median_absolute_error_seconds": 84.0,
+        "p90_absolute_error_seconds": 259.0,
+        "mean_signed_error_seconds": -39.61482949794035,
+        "within_60_seconds": 0.3764208504971041,
+        "within_120_seconds": 0.6569981726391427,
+        "within_180_seconds": 0.8096137764425311
+      },
+      "grouped_median": {
+        "n": 64574,
+        "mae_seconds": 106.55921888066405,
+        "rmse_seconds": 163.77723875179345,
+        "median_absolute_error_seconds": 75.5,
+        "p90_absolute_error_seconds": 232.5,
+        "mean_signed_error_seconds": -29.775095239570106,
+        "within_60_seconds": 0.4214079970266671,
+        "within_120_seconds": 0.6980518474927989,
+        "within_180_seconds": 0.8385728001982222
+      },
+      "catboost": {
+        "n": 64574,
+        "mae_seconds": 105.79277732129479,
+        "rmse_seconds": 163.53081447511968,
+        "median_absolute_error_seconds": 74.45650126404522,
+        "p90_absolute_error_seconds": 226.6180026156776,
+        "mean_signed_error_seconds": -30.025638926645637,
+        "within_60_seconds": 0.41962709449623686,
+        "within_120_seconds": 0.7034255273020101,
+        "within_180_seconds": 0.8455415492303404
+      }
+    }
+  },
+  "test": {
+    "all_valid": {
+      "scheduled_on_time": {
+        "n": 60592,
+        "mae_seconds": 144.18121204119356,
+        "rmse_seconds": 451.95665448543605,
+        "median_absolute_error_seconds": 82.0,
+        "p90_absolute_error_seconds": 304.0,
+        "mean_signed_error_seconds": -76.88592553472405,
+        "within_60_seconds": 0.396306443094798,
+        "within_120_seconds": 0.6367177185106945,
+        "within_180_seconds": 0.7692929759704251
+      },
+      "global_median": {
+        "n": 60592,
+        "mae_seconds": 135.497491418009,
+        "rmse_seconds": 446.1795882603723,
+        "median_absolute_error_seconds": 85.0,
+        "p90_absolute_error_seconds": 259.0,
+        "mean_signed_error_seconds": -26.885925534724056,
+        "within_60_seconds": 0.37044494322682864,
+        "within_120_seconds": 0.6489800633747029,
+        "within_180_seconds": 0.8081594930023765
+      },
+      "grouped_median": {
+        "n": 60592,
+        "mae_seconds": 123.23672266965936,
+        "rmse_seconds": 439.5058598106087,
+        "median_absolute_error_seconds": 76.5,
+        "p90_absolute_error_seconds": 237.0,
+        "mean_signed_error_seconds": -15.913891272775285,
+        "within_60_seconds": 0.41490625825191446,
+        "within_120_seconds": 0.6869058621600211,
+        "within_180_seconds": 0.8302251122260365
+      },
+      "catboost": {
+        "n": 60592,
+        "mae_seconds": 121.53991674015984,
+        "rmse_seconds": 438.1107761726229,
+        "median_absolute_error_seconds": 75.54934084896115,
+        "p90_absolute_error_seconds": 229.64711415692457,
+        "mean_signed_error_seconds": -17.34533990044715,
+        "within_60_seconds": 0.4167876947451809,
+        "within_120_seconds": 0.6911308423554264,
+        "within_180_seconds": 0.8380974386057566
+      }
+    },
+    "unflagged": {
+      "scheduled_on_time": {
+        "n": 60485,
+        "mae_seconds": 129.83514921054808,
+        "rmse_seconds": 203.89232599216552,
+        "median_absolute_error_seconds": 82.0,
+        "p90_absolute_error_seconds": 302.0,
+        "mean_signed_error_seconds": -88.40963875340994,
+        "within_60_seconds": 0.3969579234520956,
+        "within_120_seconds": 0.6377448954286187,
+        "within_180_seconds": 0.7705381499545342
+      },
+      "global_median": {
+        "n": 60485,
+        "mae_seconds": 121.07443167727536,
+        "rmse_seconds": 187.69953842019567,
+        "median_absolute_error_seconds": 85.0,
+        "p90_absolute_error_seconds": 256.0,
+        "mean_signed_error_seconds": -38.409638753409936,
+        "within_60_seconds": 0.37101760767132347,
+        "within_120_seconds": 0.6500454658179714,
+        "within_180_seconds": 0.8094899561874845
+      },
+      "grouped_median": {
+        "n": 60485,
+        "mae_seconds": 108.78908820368686,
+        "rmse_seconds": 171.45595069053982,
+        "median_absolute_error_seconds": 76.0,
+        "p90_absolute_error_seconds": 235.5,
+        "mean_signed_error_seconds": -27.41458212780028,
+        "within_60_seconds": 0.41559064230801024,
+        "within_120_seconds": 0.6880218235926263,
+        "within_180_seconds": 0.8315780772092254
+      },
+      "catboost": {
+        "n": 60485,
+        "mae_seconds": 107.08614338453503,
+        "rmse_seconds": 168.1235379116927,
+        "median_absolute_error_seconds": 75.37600174990837,
+        "p90_absolute_error_seconds": 228.18690937770668,
+        "mean_signed_error_seconds": -28.859999952127573,
+        "within_60_seconds": 0.41747540712573367,
+        "within_120_seconds": 0.6922542779201455,
+        "within_180_seconds": 0.8394808630238902
+      }
+    }
+  },
+  "test_by_destination": {
+    "Downtown": {
+      "grouped_median": {
+        "n": 2084,
+        "mae_seconds": 62.4608925143954,
+        "rmse_seconds": 164.16578690522314,
+        "median_absolute_error_seconds": 41.0,
+        "p90_absolute_error_seconds": 120.0,
+        "mean_signed_error_seconds": -1.147552783109405,
+        "within_60_seconds": 0.6617082533589251,
+        "within_120_seconds": 0.9030710172744721,
+        "within_180_seconds": 0.9592130518234165
+      },
+      "catboost": {
+        "n": 2084,
+        "mae_seconds": 62.81322681550739,
+        "rmse_seconds": 163.67924697540826,
+        "median_absolute_error_seconds": 43.769860001560836,
+        "p90_absolute_error_seconds": 119.88594450369307,
+        "mean_signed_error_seconds": -1.8603543027621368,
+        "within_60_seconds": 0.668426103646833,
+        "within_120_seconds": 0.9001919385796545,
+        "within_180_seconds": 0.9572936660268714
+      }
+    },
+    "St. Norbert": {
+      "grouped_median": {
+        "n": 18924,
+        "mae_seconds": 140.71813570069753,
+        "rmse_seconds": 425.2540284559689,
+        "median_absolute_error_seconds": 88.0,
+        "p90_absolute_error_seconds": 266.0,
+        "mean_signed_error_seconds": -6.712217290213485,
+        "within_60_seconds": 0.3779856267173959,
+        "within_120_seconds": 0.6314732614669203,
+        "within_180_seconds": 0.7859860494610019
+      },
+      "catboost": {
+        "n": 18924,
+        "mae_seconds": 136.57949478103174,
+        "rmse_seconds": 421.63616760022296,
+        "median_absolute_error_seconds": 84.31726433291423,
+        "p90_absolute_error_seconds": 254.4578592228019,
+        "mean_signed_error_seconds": -10.195066237515155,
+        "within_60_seconds": 0.3837455083491862,
+        "within_120_seconds": 0.6410378355527373,
+        "within_180_seconds": 0.8018389346861129
+      }
+    },
+    "Unicity Shopping Centre": {
+      "grouped_median": {
+        "n": 26952,
+        "mae_seconds": 121.06656277827248,
+        "rmse_seconds": 516.0761176933958,
+        "median_absolute_error_seconds": 75.0,
+        "p90_absolute_error_seconds": 223.5,
+        "mean_signed_error_seconds": -18.905535767289997,
+        "within_60_seconds": 0.41848471356485606,
+        "within_120_seconds": 0.7031018106262986,
+        "within_180_seconds": 0.8475437815375483
+      },
+      "catboost": {
+        "n": 26952,
+        "mae_seconds": 120.602455237013,
+        "rmse_seconds": 515.9029784620134,
+        "median_absolute_error_seconds": 73.9137772672083,
+        "p90_absolute_error_seconds": 221.40246448992372,
+        "mean_signed_error_seconds": -19.13074105902814,
+        "within_60_seconds": 0.4196349065004452,
+        "within_120_seconds": 0.7111160581775008,
+        "within_180_seconds": 0.8483600474918374
+      }
+    },
+    "University of Manitoba": {
+      "grouped_median": {
+        "n": 12632,
+        "mae_seconds": 111.70479734008866,
+        "rmse_seconds": 287.9836171157006,
+        "median_absolute_error_seconds": 74.75,
+        "p90_absolute_error_seconds": 231.0,
+        "mean_signed_error_seconds": -25.751979100696644,
+        "within_60_seconds": 0.42186510449651676,
+        "within_120_seconds": 0.6997308423052565,
+        "within_180_seconds": 0.8382678910702976
+      },
+      "catboost": {
+        "n": 12632,
+        "mae_seconds": 110.69792096675332,
+        "rmse_seconds": 286.46001727653265,
+        "median_absolute_error_seconds": 75.95022553873598,
+        "p90_absolute_error_seconds": 217.99960556312897,
+        "mean_signed_error_seconds": -26.80246123965124,
+        "within_60_seconds": 0.4186985433818873,
+        "within_120_seconds": 0.6890436985433819,
+        "within_180_seconds": 0.85085497150095
+      }
+    }
+  },
+  "test_by_date": {
+    "2026-08-31": {
+      "grouped_median": {
+        "n": 12024,
+        "mae_seconds": 103.44049401197604,
+        "rmse_seconds": 226.66518446995428,
+        "median_absolute_error_seconds": 76.5,
+        "p90_absolute_error_seconds": 211.0,
+        "mean_signed_error_seconds": 6.577969061876248,
+        "within_60_seconds": 0.4112608117099135,
+        "within_120_seconds": 0.6947771124417831,
+        "within_180_seconds": 0.8586992681304059
+      },
+      "catboost": {
+        "n": 12024,
+        "mae_seconds": 100.03927218382026,
+        "rmse_seconds": 225.87361852260992,
+        "median_absolute_error_seconds": 71.0300376185952,
+        "p90_absolute_error_seconds": 202.59995507795904,
+        "mean_signed_error_seconds": -15.813102168778936,
+        "within_60_seconds": 0.43820691949434465,
+        "within_120_seconds": 0.716566866267465,
+        "within_180_seconds": 0.8671823020625415
+      }
+    },
+    "2026-09-01": {
+      "grouped_median": {
+        "n": 11290,
+        "mae_seconds": 117.17883082373783,
+        "rmse_seconds": 411.27717993269744,
+        "median_absolute_error_seconds": 71.5,
+        "p90_absolute_error_seconds": 219.0,
+        "mean_signed_error_seconds": -16.60132860938884,
+        "within_60_seconds": 0.4395925597874225,
+        "within_120_seconds": 0.716651904340124,
+        "within_180_seconds": 0.8527900797165633
+      },
+      "catboost": {
+        "n": 11290,
+        "mae_seconds": 117.79989916072009,
+        "rmse_seconds": 411.5570699146383,
+        "median_absolute_error_seconds": 72.77421613775658,
+        "p90_absolute_error_seconds": 215.46241371657982,
+        "mean_signed_error_seconds": -13.529541510861486,
+        "within_60_seconds": 0.42595217006200176,
+        "within_120_seconds": 0.7119574844995571,
+        "within_180_seconds": 0.8569530558015943
+      }
+    },
+    "2026-09-02": {
+      "grouped_median": {
+        "n": 11948,
+        "mae_seconds": 125.02075661198526,
+        "rmse_seconds": 304.0092177099702,
+        "median_absolute_error_seconds": 79.0,
+        "p90_absolute_error_seconds": 255.65000000000055,
+        "mean_signed_error_seconds": -35.79938064948109,
+        "within_60_seconds": 0.4052561098091731,
+        "within_120_seconds": 0.6682289922999666,
+        "within_180_seconds": 0.8068295949112823
+      },
+      "catboost": {
+        "n": 11948,
+        "mae_seconds": 124.65895004507824,
+        "rmse_seconds": 303.437570436551,
+        "median_absolute_error_seconds": 79.58927429876222,
+        "p90_absolute_error_seconds": 249.17274888702002,
+        "mean_signed_error_seconds": -29.630646437075622,
+        "within_60_seconds": 0.39797455641111484,
+        "within_120_seconds": 0.6670572480749917,
+        "within_180_seconds": 0.8134415801807834
+      }
+    },
+    "2026-09-03": {
+      "grouped_median": {
+        "n": 11748,
+        "mae_seconds": 131.7556179775281,
+        "rmse_seconds": 266.786151782869,
+        "median_absolute_error_seconds": 82.0,
+        "p90_absolute_error_seconds": 293.0,
+        "mean_signed_error_seconds": -49.2260810350698,
+        "within_60_seconds": 0.3953864487572353,
+        "within_120_seconds": 0.6510895471569629,
+        "within_180_seconds": 0.7892407218249915
+      },
+      "catboost": {
+        "n": 11748,
+        "mae_seconds": 128.08521353784585,
+        "rmse_seconds": 259.49165879954126,
+        "median_absolute_error_seconds": 82.51077314042388,
+        "p90_absolute_error_seconds": 273.91822401777466,
+        "mean_signed_error_seconds": -38.34245727052442,
+        "within_60_seconds": 0.3905345590738849,
+        "within_120_seconds": 0.6511746680286006,
+        "within_180_seconds": 0.7961355124276472
+      }
+    },
+    "2026-09-04": {
+      "grouped_median": {
+        "n": 11370,
+        "mae_seconds": 139.9901495162709,
+        "rmse_seconds": 788.0100848336094,
+        "median_absolute_error_seconds": 73.0,
+        "p90_absolute_error_seconds": 218.0,
+        "mean_signed_error_seconds": 12.084696569920844,
+        "within_60_seconds": 0.4297273526824978,
+        "within_120_seconds": 0.7086191732629727,
+        "within_180_seconds": 0.8487247141600703
+      },
+      "catboost": {
+        "n": 11370,
+        "mae_seconds": 138.44227410331672,
+        "rmse_seconds": 786.855756932626,
+        "median_absolute_error_seconds": 70.60846492447547,
+        "p90_absolute_error_seconds": 210.05637933847336,
+        "mean_signed_error_seconds": 7.696584971190562,
+        "within_60_seconds": 0.43896218117854,
+        "within_120_seconds": 0.7153034300791556,
+        "within_180_seconds": 0.8599824098504837
+      }
+    },
+    "2026-09-05": {
+      "grouped_median": {
+        "n": 2212,
+        "mae_seconds": 120.76898734177215,
+        "rmse_seconds": 282.15369322474174,
+        "median_absolute_error_seconds": 82.0,
+        "p90_absolute_error_seconds": 236.95000000000005,
+        "mean_signed_error_seconds": 5.749095840867993,
+        "within_60_seconds": 0.3883363471971067,
+        "within_120_seconds": 0.6717902350813744,
+        "within_180_seconds": 0.8092224231464737
+      },
+      "catboost": {
+        "n": 2212,
+        "mae_seconds": 119.01206352670036,
+        "rmse_seconds": 280.0949916998163,
+        "median_absolute_error_seconds": 81.84518456524924,
+        "p90_absolute_error_seconds": 231.52420428275903,
+        "mean_signed_error_seconds": 4.005610040232316,
+        "within_60_seconds": 0.3806509945750452,
+        "within_120_seconds": 0.6645569620253164,
+        "within_180_seconds": 0.8273056057866185
+      }
+    }
+  },
+  "test_unseen_category_rows": {
+    "stop_number": 0,
+    "destination": 0,
+    "day_type": 0,
+    "day_of_week": 0
+  },
+  "test_coverage": {
+    "2026-08-31": 12024,
+    "2026-09-01": 11290,
+    "2026-09-02": 11948,
+    "2026-09-03": 11748,
+    "2026-09-04": 11370,
+    "2026-09-05": 2212
+  },
+  "feature_importance_prediction_values_change": {
+    "stop_number": 44.77034872579925,
+    "destination": 8.772214395317963,
+    "day_type": 4.312387307369945,
+    "day_of_week": 9.128722622803796,
+    "minute_of_day": 33.01632694870906
+  }
+}

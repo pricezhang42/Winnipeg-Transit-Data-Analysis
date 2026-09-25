@@ -1,0 +1,8 @@
+{
+  "arrival_candidates_verified": 947,
+  "unique_event_per_horizon": true,
+  "all_receipt_times_before_cutoff": true,
+  "arrival_fields_used_instead_of_departure_fields": true,
+  "no_ground_truth_or_accuracy_fabricated": true,
+  "future_revision_exclusion_test": true
+}

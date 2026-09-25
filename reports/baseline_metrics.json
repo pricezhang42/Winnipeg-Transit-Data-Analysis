@@ -1,0 +1,295 @@
+{
+  "training_rows": 186349,
+  "training_global_median_seconds": 49.0,
+  "scores": {
+    "validation": {
+      "all_valid": {
+        "scheduled_on_time": {
+          "n": 62446,
+          "mae_seconds": 147.29553534253594,
+          "rmse_seconds": 376.72026038103985,
+          "median_absolute_error_seconds": 85.0,
+          "p90_absolute_error_seconds": 318.0,
+          "mean_signed_error_seconds": -90.49084008583417,
+          "within_60_seconds": 0.3833071774012747,
+          "within_120_seconds": 0.630480735355347,
+          "within_180_seconds": 0.7640521410498671
+        },
+        "training_global_median": {
+          "n": 62446,
+          "mae_seconds": 138.19580117221278,
+          "rmse_seconds": 368.03675394333476,
+          "median_absolute_error_seconds": 87.0,
+          "p90_absolute_error_seconds": 273.0,
+          "mean_signed_error_seconds": -41.49084008583416,
+          "within_60_seconds": 0.3636902283573007,
+          "within_120_seconds": 0.6414341991480639,
+          "within_180_seconds": 0.7995548153604715
+        },
+        "grouped_median": {
+          "n": 62446,
+          "mae_seconds": 125.78196361656471,
+          "rmse_seconds": 360.2036180753242,
+          "median_absolute_error_seconds": 78.0,
+          "p90_absolute_error_seconds": 244.5,
+          "mean_signed_error_seconds": -31.26279505492746,
+          "within_60_seconds": 0.4072478621529001,
+          "within_120_seconds": 0.6805560003843321,
+          "within_180_seconds": 0.8243762610895814
+        },
+        "fallback_counts": {
+          "stop_number+destination+day_type+hour": 56039,
+          "stop_number+destination+day_type": 6397,
+          "destination+day_type+hour": 10
+        }
+      },
+      "unflagged": {
+        "scheduled_on_time": {
+          "n": 62301,
+          "mae_seconds": 133.86626217877722,
+          "rmse_seconds": 206.26565280281477,
+          "median_absolute_error_seconds": 85.0,
+          "p90_absolute_error_seconds": 314.0,
+          "mean_signed_error_seconds": -90.82666409848959,
+          "within_60_seconds": 0.38413508611418756,
+          "within_120_seconds": 0.6318518161827258,
+          "within_180_seconds": 0.7657340973660134
+        },
+        "training_global_median": {
+          "n": 62301,
+          "mae_seconds": 124.77627967448356,
+          "rmse_seconds": 189.85654174802445,
+          "median_absolute_error_seconds": 86.0,
+          "p90_absolute_error_seconds": 270.0,
+          "mean_signed_error_seconds": -41.826664098489594,
+          "within_60_seconds": 0.3644885314842458,
+          "within_120_seconds": 0.6428468242885347,
+          "within_180_seconds": 0.801319400972697
+        },
+        "grouped_median": {
+          "n": 62301,
+          "mae_seconds": 112.39618946726377,
+          "rmse_seconds": 174.32010404937148,
+          "median_absolute_error_seconds": 78.0,
+          "p90_absolute_error_seconds": 242.5,
+          "mean_signed_error_seconds": -31.734675205855442,
+          "within_60_seconds": 0.40819569509317666,
+          "within_120_seconds": 0.6820757291215229,
+          "within_180_seconds": 0.8262146675013242
+        },
+        "fallback_counts": {
+          "stop_number+destination+day_type+hour": 55904,
+          "stop_number+destination+day_type": 6387,
+          "destination+day_type+hour": 10
+        }
+      }
+    },
+    "test": {
+      "all_valid": {
+        "scheduled_on_time": {
+          "n": 64669,
+          "mae_seconds": 141.56207765699176,
+          "rmse_seconds": 376.4627279828839,
+          "median_absolute_error_seconds": 84.0,
+          "p90_absolute_error_seconds": 307.0,
+          "mean_signed_error_seconds": -82.36147149329663,
+          "within_60_seconds": 0.3842490219425072,
+          "within_120_seconds": 0.6317710185714949,
+          "within_180_seconds": 0.772193786822125
+        },
+        "training_global_median": {
+          "n": 64669,
+          "mae_seconds": 131.53317663795636,
+          "rmse_seconds": 368.8546615592268,
+          "median_absolute_error_seconds": 84.0,
+          "p90_absolute_error_seconds": 262.0,
+          "mean_signed_error_seconds": -33.361471493296634,
+          "within_60_seconds": 0.3769503162257032,
+          "within_120_seconds": 0.6566824908379595,
+          "within_180_seconds": 0.8082698046977687
+        },
+        "grouped_median": {
+          "n": 64669,
+          "mae_seconds": 118.78288669996444,
+          "rmse_seconds": 361.90936968886615,
+          "median_absolute_error_seconds": 76.0,
+          "p90_absolute_error_seconds": 235.5,
+          "mean_signed_error_seconds": -23.203443690176126,
+          "within_60_seconds": 0.41885602065904837,
+          "within_120_seconds": 0.6951089393681671,
+          "within_180_seconds": 0.8354080007422413
+        },
+        "fallback_counts": {
+          "stop_number+destination+day_type+hour": 58132,
+          "stop_number+destination+day_type": 6521,
+          "destination+day_type+hour": 16
+        }
+      },
+      "unflagged": {
+        "scheduled_on_time": {
+          "n": 64574,
+          "mae_seconds": 130.24706538235202,
+          "rmse_seconds": 199.1430055558426,
+          "median_absolute_error_seconds": 84.0,
+          "p90_absolute_error_seconds": 305.0,
+          "mean_signed_error_seconds": -89.61482949794035,
+          "within_60_seconds": 0.3847368910087651,
+          "within_120_seconds": 0.632607551026729,
+          "within_180_seconds": 0.7732059342769536
+        },
+        "training_global_median": {
+          "n": 64574,
+          "mae_seconds": 120.16316164400533,
+          "rmse_seconds": 182.4189775517235,
+          "median_absolute_error_seconds": 84.0,
+          "p90_absolute_error_seconds": 260.0,
+          "mean_signed_error_seconds": -40.61482949794035,
+          "within_60_seconds": 0.3774429336884814,
+          "within_120_seconds": 0.6575401864527519,
+          "within_180_seconds": 0.8093350264812463
+        },
+        "grouped_median": {
+          "n": 64574,
+          "mae_seconds": 107.34191779973364,
+          "rmse_seconds": 164.95870403222048,
+          "median_absolute_error_seconds": 76.0,
+          "p90_absolute_error_seconds": 234.0,
+          "mean_signed_error_seconds": -30.48335243286772,
+          "within_60_seconds": 0.4194412611887137,
+          "within_120_seconds": 0.6960541394369251,
+          "within_180_seconds": 0.8365131477065073
+        },
+        "fallback_counts": {
+          "stop_number+destination+day_type+hour": 58039,
+          "stop_number+destination+day_type": 6519,
+          "destination+day_type+hour": 16
+        }
+      }
+    }
+  },
+  "test_by_destination": {
+    "Downtown": {
+      "n": 2164,
+      "mae_seconds": 89.24052680221811,
+      "rmse_seconds": 187.4530529642535,
+      "median_absolute_error_seconds": 48.5,
+      "p90_absolute_error_seconds": 157.35000000000002,
+      "mean_signed_error_seconds": -30.87130314232902,
+      "within_60_seconds": 0.5910351201478743,
+      "within_120_seconds": 0.8368761552680222,
+      "within_180_seconds": 0.9219038817005545
+    },
+    "St. Norbert": {
+      "n": 20342,
+      "mae_seconds": 144.18874741913282,
+      "rmse_seconds": 471.6250024837015,
+      "median_absolute_error_seconds": 90.0,
+      "p90_absolute_error_seconds": 264.9500000000007,
+      "mean_signed_error_seconds": -21.938575361321405,
+      "within_60_seconds": 0.36746632582833544,
+      "within_120_seconds": 0.6251597679677514,
+      "within_180_seconds": 0.7804050732474683
+    },
+    "Unicity Shopping Centre": {
+      "n": 29126,
+      "mae_seconds": 108.8789054453066,
+      "rmse_seconds": 341.8439991911687,
+      "median_absolute_error_seconds": 70.5,
+      "p90_absolute_error_seconds": 212.0,
+      "mean_signed_error_seconds": -23.72509098400055,
+      "within_60_seconds": 0.441049234361052,
+      "within_120_seconds": 0.7330907093318685,
+      "within_180_seconds": 0.8672663599533064
+    },
+    "University of Manitoba": {
+      "n": 13037,
+      "mae_seconds": 106.17162690803099,
+      "rmse_seconds": 189.0500442979593,
+      "median_absolute_error_seconds": 76.5,
+      "p90_absolute_error_seconds": 233.0,
+      "mean_signed_error_seconds": -22.738858633121115,
+      "within_60_seconds": 0.4208790365881721,
+      "within_120_seconds": 0.6958656132545831,
+      "within_180_seconds": 0.8356983968704457
+    }
+  },
+  "test_by_date": {
+    "2026-08-24": {
+      "n": 12068,
+      "mae_seconds": 119.1798558170368,
+      "rmse_seconds": 361.9943782388519,
+      "median_absolute_error_seconds": 77.5,
+      "p90_absolute_error_seconds": 234.0,
+      "mean_signed_error_seconds": -25.935822008617833,
+      "within_60_seconds": 0.41531322505800466,
+      "within_120_seconds": 0.6948127278753728,
+      "within_180_seconds": 0.8331123632747762
+    },
+    "2026-08-25": {
+      "n": 12059,
+      "mae_seconds": 117.99651712413964,
+      "rmse_seconds": 237.96763616511336,
+      "median_absolute_error_seconds": 79.5,
+      "p90_absolute_error_seconds": 236.0,
+      "mean_signed_error_seconds": -31.53992868397048,
+      "within_60_seconds": 0.4064184426569367,
+      "within_120_seconds": 0.67650717306576,
+      "within_180_seconds": 0.8271000912181773
+    },
+    "2026-08-26": {
+      "n": 12287,
+      "mae_seconds": 116.42866444209326,
+      "rmse_seconds": 337.506404570444,
+      "median_absolute_error_seconds": 75.0,
+      "p90_absolute_error_seconds": 237.0,
+      "mean_signed_error_seconds": -29.813786929274844,
+      "within_60_seconds": 0.42174656140636446,
+      "within_120_seconds": 0.7051355090746317,
+      "within_180_seconds": 0.8412956783592415
+    },
+    "2026-08-27": {
+      "n": 12774,
+      "mae_seconds": 108.87083137623297,
+      "rmse_seconds": 162.91746907583828,
+      "median_absolute_error_seconds": 80.0,
+      "p90_absolute_error_seconds": 245.35000000000036,
+      "mean_signed_error_seconds": -40.532801002035384,
+      "within_60_seconds": 0.4062940347581024,
+      "within_120_seconds": 0.6748864881791138,
+      "within_180_seconds": 0.8218255832159073
+    },
+    "2026-08-28": {
+      "n": 10570,
+      "mae_seconds": 146.55454115421003,
+      "rmse_seconds": 641.1511544572569,
+      "median_absolute_error_seconds": 76.0,
+      "p90_absolute_error_seconds": 241.0,
+      "mean_signed_error_seconds": 20.74233680227058,
+      "within_60_seconds": 0.4228949858088931,
+      "within_120_seconds": 0.691674550614948,
+      "within_180_seconds": 0.8260170293282876
+    },
+    "2026-08-29": {
+      "n": 2392,
+      "mae_seconds": 91.01609531772576,
+      "rmse_seconds": 125.07683466333002,
+      "median_absolute_error_seconds": 71.0,
+      "p90_absolute_error_seconds": 190.0,
+      "mean_signed_error_seconds": -26.557483277591974,
+      "within_60_seconds": 0.4331103678929766,
+      "within_120_seconds": 0.7558528428093646,
+      "within_180_seconds": 0.8875418060200669
+    },
+    "2026-08-30": {
+      "n": 2519,
+      "mae_seconds": 92.22747121873759,
+      "rmse_seconds": 183.49726085142575,
+      "median_absolute_error_seconds": 58.0,
+      "p90_absolute_error_seconds": 171.0,
+      "mean_signed_error_seconds": -31.29932512901945,
+      "within_60_seconds": 0.5144898769352918,
+      "within_120_seconds": 0.795950774116713,
+      "within_180_seconds": 0.9162366018261214
+    }
+  }
+}

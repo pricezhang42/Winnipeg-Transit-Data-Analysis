@@ -1,0 +1,212 @@
+[
+  {
+    "trip_key": "35826784",
+    "scheduled_stop_key": "35826784-30",
+    "scheduled_departure_raw": "2026-09-14T19:26:51",
+    "stop_number": "11027",
+    "destination": "St. Norbert",
+    "snapshots": 8,
+    "status": "matched",
+    "outcome_row_id": "1665438536"
+  },
+  {
+    "trip_key": "35826785",
+    "scheduled_stop_key": "35826785-30",
+    "scheduled_departure_raw": "2026-09-14T19:34:51",
+    "stop_number": "11027",
+    "destination": "University of Manitoba",
+    "snapshots": 16,
+    "status": "matched",
+    "outcome_row_id": "1665386600"
+  },
+  {
+    "trip_key": "35826786",
+    "scheduled_stop_key": "35826786-30",
+    "scheduled_departure_raw": "2026-09-14T19:42:51",
+    "stop_number": "11027",
+    "destination": "St. Norbert",
+    "snapshots": 20,
+    "status": "no_exact_outcome",
+    "outcome_row_id": null
+  },
+  {
+    "trip_key": "35826787",
+    "scheduled_stop_key": "35826787-30",
+    "scheduled_departure_raw": "2026-09-14T19:50:51",
+    "stop_number": "11027",
+    "destination": "University of Manitoba",
+    "snapshots": 20,
+    "status": "matched",
+    "outcome_row_id": "1665444404"
+  },
+  {
+    "trip_key": "35826805",
+    "scheduled_stop_key": "35826805-20",
+    "scheduled_departure_raw": "2026-09-14T19:24:00",
+    "stop_number": "10541",
+    "destination": "Unicity Shopping Centre",
+    "snapshots": 6,
+    "status": "no_exact_outcome",
+    "outcome_row_id": null
+  },
+  {
+    "trip_key": "35826804",
+    "scheduled_stop_key": "35826804-26",
+    "scheduled_departure_raw": "2026-09-14T19:33:00",
+    "stop_number": "10541",
+    "destination": "Unicity Shopping Centre",
+    "snapshots": 15,
+    "status": "no_exact_outcome",
+    "outcome_row_id": null
+  },
+  {
+    "trip_key": "35826388",
+    "scheduled_stop_key": "35826388-20",
+    "scheduled_departure_raw": "2026-09-14T19:43:00",
+    "stop_number": "10541",
+    "destination": "Unicity Shopping Centre",
+    "snapshots": 20,
+    "status": "matched",
+    "outcome_row_id": "1665428017"
+  },
+  {
+    "trip_key": "35826782",
+    "scheduled_stop_key": "35826782-35",
+    "scheduled_departure_raw": "2026-09-14T19:19:00",
+    "stop_number": "61205",
+    "destination": "St. Norbert",
+    "snapshots": 1,
+    "status": "matched",
+    "outcome_row_id": "1665376211"
+  },
+  {
+    "trip_key": "35826783",
+    "scheduled_stop_key": "35826783-35",
+    "scheduled_departure_raw": "2026-09-14T19:27:00",
+    "stop_number": "61205",
+    "destination": "University of Manitoba",
+    "snapshots": 9,
+    "status": "no_exact_outcome",
+    "outcome_row_id": null
+  },
+  {
+    "trip_key": "35826784",
+    "scheduled_stop_key": "35826784-35",
+    "scheduled_departure_raw": "2026-09-14T19:35:00",
+    "stop_number": "61205",
+    "destination": "St. Norbert",
+    "snapshots": 17,
+    "status": "matched",
+    "outcome_row_id": "1665438546"
+  },
+  {
+    "trip_key": "35826785",
+    "scheduled_stop_key": "35826785-35",
+    "scheduled_departure_raw": "2026-09-14T19:43:00",
+    "stop_number": "61205",
+    "destination": "University of Manitoba",
+    "snapshots": 20,
+    "status": "matched",
+    "outcome_row_id": "1665386610"
+  },
+  {
+    "trip_key": "35826786",
+    "scheduled_stop_key": "35826786-35",
+    "scheduled_departure_raw": "2026-09-14T19:51:00",
+    "stop_number": "61205",
+    "destination": "St. Norbert",
+    "snapshots": 20,
+    "status": "no_exact_outcome",
+    "outcome_row_id": null
+  },
+  {
+    "trip_key": "35826391",
+    "scheduled_stop_key": "35826391-7",
+    "scheduled_departure_raw": "2026-09-14T19:22:03",
+    "stop_number": "60066",
+    "destination": "Unicity Shopping Centre",
+    "snapshots": 6,
+    "status": "matched",
+    "outcome_row_id": "1665422755"
+  },
+  {
+    "trip_key": "35826560",
+    "scheduled_stop_key": "35826560-7",
+    "scheduled_departure_raw": "2026-09-14T19:45:03",
+    "stop_number": "60066",
+    "destination": "Unicity Shopping Centre",
+    "snapshots": 20,
+    "status": "no_exact_outcome",
+    "outcome_row_id": null
+  },
+  {
+    "trip_key": "35826391",
+    "scheduled_stop_key": "35826391-26",
+    "scheduled_departure_raw": "2026-09-14T19:54:00",
+    "stop_number": "10541",
+    "destination": "Unicity Shopping Centre",
+    "snapshots": 19,
+    "status": "matched",
+    "outcome_row_id": "1665422793"
+  },
+  {
+    "trip_key": "35826788",
+    "scheduled_stop_key": "35826788-30",
+    "scheduled_departure_raw": "2026-09-14T19:59:51",
+    "stop_number": "11027",
+    "destination": "St. Norbert",
+    "snapshots": 14,
+    "status": "matched",
+    "outcome_row_id": "1665410841"
+  },
+  {
+    "trip_key": "35826787",
+    "scheduled_stop_key": "35826787-35",
+    "scheduled_departure_raw": "2026-09-14T19:59:00",
+    "stop_number": "61205",
+    "destination": "University of Manitoba",
+    "snapshots": 14,
+    "status": "matched",
+    "outcome_row_id": "1665444414"
+  },
+  {
+    "trip_key": "35826514",
+    "scheduled_stop_key": "35826514-20",
+    "scheduled_departure_raw": "2026-09-14T20:05:00",
+    "stop_number": "10541",
+    "destination": "Unicity Shopping Centre",
+    "snapshots": 8,
+    "status": "no_exact_outcome",
+    "outcome_row_id": null
+  },
+  {
+    "trip_key": "35826788",
+    "scheduled_stop_key": "35826788-35",
+    "scheduled_departure_raw": "2026-09-14T20:08:00",
+    "stop_number": "61205",
+    "destination": "St. Norbert",
+    "snapshots": 5,
+    "status": "matched",
+    "outcome_row_id": "1665410851"
+  },
+  {
+    "trip_key": "35826378",
+    "scheduled_stop_key": "35826378-7",
+    "scheduled_departure_raw": "2026-09-14T20:08:03",
+    "stop_number": "60066",
+    "destination": "Unicity Shopping Centre",
+    "snapshots": 5,
+    "status": "matched",
+    "outcome_row_id": "1665438594"
+  },
+  {
+    "trip_key": "35826789",
+    "scheduled_stop_key": "35826789-30",
+    "scheduled_departure_raw": "2026-09-14T20:09:51",
+    "stop_number": "11027",
+    "destination": "University of Manitoba",
+    "snapshots": 4,
+    "status": "no_exact_outcome",
+    "outcome_row_id": null
+  }
+]

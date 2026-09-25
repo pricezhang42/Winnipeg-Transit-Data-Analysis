@@ -1,0 +1,131 @@
+{
+  "run": {
+    "started_at_utc": "2026-09-15T00:23:52.308955+00:00",
+    "requested_duration_seconds": 1200,
+    "previous_snapshot_count": 24,
+    "database": "/home/linpu/workspace/WTDA/data/live/transit.sqlite",
+    "log": "/home/linpu/workspace/WTDA/reports/collector_20min_20260915T002352Z/collector.log",
+    "status": "duration_complete",
+    "finished_at_utc": "2026-09-15T00:43:52.319240+00:00",
+    "elapsed_seconds": 1200.01,
+    "collector_exit_code": 130
+  },
+  "audit_at_utc": "2026-09-15T05:10:01.455521+00:00",
+  "scope": "Only snapshots requested during this bounded run; excludes earlier captures.",
+  "cycles": {
+    "complete": 20
+  },
+  "responses": 240,
+  "http_statuses": {
+    "200": 240
+  },
+  "errors": {},
+  "retry_attempts": 0,
+  "origins": {
+    "live": 240
+  },
+  "observations": 7956,
+  "observations_by_resource": {
+    "stop": 267,
+    "trip": 7689
+  },
+  "distinct_trips": 24,
+  "distinct_buses": 21,
+  "distinct_stops": 111,
+  "missing_bus_observations": 0,
+  "cancelled_observations": 0,
+  "repeated_event_groups_by_resource": {
+    "stop": 20,
+    "trip": 1152
+  },
+  "changed_estimate_groups_by_resource": {
+    "stop": 12,
+    "trip": 297
+  },
+  "dated_stop_estimates": 267,
+  "dated_stop_estimates_before_scheduled_departure": 229,
+  "clock_only_scheduled_times": 7689,
+  "trip_date_matching_candidates": {
+    "trip_endpoint_distinct_trips": 24,
+    "trips_with_dated_event_match": 15,
+    "exact_event_matches": 21,
+    "note": "Identity matches only; dates have not been propagated to other stops."
+  },
+  "time_issues": {
+    "scheduled:date_missing": 7689,
+    "estimated:date_missing": 7689
+  },
+  "stop_polling": {
+    "10541": {
+      "polls": 20,
+      "median_gap_seconds": 60.0,
+      "max_gap_seconds": 60.004
+    },
+    "11027": {
+      "polls": 20,
+      "median_gap_seconds": 60.0,
+      "max_gap_seconds": 60.004
+    },
+    "60066": {
+      "polls": 20,
+      "median_gap_seconds": 60.0,
+      "max_gap_seconds": 60.004
+    },
+    "61205": {
+      "polls": 20,
+      "median_gap_seconds": 60.0,
+      "max_gap_seconds": 60.004
+    }
+  },
+  "checks": {
+    "passed": true,
+    "sqlite_quick_check": [
+      "ok"
+    ],
+    "foreign_key_violations": 0,
+    "reconciliation_mismatches": {}
+  },
+  "interpretation": "Repeated API estimates are not independent trips or actual measured departure outcomes. This is a collector smoke test, not an accuracy evaluation.",
+  "examples_of_revised_estimates": [
+    {
+      "trip_key": "35826784",
+      "scheduled_stop_key": "35826784-30",
+      "scheduled_departure_raw": "2026-09-14T19:26:51",
+      "first_estimated_departure_raw": "2026-09-14T19:26:51",
+      "last_estimated_departure_raw": "2026-09-14T19:26:28",
+      "snapshots": 8
+    },
+    {
+      "trip_key": "35826785",
+      "scheduled_stop_key": "35826785-30",
+      "scheduled_departure_raw": "2026-09-14T19:34:51",
+      "first_estimated_departure_raw": "2026-09-14T19:34:51",
+      "last_estimated_departure_raw": "2026-09-14T19:34:12",
+      "snapshots": 16
+    },
+    {
+      "trip_key": "35826786",
+      "scheduled_stop_key": "35826786-30",
+      "scheduled_departure_raw": "2026-09-14T19:42:51",
+      "first_estimated_departure_raw": "2026-09-14T19:42:51",
+      "last_estimated_departure_raw": "2026-09-14T19:43:54",
+      "snapshots": 20
+    },
+    {
+      "trip_key": "35826805",
+      "scheduled_stop_key": "35826805-20",
+      "scheduled_departure_raw": "2026-09-14T19:24:00",
+      "first_estimated_departure_raw": "2026-09-14T19:25:38",
+      "last_estimated_departure_raw": "2026-09-14T19:24:00",
+      "snapshots": 6
+    },
+    {
+      "trip_key": "35826804",
+      "scheduled_stop_key": "35826804-26",
+      "scheduled_departure_raw": "2026-09-14T19:33:00",
+      "first_estimated_departure_raw": "2026-09-14T19:33:00",
+      "last_estimated_departure_raw": "2026-09-14T19:33:00",
+      "snapshots": 15
+    }
+  ]
+}

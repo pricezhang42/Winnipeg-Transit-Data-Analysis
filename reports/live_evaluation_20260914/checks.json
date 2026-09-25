@@ -1,0 +1,7 @@
+{
+  "unit_tests_passed": 28,
+  "score_reconciliation": true,
+  "unique_departure_per_horizon": true,
+  "cutoff_and_freshness_verified": true,
+  "actual_departure_after_cutoff": true
+}

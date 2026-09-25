@@ -1,0 +1,15 @@
+{
+  "prepared_data": "data/processed/blue_clean.parquet",
+  "train_start": "2026-07-25",
+  "validation_start": "2026-08-24",
+  "test_start": "2026-08-31",
+  "test_end_exclusive": "2026-09-06",
+  "minimum_group_observations": 20,
+  "candidate_depths": [4, 6],
+  "iterations": 1200,
+  "learning_rate": 0.05,
+  "l2_leaf_reg": 5,
+  "early_stopping_rounds": 80,
+  "random_seed": 42,
+  "thread_count": 4
+}
