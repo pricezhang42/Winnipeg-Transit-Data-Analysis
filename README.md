@@ -143,14 +143,20 @@ The saved capture now has an exploratory fixed-rule comparison of recent estimat
   --output-directory reports/live_signals_20260914
 ```
 
-## Trip performance web app
+## Standalone visualization website
 
-[Open the private BLUE Trip Observatory](https://winnipeg-blue-trip-observatory.wasdpyzlp.chatgpt.site).
+The dashboard runs in an ordinary browser with no Codex tools, ChatGPT account, or build step. From the repository root:
 
-Filter captured trips by date, bus/trip ID and destination, replay their API estimates, and inspect measured departures stop by stop. The site is a published snapshot, not a direct connection to the running collector. Actual arrivals remain unavailable.
+```bash
+python3 -m http.server 8787 --bind 127.0.0.1 --directory dashboard/dist
+```
 
-Source and local viewing instructions are in `dashboard/README.md`. Refresh the export from this folder with `.venv/bin/python -m src.export_dashboard --refresh-outcomes`; re-publish the Site to update the hosted view.
+Open [the dashboard](http://localhost:8787/) or [pass-up visualizations](http://localhost:8787/passups.html). The three views cover captured BLUE trips, historical BLUE departures, and reported pass-ups across all routes. Existing snapshots are bundled; viewing them does not require the collector or analysis environment.
 
-### Historical dashboard
+The pass-up view includes monthly, route, hourly, weekday, and type charts with date/route/type filters, ID/destination search, and paginated records. Its September 25 CSV export contains 199,249 reports from December 2009 through September 24, 2026. Counts describe reported events, not passenger counts or rates. Regenerate it with Python's standard library:
 
-The app also includes [Historical departures](https://winnipeg-blue-trip-observatory.wasdpyzlp.chatgpt.site/history.html): all 403,511 BLUE rows from the prepared July 25–September 12 dataset, with date/stop/destination filters, quality flags, daily comparisons and paginated records. Export it with `.venv/bin/python -m src.export_history`. No bus or trip identities are inferred from historical records.
+```bash
+python3 -m src.export_passups --source Transit_Pass-ups_20260925.csv
+```
+
+To host independently, serve the contents of `dashboard/dist` with any static HTTP host. See [dashboard instructions](dashboard/README.md) for hosting, refreshing each dataset, and validation. The original historical and trip snapshots remain separate from the newly downloaded CSVs.

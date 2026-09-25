@@ -3,7 +3,7 @@
 <body>
 <header class="topbar"><a class="brand" href="./" aria-label="BLUE Trip Observatory"><span class="route-badge">B</span><span><strong>BLUE</strong><span class="brand-sub">Trip Observatory</span></span></a><span class="city">WINNIPEG TRANSIT DATA</span><button id="refresh" class="button subtle">↻ Reload data</button></header>
 <main>
-<nav class="view-tabs" aria-label="Data view"><a href="./" aria-current="page">Bus trips &amp; replay</a><a href="history.html">Historical departures</a></nav>
+<nav class="view-tabs" aria-label="Data view"><a href="./" aria-current="page">Bus trips &amp; replay</a><a href="history.html">Historical departures</a><a href="passups.html">Pass-ups · all routes</a></nav>
 <section class="page-heading"><div><p class="eyebrow">ROUTE PERFORMANCE</p><h1>Trip performance</h1><p class="intro">Compare captured estimates with measured departures, one stop at a time.</p></div><div class="dataset-meta"><span id="data-range">Reading captured data…</span><small id="data-age">Times shown in Winnipeg</small></div></section>
 <div class="workspace">
 <aside class="trip-sidebar" aria-label="Choose a bus trip"><div class="sidebar-top"><h2>Find a trip</h2><label for="date">Service date <span class="muted">(trip start)</span></label><select id="date"></select><label for="search">Bus or trip ID</label><input id="search" type="search" placeholder="e.g. bus 395" autocomplete="off"><label for="destination">Destination</label><select id="destination"><option value="">All destinations</option></select></div><div class="list-heading"><span id="trip-count">Loading trips</span><span>Scheduled start</span></div><div id="trip-list" class="trip-list" aria-live="polite"></div></aside>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#103a72"><meta name="description" content="Explore Winnipeg Transit reported pass-ups by date, route, type and time of day.">
+<title>Pass-ups · Winnipeg Transit</title>
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/style.css"><link rel="stylesheet" href="assets/history.css"><link rel="stylesheet" href="assets/passups.css">
+<script src="assets/passups.js" type="module"></script>
+</head>
+<body>
+<header class="topbar"><a class="brand" href="./"><span class="route-badge">W</span><span><strong>WINNIPEG</strong><span class="brand-sub">Transit Observatory</span></span></a><span class="city">CITY OPEN DATA</span></header>
+<main>
+<nav class="view-tabs" aria-label="Data view"><a href="./">Bus trips &amp; replay</a><a href="history.html">Historical departures</a><a href="passups.html" aria-current="page">Pass-ups · all routes</a></nav>
+<section class="page-heading"><div><p class="eyebrow">REPORTED EVENTS · ALL ROUTES</p><h1>When buses pass riders by</h1><p class="intro">Explore full-bus and wheelchair-user pass-up reports across Winnipeg.</p></div><div class="dataset-meta"><span id="coverage">Loading pass-up data…</span><small id="source"></small></div></section>
+<div class="workspace history-workspace">
+<aside class="trip-sidebar history-filters"><form id="filters"><fieldset id="controls" disabled><div class="sidebar-top"><h2>Explore pass-ups</h2>
+<label for="from">From</label><input id="from" type="date" required>
+<label for="to">Through</label><input id="to" type="date" required>
+<label for="route">Route</label><select id="route"><option value="">All routes</option></select>
+<label for="type">Pass-up type</label><select id="type"><option value="">All types</option></select>
+<label for="query">ID or destination</label><input id="query" type="search" placeholder="Search records">
+<p class="filter-note">The initial view shows the latest 12 months. Unknown routes are retained. All charts follow the applied filters.</p>
+<button id="apply" class="button primary" type="submit">Apply filters</button><button id="all" class="button" type="button">All available dates</button>
+</div></fieldset></form></aside>
+<section class="detail" aria-label="Pass-up results">
+<div class="pending history-note">Counts show reported events, not the number of passengers left behind. Without ridership or service totals, these are not pass-up rates or a ranking of route reliability.</div>
+<div id="status" role="status" aria-live="polite">Loading dataset index…</div>
+<div class="stats history-stats" id="stats"></div>
+<section class="panel"><div class="panel-head"><div><h3>Reports by month</h3><p>First and last months may be partial. No reports does not prove no pass-ups occurred.</p></div></div><div id="months" class="bar-chart monthly"></div></section>
+<div class="history-charts">
+<section class="panel"><div class="panel-head"><div><h3>Routes with the most reports</h3><p>Top 15 within your selection, including unknown routes.</p></div></div><div id="routes" class="bar-chart"></div></section>
+<section class="panel"><div class="panel-head"><div><h3>Time of day</h3><p>Hourly totals · Winnipeg local time</p></div></div><div id="hours" class="bar-chart compact"></div></section>
+<section class="panel"><div class="panel-head"><div><h3>Pass-up types</h3><p>Categories as recorded in the source.</p></div></div><div id="types" class="bar-chart wide-label"></div></section>
+<section class="panel"><div class="panel-head"><div><h3>Day of week</h3><p>Total reports, not normalized by service or number of weekdays.</p></div></div><div id="weekdays" class="bar-chart"></div></section>
+</div>
+<section class="panel"><div class="panel-head"><div><h3>Reported events</h3><p id="selection">Newest first · 100 records per page</p></div></div>
+<div class="table-scroll history-table"><table><thead><tr><th>Time · Winnipeg</th><th>Route</th><th>Destination</th><th>Type</th><th>Longitude, latitude</th><th>Pass-up ID</th><th>Source record</th></tr></thead><tbody id="records"></tbody></table></div>
+<div class="pagination"><button id="previous" class="button" disabled>← Previous</button><span id="page">0 records</span><button id="next" class="button" disabled>Next →</button></div></section>
+</section></div>
+<footer><span>Source: City of Winnipeg · Transit Pass-ups CSV. Static snapshot.</span><a href="./">Back to trip performance →</a></footer>
+<section class="method"><h2>Reading these reports</h2><p>Each row is one source record. Multiple passengers may be affected by an event. Reporting practices, route names, service levels, and coverage can change over time. Historical route numbers are displayed as recorded, without inferring today's route network.</p><p>Missing route and destination values appear as Unknown. Missing or invalid coordinates remain in the counts and table. Source record numbers are one-based CSV records excluding the header; duplicate IDs are retained. Date and hour filters use the source's Winnipeg wall-clock timestamps.</p><p id="quality"></p></section>
+</main></body></html>
