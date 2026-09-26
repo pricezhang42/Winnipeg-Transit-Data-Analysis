@@ -14,3 +14,11 @@ models/**/*.cbm
 data/live/
 reports/collector_test/
 data/dashboard_cache/
+
+# Local expanded-history working database
+data/history-work/
+# Raw monthly on-time archives (about 1.1 GB); re-download from City open data
+data/on_time_performance_*.zip
+# Per-route history outputs; the backend repo tracks the copy it serves
+reports/*/reliability-routes/
+reports/*/passup-risk-routes/

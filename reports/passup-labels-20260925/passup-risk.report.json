@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "coverageStart": "2026-08-08",
+  "coverageEnd": "2026-09-24",
+  "policy": {
+    "version": "reported-pattern-v1",
+    "minVisits": 60,
+    "minDates": 10,
+    "zeroReportMinVisits": 120,
+    "scorePenaltyVisits": 50,
+    "mediumScore": 0.01,
+    "highScore": 0.025,
+    "mediumReportDates": 2,
+    "highReportDates": 3,
+    "profiles": [
+      "60m_120s",
+      "100m_180s",
+      "150m_300s"
+    ]
+  },
+  "sources": {
+    "departures": {
+      "name": "Recent_Transit_On-Time_Performance_Data_20260925.csv",
+      "sha256": "7fde5137f3f3f8c86147db865bb1220eb832ac99d2942a06a285317520deb395"
+    },
+    "passups": {
+      "name": "Transit_Pass-ups_20260925.csv",
+      "sha256": "879814128381accd92f3a1c4235b4846f351db2f2a64df10075dce01d4808ada"
+    }
+  },
+  "labelCounts": {
+    "unknown": 275087,
+    "low": 1538,
+    "medium": 7
+  },
+  "reasonCounts": {
+    "insufficient_history_or_persistence": 273593,
+    "unresolved_nearby_reports": 1462,
+    "stable_historical_pattern": 1545,
+    "matching_sensitive": 32
+  },
+  "interpretation": "Relative historical reported pass-up patterns, not a probability or a guarantee of boarding."
+}

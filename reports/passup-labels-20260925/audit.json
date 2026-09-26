@@ -1,0 +1,6649 @@
+{
+  "status": "audit_only",
+  "coverageStart": "2026-08-08",
+  "coverageEnd": "2026-09-24",
+  "audit": {
+    "departureRows": 5023382,
+    "conflictingDepartureRows": 18930,
+    "duplicateVisitRows": 273,
+    "invalidDepartureRows": 92,
+    "nonCalendarServiceRows": 1698,
+    "uniqueRecordedVisits": 4984828,
+    "conflictedVisitsExcluded": 17561,
+    "unstableStopCoordinates": 9,
+    "reportsOnSourceDates": 1989,
+    "no_nearby_stop": 966,
+    "matched": 649,
+    "no_nearby_visit": 288,
+    "ambiguous_visit": 64,
+    "ambiguous_stop": 5,
+    "duplicate_report_for_visit": 17
+  },
+  "byRoute": {
+    "F9": {
+      "no_nearby_stop": 92,
+      "matched": 93,
+      "no_nearby_visit": 39,
+      "ambiguous_visit": 8,
+      "duplicate_report_for_visit": 5
+    },
+    "BLUE": {
+      "no_nearby_stop": 522,
+      "matched": 168,
+      "ambiguous_visit": 42,
+      "no_nearby_visit": 66,
+      "duplicate_report_for_visit": 2
+    },
+    "F8": {
+      "no_nearby_stop": 62,
+      "ambiguous_visit": 4,
+      "matched": 65,
+      "no_nearby_visit": 30,
+      "duplicate_report_for_visit": 1
+    },
+    "F6": {
+      "no_nearby_visit": 24,
+      "matched": 62,
+      "no_nearby_stop": 30,
+      "ambiguous_visit": 4
+    },
+    "442": {
+      "no_nearby_stop": 5,
+      "matched": 1
+    },
+    "671": {
+      "matched": 14,
+      "no_nearby_visit": 6,
+      "no_nearby_stop": 18,
+      "duplicate_report_for_visit": 2
+    },
+    "FX2": {
+      "matched": 25,
+      "no_nearby_stop": 23,
+      "no_nearby_visit": 10,
+      "ambiguous_visit": 6
+    },
+    "28": {
+      "matched": 7,
+      "no_nearby_stop": 6,
+      "no_nearby_visit": 1
+    },
+    "FX4": {
+      "no_nearby_stop": 3,
+      "no_nearby_visit": 5,
+      "matched": 9
+    },
+    "FX3": {
+      "no_nearby_stop": 9,
+      "matched": 11,
+      "no_nearby_visit": 1
+    },
+    "74": {
+      "no_nearby_stop": 29,
+      "no_nearby_visit": 33,
+      "matched": 40,
+      "duplicate_report_for_visit": 2
+    },
+    "D15": {
+      "matched": 20,
+      "no_nearby_stop": 18,
+      "no_nearby_visit": 12
+    },
+    "557": {
+      "matched": 14,
+      "no_nearby_stop": 8,
+      "duplicate_report_for_visit": 4,
+      "no_nearby_visit": 2
+    },
+    "D14": {
+      "no_nearby_visit": 5,
+      "matched": 4,
+      "no_nearby_stop": 1
+    },
+    "889": {
+      "no_nearby_stop": 3,
+      "matched": 5,
+      "no_nearby_visit": 2
+    },
+    "672": {
+      "no_nearby_stop": 8,
+      "matched": 22,
+      "no_nearby_visit": 3
+    },
+    "31": {
+      "matched": 2
+    },
+    "662": {
+      "no_nearby_stop": 25,
+      "matched": 11,
+      "no_nearby_visit": 4,
+      "duplicate_report_for_visit": 1
+    },
+    "678": {
+      "no_nearby_stop": 7,
+      "no_nearby_visit": 3,
+      "matched": 11,
+      "ambiguous_stop": 2
+    },
+    "D18": {
+      "matched": 17,
+      "no_nearby_stop": 8,
+      "no_nearby_visit": 1
+    },
+    "649": {
+      "no_nearby_stop": 2
+    },
+    "D12": {
+      "no_nearby_stop": 2,
+      "no_nearby_visit": 4
+    },
+    "F5": {
+      "no_nearby_visit": 10,
+      "matched": 7,
+      "no_nearby_stop": 13
+    },
+    "D11": {
+      "matched": 8,
+      "no_nearby_stop": 6,
+      "no_nearby_visit": 6
+    },
+    "D17": {
+      "no_nearby_visit": 2,
+      "no_nearby_stop": 1
+    },
+    "": {
+      "no_nearby_stop": 32
+    },
+    "38": {
+      "no_nearby_stop": 3,
+      "no_nearby_visit": 4,
+      "matched": 5
+    },
+    "48": {
+      "no_nearby_visit": 5,
+      "matched": 10,
+      "no_nearby_stop": 11
+    },
+    "37": {
+      "no_nearby_visit": 3,
+      "matched": 4
+    },
+    "444": {
+      "ambiguous_stop": 2,
+      "no_nearby_stop": 6,
+      "matched": 1
+    },
+    "F7": {
+      "no_nearby_stop": 9,
+      "matched": 8,
+      "no_nearby_visit": 3
+    },
+    "336": {
+      "no_nearby_stop": 1
+    },
+    "556": {
+      "no_nearby_visit": 1,
+      "matched": 1,
+      "ambiguous_stop": 1,
+      "no_nearby_stop": 1
+    },
+    "676": {
+      "matched": 1,
+      "no_nearby_visit": 2,
+      "no_nearby_stop": 1
+    },
+    "D19": {
+      "matched": 2,
+      "no_nearby_visit": 1
+    },
+    "677": {
+      "matched": 1
+    },
+    "D13": {
+      "no_nearby_stop": 1
+    }
+  },
+  "sensitivityMatchedReports": {
+    "300m_120s": 950,
+    "300m_180s": 978,
+    "300m_300s": 1029,
+    "60m_120s": 651,
+    "60m_180s": 666,
+    "60m_300s": 706,
+    "100m_120s": 796,
+    "100m_180s": 812,
+    "100m_300s": 856,
+    "150m_120s": 882,
+    "150m_180s": 904,
+    "150m_300s": 953
+  },
+  "parameters": {
+    "radiusMeters": 60,
+    "stopSeparationMeters": 30,
+    "timeWindowSeconds": 180,
+    "timeSeparationSeconds": 60
+  },
+  "sources": {
+    "departures": {
+      "name": "Recent_Transit_On-Time_Performance_Data_20260925.csv",
+      "sha256": "7fde5137f3f3f8c86147db865bb1220eb832ac99d2942a06a285317520deb395"
+    },
+    "passups": {
+      "name": "Transit_Pass-ups_20260925.csv",
+      "sha256": "879814128381accd92f3a1c4235b4846f351db2f2a64df10075dce01d4808ada"
+    }
+  },
+  "publicationBlockedBy": [
+    "Unknown whether passed stops generate departure records",
+    "Unknown operator reporting completeness",
+    "No shared trip identifier; spatial and temporal matches require manual validation",
+    "Recorded departures are not confirmed complete actual visits"
+  ],
+  "groupsWithMatchedReports": [
+    {
+      "group": [
+        "F9",
+        "60673",
+        "kildonan place",
+        "weekday",
+        "transition",
+        14
+      ],
+      "matchedReportedVisits": 8,
+      "recordedVisits": 49,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.16326530612244897,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "50404",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 127,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.007874015748031496,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61207",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 5,
+      "recordedVisits": 114,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.043859649122807015,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61213",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        12
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 61,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.01639344262295082,
+      "publishable": false
+    },
+    {
+      "group": [
+        "671",
+        "60077",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 43,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.046511627906976744,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX2",
+        "30077",
+        "st. vital centre",
+        "weekday",
+        "summer",
+        14
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 79,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.012658227848101266,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "40443",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 115,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.017391304347826087,
+      "publishable": false
+    },
+    {
+      "group": [
+        "28",
+        "11113",
+        "templeton walmart",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 26,
+      "distinctDates": 13,
+      "experimentalReportedRate": 0.038461538461538464,
+      "publishable": false
+    },
+    {
+      "group": [
+        "671",
+        "60106",
+        "prairie pointe",
+        "weekday",
+        "transition",
+        14
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 35,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.05714285714285714,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "10159",
+        "st. norbert",
+        "weekend",
+        "summer",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 11,
+      "distinctDates": 7,
+      "experimentalReportedRate": 0.09090909090909091,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX2",
+        "10632",
+        "st. vital centre",
+        "weekend",
+        "transition",
+        13
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 8,
+      "distinctDates": 5,
+      "experimentalReportedRate": 0.125,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D15",
+        "10641",
+        "sage creek",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 3,
+      "recordedVisits": 34,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.08823529411764706,
+      "publishable": false
+    },
+    {
+      "group": [
+        "557",
+        "57014",
+        "windermere",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 28,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.03571428571428571,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "60147",
+        "downtown",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 3,
+      "recordedVisits": 61,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.04918032786885246,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "50496",
+        "templeton & salter",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 4,
+      "recordedVisits": 44,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.09090909090909091,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "60155",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 3,
+      "recordedVisits": 80,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.0375,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "10641",
+        "st. norbert",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 7,
+      "recordedVisits": 175,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.04,
+      "publishable": false
+    },
+    {
+      "group": [
+        "31",
+        "30934",
+        "the forks",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 22,
+      "distinctDates": 13,
+      "experimentalReportedRate": 0.09090909090909091,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "30099",
+        "glenway",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 82,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.012195121951219513,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "50824",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 121,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.01652892561983471,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "10832",
+        "south st. vital",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 51,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.0392156862745098,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "10159",
+        "st. norbert",
+        "weekday",
+        "summer",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 181,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.0055248618784530384,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX2",
+        "10628",
+        "garden city centre",
+        "weekday",
+        "transition",
+        14
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 61,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.01639344262295082,
+      "publishable": false
+    },
+    {
+      "group": [
+        "672",
+        "62001",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 37,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.02702702702702703,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "11029",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 113,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.008849557522123894,
+      "publishable": false
+    },
+    {
+      "group": [
+        "672",
+        "62001",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 46,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.021739130434782608,
+      "publishable": false
+    },
+    {
+      "group": [
+        "672",
+        "60063",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 41,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.04878048780487805,
+      "publishable": false
+    },
+    {
+      "group": [
+        "672",
+        "60075",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        10
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 27,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.037037037037037035,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D18",
+        "10407",
+        "downtown",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 4,
+      "recordedVisits": 75,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.05333333333333334,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "10583",
+        "st. norbert",
+        "weekday",
+        "summer",
+        16
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 193,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.010362694300518135,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "10159",
+        "university of manitoba",
+        "weekday",
+        "summer",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 55,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.01818181818181818,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "60721",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        11
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 63,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.015873015873015872,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "11031",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 156,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.01282051282051282,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61211",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 4,
+      "recordedVisits": 119,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.03361344537815126,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX2",
+        "10631",
+        "garden city centre",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 126,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.007936507936507936,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D15",
+        "50065",
+        "unicity",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 36,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.027777777777777776,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61213",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        10
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 73,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.0136986301369863,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "60110",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 116,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.008620689655172414,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "10569",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 163,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.006134969325153374,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "10638",
+        "st. norbert",
+        "weekday",
+        "summer",
+        16
+      ],
+      "matchedReportedVisits": 6,
+      "recordedVisits": 195,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.03076923076923077,
+      "publishable": false
+    },
+    {
+      "group": [
+        "672",
+        "60672",
+        "prairie pointe",
+        "weekday",
+        "transition",
+        14
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 34,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.058823529411764705,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX2",
+        "10627",
+        "garden city centre",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 92,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.021739130434782608,
+      "publishable": false
+    },
+    {
+      "group": [
+        "74",
+        "60096",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        11
+      ],
+      "matchedReportedVisits": 3,
+      "recordedVisits": 9,
+      "distinctDates": 8,
+      "experimentalReportedRate": 0.3333333333333333,
+      "publishable": false
+    },
+    {
+      "group": [
+        "74",
+        "60674",
+        "waterford green",
+        "weekday",
+        "transition",
+        14
+      ],
+      "matchedReportedVisits": 5,
+      "recordedVisits": 19,
+      "distinctDates": 13,
+      "experimentalReportedRate": 0.2631578947368421,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "60105",
+        "kildonan place",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 47,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.02127659574468085,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "50402",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 124,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.016129032258064516,
+      "publishable": false
+    },
+    {
+      "group": [
+        "557",
+        "51076",
+        "windermere",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 28,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.03571428571428571,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "60113",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 123,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.008130081300813009,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "11031",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 116,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.017241379310344827,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61215",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 154,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.006493506493506494,
+      "publishable": false
+    },
+    {
+      "group": [
+        "557",
+        "50353",
+        "sage creek",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 3,
+      "recordedVisits": 27,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.1111111111111111,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX2",
+        "30094",
+        "st. vital centre",
+        "weekday",
+        "summer",
+        12
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 67,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.014925373134328358,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "11027",
+        "st. norbert",
+        "weekday",
+        "summer",
+        16
+      ],
+      "matchedReportedVisits": 3,
+      "recordedVisits": 181,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.016574585635359115,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D15",
+        "20178",
+        "sage creek",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 37,
+      "distinctDates": 14,
+      "experimentalReportedRate": 0.05405405405405406,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61205",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        13
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 56,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.03571428571428571,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61210",
+        "downtown",
+        "weekday",
+        "summer",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 87,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.011494252873563218,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D11",
+        "30174",
+        "beaumont station",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 36,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.027777777777777776,
+      "publishable": false
+    },
+    {
+      "group": [
+        "889",
+        "10102",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 9,
+      "distinctDates": 9,
+      "experimentalReportedRate": 0.1111111111111111,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "60096",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 5,
+      "recordedVisits": 116,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.04310344827586207,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "10600",
+        "south st. vital",
+        "weekday",
+        "transition",
+        17
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 56,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.017857142857142856,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "60721",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        10
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 89,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.02247191011235955,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D14",
+        "50253",
+        "redonda & pandora",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 28,
+      "distinctDates": 14,
+      "experimentalReportedRate": 0.03571428571428571,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "60118",
+        "st. norbert",
+        "weekday",
+        "transition",
+        19
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 26,
+      "distinctDates": 14,
+      "experimentalReportedRate": 0.038461538461538464,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "50402",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 7,
+      "recordedVisits": 123,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.056910569105691054,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61213",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 152,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.006578947368421052,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "60108",
+        "kildonan place",
+        "weekday",
+        "transition",
+        11
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 41,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.024390243902439025,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D18",
+        "10413",
+        "downtown",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 74,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.013513513513513514,
+      "publishable": false
+    },
+    {
+      "group": [
+        "671",
+        "60079",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        10
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 27,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.037037037037037035,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61205",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        10
+      ],
+      "matchedReportedVisits": 4,
+      "recordedVisits": 76,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.05263157894736842,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "50497",
+        "templeton & salter",
+        "weekday",
+        "transition",
+        12
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 35,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.02857142857142857,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "11029",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        10
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 67,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.014925373134328358,
+      "publishable": false
+    },
+    {
+      "group": [
+        "662",
+        "60079",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        11
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 32,
+      "distinctDates": 14,
+      "experimentalReportedRate": 0.03125,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "17018",
+        "south st. vital",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 3,
+      "recordedVisits": 51,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.058823529411764705,
+      "publishable": false
+    },
+    {
+      "group": [
+        "74",
+        "60096",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 3,
+      "recordedVisits": 37,
+      "distinctDates": 14,
+      "experimentalReportedRate": 0.08108108108108109,
+      "publishable": false
+    },
+    {
+      "group": [
+        "671",
+        "60075",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        10
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 26,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.038461538461538464,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61204",
+        "downtown",
+        "weekday",
+        "summer",
+        7
+      ],
+      "matchedReportedVisits": 3,
+      "recordedVisits": 127,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.023622047244094488,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "10565",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 129,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.007751937984496124,
+      "publishable": false
+    },
+    {
+      "group": [
+        "557",
+        "50349",
+        "sage creek",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 27,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.07407407407407407,
+      "publishable": false
+    },
+    {
+      "group": [
+        "672",
+        "61251",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 37,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.02702702702702703,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "10583",
+        "st. norbert",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 172,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.011627906976744186,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "40630",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 93,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.010752688172043012,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D14",
+        "50255",
+        "redonda & pandora",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 33,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.030303030303030304,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F5",
+        "10771",
+        "garden city centre",
+        "weekday",
+        "transition",
+        17
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 97,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.010309278350515464,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "50633",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        10
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 79,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.012658227848101266,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61209",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 121,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.008264462809917356,
+      "publishable": false
+    },
+    {
+      "group": [
+        "74",
+        "60105",
+        "waterford green",
+        "weekday",
+        "transition",
+        14
+      ],
+      "matchedReportedVisits": 5,
+      "recordedVisits": 19,
+      "distinctDates": 13,
+      "experimentalReportedRate": 0.2631578947368421,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "10576",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 161,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.012422360248447204,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX4",
+        "10803",
+        "raleigh & knowles",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 21,
+      "distinctDates": 14,
+      "experimentalReportedRate": 0.047619047619047616,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D11",
+        "10424",
+        "beaumont station",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 53,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.018867924528301886,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61215",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        14
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 45,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.022222222222222223,
+      "publishable": false
+    },
+    {
+      "group": [
+        "74",
+        "60674",
+        "waterford green",
+        "weekday",
+        "transition",
+        13
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 12,
+      "distinctDates": 10,
+      "experimentalReportedRate": 0.08333333333333333,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "60125",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 102,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.0196078431372549,
+      "publishable": false
+    },
+    {
+      "group": [
+        "672",
+        "60159",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 32,
+      "distinctDates": 14,
+      "experimentalReportedRate": 0.0625,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "40789",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 72,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.013888888888888888,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX3",
+        "60527",
+        "sturgeon & murray park",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 56,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.017857142857142856,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D15",
+        "50621",
+        "unicity",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 51,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.0196078431372549,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "60239",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 3,
+      "recordedVisits": 80,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.0375,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D18",
+        "10412",
+        "downtown",
+        "weekday",
+        "transition",
+        17
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 65,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.015384615384615385,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D11",
+        "30158",
+        "beaumont station",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 49,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.02040816326530612,
+      "publishable": false
+    },
+    {
+      "group": [
+        "662",
+        "60188",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 27,
+      "distinctDates": 14,
+      "experimentalReportedRate": 0.07407407407407407,
+      "publishable": false
+    },
+    {
+      "group": [
+        "74",
+        "61265",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 3,
+      "recordedVisits": 41,
+      "distinctDates": 14,
+      "experimentalReportedRate": 0.07317073170731707,
+      "publishable": false
+    },
+    {
+      "group": [
+        "671",
+        "61021",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 37,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.05405405405405406,
+      "publishable": false
+    },
+    {
+      "group": [
+        "48",
+        "40075",
+        "crossroads station",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 4,
+      "recordedVisits": 35,
+      "distinctDates": 11,
+      "experimentalReportedRate": 0.11428571428571428,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "10641",
+        "st. norbert",
+        "weekday",
+        "summer",
+        16
+      ],
+      "matchedReportedVisits": 4,
+      "recordedVisits": 193,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.02072538860103627,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "60105",
+        "kildonan place",
+        "weekday",
+        "transition",
+        11
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 41,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.04878048780487805,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "60673",
+        "lakewood at vermillion",
+        "weekday",
+        "transition",
+        14
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 46,
+      "distinctDates": 11,
+      "experimentalReportedRate": 0.043478260869565216,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61207",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 154,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.012987012987012988,
+      "publishable": false
+    },
+    {
+      "group": [
+        "38",
+        "30554",
+        "kildonan place",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 27,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.037037037037037035,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F5",
+        "10640",
+        "garden city centre",
+        "weekday",
+        "transition",
+        17
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 76,
+      "distinctDates": 14,
+      "experimentalReportedRate": 0.013157894736842105,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "10832",
+        "south st. vital",
+        "weekday",
+        "summer",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 49,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.02040816326530612,
+      "publishable": false
+    },
+    {
+      "group": [
+        "74",
+        "61262",
+        "waterford green",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 24,
+      "distinctDates": 14,
+      "experimentalReportedRate": 0.041666666666666664,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F5",
+        "10765",
+        "garden city centre",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 106,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.009433962264150943,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "60112",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 120,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.016666666666666666,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "10159",
+        "st. norbert",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 167,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.005988023952095809,
+      "publishable": false
+    },
+    {
+      "group": [
+        "74",
+        "61170",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 42,
+      "distinctDates": 14,
+      "experimentalReportedRate": 0.023809523809523808,
+      "publishable": false
+    },
+    {
+      "group": [
+        "38",
+        "30552",
+        "kildonan place",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 27,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.07407407407407407,
+      "publishable": false
+    },
+    {
+      "group": [
+        "671",
+        "60073",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        10
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 27,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.037037037037037035,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61205",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 11,
+      "recordedVisits": 123,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.08943089430894309,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D15",
+        "50248",
+        "unicity",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 51,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.0196078431372549,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "10735",
+        "templeton & salter",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 53,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.018867924528301886,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D15",
+        "50261",
+        "unicity",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 51,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.0392156862745098,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "50599",
+        "south st. vital",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 41,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.024390243902439025,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "10639",
+        "st. norbert",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 161,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.012422360248447204,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "60105",
+        "kildonan place",
+        "weekday",
+        "transition",
+        12
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 41,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.024390243902439025,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "60147",
+        "glenway",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 44,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.022727272727272728,
+      "publishable": false
+    },
+    {
+      "group": [
+        "662",
+        "60075",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 47,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.0425531914893617,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "50310",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 97,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.010309278350515464,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "11031",
+        "st. norbert",
+        "weekday",
+        "summer",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 183,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.00546448087431694,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "10001",
+        "south st. vital",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 53,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.018867924528301886,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX3",
+        "60517",
+        "redonda & pandora",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 51,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.0196078431372549,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "10599",
+        "south st. vital",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 4,
+      "recordedVisits": 50,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.08,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "60674",
+        "glenway",
+        "weekday",
+        "transition",
+        11
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 44,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.022727272727272728,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "60103",
+        "kildonan place",
+        "weekday",
+        "transition",
+        13
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 50,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.02,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "50400",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 111,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.009009009009009009,
+      "publishable": false
+    },
+    {
+      "group": [
+        "74",
+        "62168",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 42,
+      "distinctDates": 14,
+      "experimentalReportedRate": 0.023809523809523808,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "11033",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        10
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 74,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.013513513513513514,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "50724",
+        "south st. vital",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 42,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.023809523809523808,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61205",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 3,
+      "recordedVisits": 144,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.020833333333333332,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61213",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 4,
+      "recordedVisits": 120,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.03333333333333333,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "10575",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        10
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 56,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.017857142857142856,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "60156",
+        "glenway",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 44,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.022727272727272728,
+      "publishable": false
+    },
+    {
+      "group": [
+        "74",
+        "20609",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 26,
+      "distinctDates": 13,
+      "experimentalReportedRate": 0.038461538461538464,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "10596",
+        "templeton & salter",
+        "weekday",
+        "summer",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 47,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.02127659574468085,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61204",
+        "downtown",
+        "weekday",
+        "summer",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 87,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.011494252873563218,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "10576",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 136,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.014705882352941176,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D11",
+        "10424",
+        "beaumont station",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 49,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.02040816326530612,
+      "publishable": false
+    },
+    {
+      "group": [
+        "74",
+        "60105",
+        "waterford green",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 4,
+      "recordedVisits": 29,
+      "distinctDates": 11,
+      "experimentalReportedRate": 0.13793103448275862,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "51010",
+        "templeton & salter",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 44,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.022727272727272728,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "60139",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        12
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 41,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.04878048780487805,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D15",
+        "50633",
+        "sage creek",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 33,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.030303030303030304,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "10172",
+        "south st. vital",
+        "weekday",
+        "summer",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 37,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.02702702702702703,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX2",
+        "30095",
+        "garden city centre",
+        "weekday",
+        "transition",
+        17
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 117,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.008547008547008548,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX4",
+        "10763",
+        "raleigh & knowles",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 3,
+      "recordedVisits": 36,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.08333333333333333,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "10598",
+        "south st. vital",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 51,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.0392156862745098,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "11027",
+        "st. norbert",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 3,
+      "recordedVisits": 167,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.017964071856287425,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "60125",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        11
+      ],
+      "matchedReportedVisits": 3,
+      "recordedVisits": 54,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.05555555555555555,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "10599",
+        "south st. vital",
+        "weekday",
+        "summer",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 46,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.021739130434782608,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "11027",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 67,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.014925373134328358,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "10638",
+        "st. norbert",
+        "weekday",
+        "summer",
+        17
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 109,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.009174311926605505,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "10565",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 173,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.005780346820809248,
+      "publishable": false
+    },
+    {
+      "group": [
+        "678",
+        "62097",
+        "freedman terminal",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 22,
+      "distinctDates": 10,
+      "experimentalReportedRate": 0.045454545454545456,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "60118",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 210,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.004761904761904762,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D14",
+        "50621",
+        "wall street",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 43,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.023255813953488372,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61207",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 3,
+      "recordedVisits": 150,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.02,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D18",
+        "10412",
+        "downtown",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 4,
+      "recordedVisits": 73,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.0547945205479452,
+      "publishable": false
+    },
+    {
+      "group": [
+        "678",
+        "62117",
+        "freedman terminal",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 18,
+      "distinctDates": 11,
+      "experimentalReportedRate": 0.1111111111111111,
+      "publishable": false
+    },
+    {
+      "group": [
+        "676",
+        "50588",
+        "bridgwater",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 35,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.02857142857142857,
+      "publishable": false
+    },
+    {
+      "group": [
+        "672",
+        "60742",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 37,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.02702702702702703,
+      "publishable": false
+    },
+    {
+      "group": [
+        "662",
+        "60043",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        10
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 32,
+      "distinctDates": 14,
+      "experimentalReportedRate": 0.03125,
+      "publishable": false
+    },
+    {
+      "group": [
+        "74",
+        "10562",
+        "waterford green",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 3,
+      "recordedVisits": 38,
+      "distinctDates": 14,
+      "experimentalReportedRate": 0.07894736842105263,
+      "publishable": false
+    },
+    {
+      "group": [
+        "678",
+        "63012",
+        "arbour meadow & bridgeland",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 9,
+      "distinctDates": 9,
+      "experimentalReportedRate": 0.2222222222222222,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "60103",
+        "kildonan place",
+        "weekday",
+        "transition",
+        12
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 41,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.04878048780487805,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "60674",
+        "glenway",
+        "weekday",
+        "transition",
+        13
+      ],
+      "matchedReportedVisits": 4,
+      "recordedVisits": 47,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.0851063829787234,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "60243",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 104,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.019230769230769232,
+      "publishable": false
+    },
+    {
+      "group": [
+        "672",
+        "62001",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 31,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.03225806451612903,
+      "publishable": false
+    },
+    {
+      "group": [
+        "557",
+        "50633",
+        "sage creek",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 64,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.03125,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "60066",
+        "downtown",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 69,
+      "distinctDates": 11,
+      "experimentalReportedRate": 0.014492753623188406,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "50484",
+        "south st. vital",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 55,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.01818181818181818,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "60096",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        12
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 43,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.023255813953488372,
+      "publishable": false
+    },
+    {
+      "group": [
+        "28",
+        "10285",
+        "templeton walmart",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 3,
+      "recordedVisits": 31,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.0967741935483871,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX4",
+        "10583",
+        "raleigh & knowles",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 39,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.05128205128205128,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61215",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        10
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 83,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.024096385542168676,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D15",
+        "50372",
+        "sage creek",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 4,
+      "recordedVisits": 33,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.12121212121212122,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61215",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 124,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.008064516129032258,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "50602",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 110,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.00909090909090909,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61205",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        11
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 46,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.021739130434782608,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "60139",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 123,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.008130081300813009,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "60105",
+        "kildonan place",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 60,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.016666666666666666,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX2",
+        "10636",
+        "st. vital centre",
+        "weekend",
+        "transition",
+        12
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 6,
+      "distinctDates": 5,
+      "experimentalReportedRate": 0.16666666666666666,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D18",
+        "10741",
+        "downtown",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 77,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.025974025974025976,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX2",
+        "50298",
+        "st. vital centre",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 117,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.017094017094017096,
+      "publishable": false
+    },
+    {
+      "group": [
+        "37",
+        "30401",
+        "waterford green",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 17,
+      "distinctDates": 12,
+      "experimentalReportedRate": 0.058823529411764705,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61203",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 3,
+      "recordedVisits": 121,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.024793388429752067,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "17018",
+        "south st. vital",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 52,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.019230769230769232,
+      "publishable": false
+    },
+    {
+      "group": [
+        "889",
+        "60108",
+        "tecumseh loop",
+        "weekday",
+        "transition",
+        14
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 34,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.029411764705882353,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX3",
+        "60521",
+        "sturgeon & murray park",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 57,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.017543859649122806,
+      "publishable": false
+    },
+    {
+      "group": [
+        "672",
+        "60075",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 32,
+      "distinctDates": 14,
+      "experimentalReportedRate": 0.03125,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "60144",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        10
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 58,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.017241379310344827,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "10735",
+        "templeton & salter",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 51,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.0196078431372549,
+      "publishable": false
+    },
+    {
+      "group": [
+        "672",
+        "60077",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        10
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 27,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.037037037037037035,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX3",
+        "60303",
+        "sturgeon & murray park",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 55,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.01818181818181818,
+      "publishable": false
+    },
+    {
+      "group": [
+        "672",
+        "60053",
+        "prairie pointe",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 40,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.025,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX3",
+        "60408",
+        "redonda & pandora",
+        "weekday",
+        "transition",
+        13
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 50,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.02,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX2",
+        "10628",
+        "garden city centre",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 96,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.010416666666666666,
+      "publishable": false
+    },
+    {
+      "group": [
+        "889",
+        "60139",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 40,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.025,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61212",
+        "downtown",
+        "weekday",
+        "summer",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 88,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.011363636363636364,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX4",
+        "10803",
+        "raleigh & knowles",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 35,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.05714285714285714,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "60105",
+        "lakewood at vermillion",
+        "weekday",
+        "transition",
+        12
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 29,
+      "distinctDates": 11,
+      "experimentalReportedRate": 0.034482758620689655,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "60105",
+        "kildonan place",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 43,
+      "distinctDates": 14,
+      "experimentalReportedRate": 0.023255813953488372,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "10638",
+        "st. norbert",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 5,
+      "recordedVisits": 173,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.028901734104046242,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "10577",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 136,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.007352941176470588,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "10562",
+        "st. norbert",
+        "weekday",
+        "summer",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 69,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.014492753623188406,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "60243",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 80,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.025,
+      "publishable": false
+    },
+    {
+      "group": [
+        "672",
+        "60452",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 46,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.021739130434782608,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "17015",
+        "templeton & salter",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 50,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.02,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "60105",
+        "kildonan place",
+        "weekday",
+        "transition",
+        14
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 50,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.04,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "60105",
+        "glenway",
+        "weekday",
+        "transition",
+        12
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 62,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.016129032258064516,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "10790",
+        "south st. vital",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 44,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.022727272727272728,
+      "publishable": false
+    },
+    {
+      "group": [
+        "37",
+        "30411",
+        "waterford green",
+        "weekday",
+        "transition",
+        14
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 17,
+      "distinctDates": 12,
+      "experimentalReportedRate": 0.058823529411764705,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "60125",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        10
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 44,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.045454545454545456,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "10835",
+        "templeton & salter",
+        "weekday",
+        "transition",
+        17
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 47,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.02127659574468085,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "50492",
+        "templeton & salter",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 44,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.022727272727272728,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D11",
+        "10101",
+        "templeton & salter",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 20,
+      "distinctDates": 13,
+      "experimentalReportedRate": 0.05,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "50633",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 111,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.018018018018018018,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61203",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 148,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.006756756756756757,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "60105",
+        "lakewood at vermillion",
+        "weekday",
+        "transition",
+        14
+      ],
+      "matchedReportedVisits": 4,
+      "recordedVisits": 46,
+      "distinctDates": 11,
+      "experimentalReportedRate": 0.08695652173913043,
+      "publishable": false
+    },
+    {
+      "group": [
+        "556",
+        "50352",
+        "sage creek",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 35,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.02857142857142857,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F5",
+        "30487",
+        "fort rouge station",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 77,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.012987012987012988,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX2",
+        "10632",
+        "st. vital centre",
+        "weekday",
+        "summer",
+        17
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 114,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.008771929824561403,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "60103",
+        "lakewood at vermillion",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 39,
+      "distinctDates": 11,
+      "experimentalReportedRate": 0.02564102564102564,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "11033",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 112,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.008928571428571428,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F7",
+        "50241",
+        "creek bend",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 77,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.012987012987012988,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61206",
+        "downtown",
+        "weekday",
+        "summer",
+        7
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 126,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.007936507936507936,
+      "publishable": false
+    },
+    {
+      "group": [
+        "28",
+        "30408",
+        "templeton walmart",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 36,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.027777777777777776,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "11031",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        11
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 45,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.022222222222222223,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "10750",
+        "south st. vital",
+        "weekday",
+        "summer",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 44,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.022727272727272728,
+      "publishable": false
+    },
+    {
+      "group": [
+        "662",
+        "60075",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        11
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 32,
+      "distinctDates": 14,
+      "experimentalReportedRate": 0.0625,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "10599",
+        "south st. vital",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 3,
+      "recordedVisits": 53,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.05660377358490566,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX3",
+        "60291",
+        "redonda & pandora",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 51,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.0196078431372549,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "60103",
+        "lakewood at vermillion",
+        "weekday",
+        "transition",
+        12
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 29,
+      "distinctDates": 11,
+      "experimentalReportedRate": 0.06896551724137931,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61207",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        11
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 56,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.03571428571428571,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61203",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        11
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 46,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.021739130434782608,
+      "publishable": false
+    },
+    {
+      "group": [
+        "28",
+        "10290",
+        "templeton walmart",
+        "weekday",
+        "transition",
+        17
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 46,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.021739130434782608,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F5",
+        "30496",
+        "fort rouge station",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 77,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.012987012987012988,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "10063",
+        "templeton & salter",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 57,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.017543859649122806,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "10562",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 171,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.005847953216374269,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "60674",
+        "glenway",
+        "weekday",
+        "transition",
+        12
+      ],
+      "matchedReportedVisits": 3,
+      "recordedVisits": 61,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.04918032786885246,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "11031",
+        "st. norbert",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 176,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.005681818181818182,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61203",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        12
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 58,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.017241379310344827,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61205",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 6,
+      "recordedVisits": 157,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.03821656050955414,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "10656",
+        "glenway",
+        "weekday",
+        "summer",
+        17
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 94,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.010638297872340425,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX2",
+        "10639",
+        "st. vital centre",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 125,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.008,
+      "publishable": false
+    },
+    {
+      "group": [
+        "671",
+        "61180",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        10
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 27,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.037037037037037035,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "10657",
+        "glenway",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 117,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.017094017094017096,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "60105",
+        "glenway",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 120,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.008333333333333333,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX2",
+        "11060",
+        "garden city centre",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 124,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.008064516129032258,
+      "publishable": false
+    },
+    {
+      "group": [
+        "662",
+        "60035",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 27,
+      "distinctDates": 14,
+      "experimentalReportedRate": 0.037037037037037035,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61217",
+        "st. norbert",
+        "weekday",
+        "transition",
+        17
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 170,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.0058823529411764705,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "10067",
+        "south st. vital",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 53,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.018867924528301886,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "50497",
+        "templeton & salter",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 39,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.02564102564102564,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61205",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        12
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 58,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.034482758620689655,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "10832",
+        "south st. vital",
+        "weekday",
+        "transition",
+        14
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 42,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.023809523809523808,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "50400",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 121,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.008264462809917356,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "11029",
+        "st. norbert",
+        "weekday",
+        "summer",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 195,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.005128205128205128,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "40435",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 116,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.008620689655172414,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61207",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        10
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 74,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.013513513513513514,
+      "publishable": false
+    },
+    {
+      "group": [
+        "557",
+        "50633",
+        "sage creek",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 3,
+      "recordedVisits": 27,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.1111111111111111,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "10641",
+        "university of manitoba",
+        "weekend",
+        "transition",
+        18
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 5,
+      "distinctDates": 4,
+      "experimentalReportedRate": 0.2,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "10712",
+        "glenway",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 119,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.008403361344537815,
+      "publishable": false
+    },
+    {
+      "group": [
+        "672",
+        "60077",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 40,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.025,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "50405",
+        "kildonan place",
+        "weekday",
+        "transition",
+        14
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 43,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.023255813953488372,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX4",
+        "50169",
+        "polo park",
+        "weekday",
+        "summer",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 44,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.022727272727272728,
+      "publishable": false
+    },
+    {
+      "group": [
+        "442",
+        "40869",
+        "henderson & northdale",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 9,
+      "distinctDates": 9,
+      "experimentalReportedRate": 0.1111111111111111,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "60246",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 80,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.0125,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D19",
+        "10125",
+        "the zoo",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 44,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.045454545454545456,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "10171",
+        "templeton & salter",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 57,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.017543859649122806,
+      "publishable": false
+    },
+    {
+      "group": [
+        "672",
+        "60452",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 37,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.02702702702702703,
+      "publishable": false
+    },
+    {
+      "group": [
+        "74",
+        "61164",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 37,
+      "distinctDates": 14,
+      "experimentalReportedRate": 0.02702702702702703,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "10750",
+        "south st. vital",
+        "weekday",
+        "transition",
+        10
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 35,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.02857142857142857,
+      "publishable": false
+    },
+    {
+      "group": [
+        "74",
+        "60096",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 41,
+      "distinctDates": 14,
+      "experimentalReportedRate": 0.024390243902439025,
+      "publishable": false
+    },
+    {
+      "group": [
+        "889",
+        "60251",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 49,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.02040816326530612,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX3",
+        "60294",
+        "redonda & pandora",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 51,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.0392156862745098,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "10735",
+        "templeton & salter",
+        "weekday",
+        "transition",
+        14
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 34,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.029411764705882353,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "10596",
+        "templeton & salter",
+        "weekday",
+        "transition",
+        13
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 31,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.03225806451612903,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "50402",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 6,
+      "recordedVisits": 116,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.05172413793103448,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "50407",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 4,
+      "recordedVisits": 114,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.03508771929824561,
+      "publishable": false
+    },
+    {
+      "group": [
+        "48",
+        "40086",
+        "crossroads station",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 26,
+      "distinctDates": 11,
+      "experimentalReportedRate": 0.07692307692307693,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F5",
+        "30467",
+        "fort rouge station",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 65,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.015384615384615385,
+      "publishable": false
+    },
+    {
+      "group": [
+        "38",
+        "30477",
+        "kildonan place",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 27,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.07407407407407407,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D15",
+        "50254",
+        "sage creek",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 47,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.02127659574468085,
+      "publishable": false
+    },
+    {
+      "group": [
+        "672",
+        "60745",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 32,
+      "distinctDates": 14,
+      "experimentalReportedRate": 0.03125,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61211",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        11
+      ],
+      "matchedReportedVisits": 3,
+      "recordedVisits": 54,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.05555555555555555,
+      "publishable": false
+    },
+    {
+      "group": [
+        "678",
+        "63013",
+        "south pointe",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 3,
+      "recordedVisits": 27,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.1111111111111111,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "60148",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 196,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.00510204081632653,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61207",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        12
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 58,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.017241379310344827,
+      "publishable": false
+    },
+    {
+      "group": [
+        "48",
+        "40908",
+        "crossroads station",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 25,
+      "distinctDates": 11,
+      "experimentalReportedRate": 0.04,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "60105",
+        "lakewood at vermillion",
+        "weekday",
+        "transition",
+        13
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 39,
+      "distinctDates": 11,
+      "experimentalReportedRate": 0.02564102564102564,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX2",
+        "10629",
+        "garden city centre",
+        "weekend",
+        "transition",
+        17
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 4,
+      "distinctDates": 3,
+      "experimentalReportedRate": 0.25,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "60674",
+        "glenway",
+        "weekday",
+        "transition",
+        14
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 74,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.02702702702702703,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX2",
+        "51103",
+        "st. vital centre",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 106,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.009433962264150943,
+      "publishable": false
+    },
+    {
+      "group": [
+        "557",
+        "50914",
+        "windermere",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 28,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.03571428571428571,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX2",
+        "30083",
+        "st. vital centre",
+        "weekend",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 5,
+      "distinctDates": 4,
+      "experimentalReportedRate": 0.2,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "11031",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        10
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 72,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.013888888888888888,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX2",
+        "10631",
+        "garden city centre",
+        "weekend",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 3,
+      "distinctDates": 3,
+      "experimentalReportedRate": 0.3333333333333333,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F7",
+        "50550",
+        "creek bend",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 53,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.018867924528301886,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "50485",
+        "south st. vital",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 52,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.019230769230769232,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "60148",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 80,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.0125,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61213",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 153,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.006535947712418301,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "17016",
+        "south st. vital",
+        "weekday",
+        "summer",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 48,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.020833333333333332,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D11",
+        "10441",
+        "templeton & salter",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 55,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.01818181818181818,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "10599",
+        "south st. vital",
+        "weekday",
+        "transition",
+        14
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 36,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.027777777777777776,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F7",
+        "50242",
+        "broadway & portage",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 61,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.01639344262295082,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "60673",
+        "kildonan place",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 61,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.01639344262295082,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "50724",
+        "south st. vital",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 65,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.015384615384615385,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "60111",
+        "kildonan place",
+        "weekday",
+        "transition",
+        17
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 59,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.01694915254237288,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "60105",
+        "downtown",
+        "weekday",
+        "transition",
+        13
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 14,
+      "distinctDates": 10,
+      "experimentalReportedRate": 0.07142857142857142,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D18",
+        "10408",
+        "rrc polytech",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 72,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.013888888888888888,
+      "publishable": false
+    },
+    {
+      "group": [
+        "48",
+        "40082",
+        "crossroads station",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 26,
+      "distinctDates": 11,
+      "experimentalReportedRate": 0.038461538461538464,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "50046",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 59,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.01694915254237288,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "10159",
+        "st. norbert",
+        "weekday",
+        "transition",
+        17
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 151,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.006622516556291391,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "60118",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        11
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 42,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.023809523809523808,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "17018",
+        "south st. vital",
+        "weekday",
+        "summer",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 47,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.02127659574468085,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "10835",
+        "templeton & salter",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 52,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.019230769230769232,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "60113",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        12
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 41,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.024390243902439025,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61215",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        12
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 61,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.01639344262295082,
+      "publishable": false
+    },
+    {
+      "group": [
+        "444",
+        "41047",
+        "summerlea",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 26,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.038461538461538464,
+      "publishable": false
+    },
+    {
+      "group": [
+        "37",
+        "30399",
+        "waterford green",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 16,
+      "distinctDates": 11,
+      "experimentalReportedRate": 0.0625,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "11029",
+        "st. norbert",
+        "weekday",
+        "transition",
+        17
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 155,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.0064516129032258064,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "60105",
+        "glenway",
+        "weekday",
+        "transition",
+        11
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 44,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.022727272727272728,
+      "publishable": false
+    },
+    {
+      "group": [
+        "678",
+        "63013",
+        "south pointe",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 25,
+      "distinctDates": 14,
+      "experimentalReportedRate": 0.04,
+      "publishable": false
+    },
+    {
+      "group": [
+        "74",
+        "61265",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 37,
+      "distinctDates": 14,
+      "experimentalReportedRate": 0.05405405405405406,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "60103",
+        "kildonan place",
+        "weekday",
+        "transition",
+        11
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 41,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.024390243902439025,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D11",
+        "10733",
+        "beaumont station",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 35,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.02857142857142857,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "50404",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        10
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 78,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.01282051282051282,
+      "publishable": false
+    },
+    {
+      "group": [
+        "557",
+        "51067",
+        "windermere",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 28,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.03571428571428571,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D15",
+        "50043",
+        "sage creek",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 28,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.03571428571428571,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "10580",
+        "st. norbert",
+        "weekday",
+        "transition",
+        17
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 123,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.008130081300813009,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D18",
+        "10390",
+        "downtown",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 83,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.012048192771084338,
+      "publishable": false
+    },
+    {
+      "group": [
+        "37",
+        "30411",
+        "waterford green",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 17,
+      "distinctDates": 12,
+      "experimentalReportedRate": 0.058823529411764705,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "60673",
+        "kildonan place",
+        "weekday",
+        "transition",
+        12
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 50,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.04,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "10575",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 161,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.012422360248447204,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F7",
+        "10803",
+        "creek bend",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 59,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.03389830508474576,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F7",
+        "50246",
+        "creek bend",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 77,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.012987012987012988,
+      "publishable": false
+    },
+    {
+      "group": [
+        "678",
+        "62116",
+        "arbour meadow & bridgeland",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 9,
+      "distinctDates": 9,
+      "experimentalReportedRate": 0.1111111111111111,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX3",
+        "10779",
+        "redonda & pandora",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 51,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.0196078431372549,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61211",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        10
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 73,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.0136986301369863,
+      "publishable": false
+    },
+    {
+      "group": [
+        "28",
+        "10277",
+        "templeton walmart",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 49,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.02040816326530612,
+      "publishable": false
+    },
+    {
+      "group": [
+        "671",
+        "60073",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 43,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.023255813953488372,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "10639",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 73,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.0273972602739726,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "60105",
+        "lakewood at vermillion",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 39,
+      "distinctDates": 11,
+      "experimentalReportedRate": 0.02564102564102564,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D14",
+        "10208",
+        "wall street",
+        "weekday",
+        "summer",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 35,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.02857142857142857,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "10576",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 119,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.008403361344537815,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "10790",
+        "south st. vital",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 51,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.0196078431372549,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "60139",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        10
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 89,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.011235955056179775,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "50407",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 127,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.015748031496062992,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61203",
+        "st. norbert",
+        "weekday",
+        "summer",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 180,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.005555555555555556,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61211",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 152,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.006578947368421052,
+      "publishable": false
+    },
+    {
+      "group": [
+        "74",
+        "61171",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 37,
+      "distinctDates": 14,
+      "experimentalReportedRate": 0.02702702702702703,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D18",
+        "10411",
+        "rrc polytech",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 72,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.013888888888888888,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX2",
+        "10629",
+        "garden city centre",
+        "weekday",
+        "summer",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 111,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.009009009009009009,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "10159",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        10
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 67,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.014925373134328358,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "10639",
+        "st. norbert",
+        "weekday",
+        "summer",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 185,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.005405405405405406,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "50404",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 114,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.017543859649122806,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D15",
+        "20176",
+        "sage creek",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 37,
+      "distinctDates": 14,
+      "experimentalReportedRate": 0.05405405405405406,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX2",
+        "50262",
+        "garden city centre",
+        "weekend",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 4,
+      "distinctDates": 3,
+      "experimentalReportedRate": 0.25,
+      "publishable": false
+    },
+    {
+      "group": [
+        "677",
+        "61257",
+        "beaumont station",
+        "weekend",
+        "summer",
+        18
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 16,
+      "distinctDates": 8,
+      "experimentalReportedRate": 0.0625,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "50400",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 122,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.00819672131147541,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "10186",
+        "templeton & salter",
+        "weekday",
+        "transition",
+        17
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 39,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.02564102564102564,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "60130",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        10
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 44,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.022727272727272728,
+      "publishable": false
+    },
+    {
+      "group": [
+        "671",
+        "61022",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 36,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.027777777777777776,
+      "publishable": false
+    },
+    {
+      "group": [
+        "671",
+        "60105",
+        "prairie pointe",
+        "weekday",
+        "transition",
+        14
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 35,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.05714285714285714,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "10755",
+        "south st. vital",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 44,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.022727272727272728,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX3",
+        "10632",
+        "sturgeon & murray park",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 54,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.018518518518518517,
+      "publishable": false
+    },
+    {
+      "group": [
+        "74",
+        "61170",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 27,
+      "distinctDates": 14,
+      "experimentalReportedRate": 0.037037037037037035,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "10573",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 169,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.005917159763313609,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "60113",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 2,
+      "recordedVisits": 120,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.016666666666666666,
+      "publishable": false
+    },
+    {
+      "group": [
+        "662",
+        "60077",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 27,
+      "distinctDates": 14,
+      "experimentalReportedRate": 0.037037037037037035,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "60139",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 116,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.008620689655172414,
+      "publishable": false
+    },
+    {
+      "group": [
+        "672",
+        "61251",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 45,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.022222222222222223,
+      "publishable": false
+    },
+    {
+      "group": [
+        "74",
+        "62060",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 28,
+      "distinctDates": 14,
+      "experimentalReportedRate": 0.03571428571428571,
+      "publishable": false
+    },
+    {
+      "group": [
+        "74",
+        "61267",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 41,
+      "distinctDates": 14,
+      "experimentalReportedRate": 0.024390243902439025,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "10171",
+        "templeton & salter",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 59,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.01694915254237288,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "10655",
+        "glenway",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 126,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.007936507936507936,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "10839",
+        "templeton & salter",
+        "weekday",
+        "transition",
+        17
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 48,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.020833333333333332,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "10751",
+        "templeton & salter",
+        "weekday",
+        "transition",
+        14
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 34,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.029411764705882353,
+      "publishable": false
+    },
+    {
+      "group": [
+        "48",
+        "40084",
+        "crossroads station",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 26,
+      "distinctDates": 11,
+      "experimentalReportedRate": 0.038461538461538464,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "60105",
+        "glenway",
+        "weekday",
+        "transition",
+        17
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 59,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.01694915254237288,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F7",
+        "10197",
+        "broadway & portage",
+        "weekday",
+        "summer",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 50,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.02,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "60105",
+        "kildonan place",
+        "weekday",
+        "transition",
+        13
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 49,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.02040816326530612,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D15",
+        "20181",
+        "sage creek",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 38,
+      "distinctDates": 14,
+      "experimentalReportedRate": 0.02631578947368421,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "10835",
+        "templeton & salter",
+        "weekday",
+        "summer",
+        13
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 25,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.04,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX2",
+        "10159",
+        "st. vital centre",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 140,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.007142857142857143,
+      "publishable": false
+    },
+    {
+      "group": [
+        "74",
+        "20004",
+        "university of manitoba",
+        "weekday",
+        "summer",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 9,
+      "distinctDates": 9,
+      "experimentalReportedRate": 0.1111111111111111,
+      "publishable": false
+    },
+    {
+      "group": [
+        "672",
+        "60105",
+        "prairie pointe",
+        "weekday",
+        "transition",
+        13
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 27,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.037037037037037035,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61104",
+        "downtown",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 69,
+      "distinctDates": 11,
+      "experimentalReportedRate": 0.014492753623188406,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "10638",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 60,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.016666666666666666,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "61117",
+        "glenway",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 117,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.008547008547008548,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX2",
+        "50275",
+        "garden city centre",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 130,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.007692307692307693,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61203",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        10
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 75,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.013333333333333334,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F5",
+        "10422",
+        "fort rouge station",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 41,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.024390243902439025,
+      "publishable": false
+    },
+    {
+      "group": [
+        "662",
+        "60041",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 47,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.02127659574468085,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "50402",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        10
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 79,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.012658227848101266,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F9",
+        "60105",
+        "kildonan place",
+        "weekday",
+        "transition",
+        17
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 57,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.017543859649122806,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "17016",
+        "south st. vital",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 50,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.02,
+      "publishable": false
+    },
+    {
+      "group": [
+        "48",
+        "40109",
+        "crossroads station",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 25,
+      "distinctDates": 11,
+      "experimentalReportedRate": 0.04,
+      "publishable": false
+    },
+    {
+      "group": [
+        "889",
+        "60239",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 35,
+      "distinctDates": 13,
+      "experimentalReportedRate": 0.02857142857142857,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D18",
+        "10733",
+        "rrc polytech",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 89,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.011235955056179775,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D11",
+        "10442",
+        "beaumont station",
+        "weekday",
+        "summer",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 61,
+      "distinctDates": 16,
+      "experimentalReportedRate": 0.01639344262295082,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "40432",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 92,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.010869565217391304,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61209",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        11
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 53,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.018867924528301886,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX2",
+        "50558",
+        "garden city centre",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 113,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.008849557522123894,
+      "publishable": false
+    },
+    {
+      "group": [
+        "D18",
+        "10290",
+        "downtown",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 75,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.013333333333333334,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "10607",
+        "templeton & salter",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 52,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.019230769230769232,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "60246",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 104,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.009615384615384616,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "10598",
+        "south st. vital",
+        "weekday",
+        "transition",
+        15
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 52,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.019230769230769232,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "60118",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        10
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 44,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.022727272727272728,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "10569",
+        "st. norbert",
+        "weekday",
+        "transition",
+        14
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 76,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.013157894736842105,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F8",
+        "60138",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        9
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 98,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.01020408163265306,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F7",
+        "10582",
+        "creek bend",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 65,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.015384615384615385,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "61211",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        12
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 61,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.01639344262295082,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "10573",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 138,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.007246376811594203,
+      "publishable": false
+    },
+    {
+      "group": [
+        "F6",
+        "10911",
+        "south st. vital",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 40,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.025,
+      "publishable": false
+    },
+    {
+      "group": [
+        "672",
+        "60160",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 41,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.024390243902439025,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX3",
+        "11027",
+        "sturgeon & murray park",
+        "weekday",
+        "summer",
+        11
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 33,
+      "distinctDates": 14,
+      "experimentalReportedRate": 0.030303030303030304,
+      "publishable": false
+    },
+    {
+      "group": [
+        "BLUE",
+        "10562",
+        "university of manitoba",
+        "weekday",
+        "transition",
+        8
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 128,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.0078125,
+      "publishable": false
+    },
+    {
+      "group": [
+        "FX2",
+        "10638",
+        "st. vital centre",
+        "weekday",
+        "transition",
+        16
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 124,
+      "distinctDates": 15,
+      "experimentalReportedRate": 0.008064516129032258,
+      "publishable": false
+    },
+    {
+      "group": [
+        "678",
+        "62087",
+        "freedman terminal",
+        "weekday",
+        "transition",
+        7
+      ],
+      "matchedReportedVisits": 1,
+      "recordedVisits": 18,
+      "distinctDates": 11,
+      "experimentalReportedRate": 0.05555555555555555,
+      "publishable": false
+    }
+  ]
+}
