@@ -9,6 +9,28 @@ Build of September 26, 2026 (`reports/history-2hour-20260926`, same 13 archives 
 - Policy v2 (approved by Linpu, September 26, 2026) drops the v1 rule that marked every group near an unresolved report Unknown. With two-hour, all-season groups that rule had blocked 998 of the 1,547 groups with any matched report, leaving no Medium labels. Unresolved reports are now simply not counted; they remain in the audit (`noUnambiguousNearbyStop` 4,930, `noUnambiguousTimedVisit` 3,905). All other gates are unchanged: minimum evidence, zero-report minimum, score boundaries, report-date persistence and agreement across the three matching profiles. The backend accepts only v2 risk artifacts; a v1 file gives Unknown.
 - Test trip 77 Westbrook St → 70 Thatcher Dr, Saturday September 26, 2026, 16:40 (5 plans, 9 rides): timing now available on 9/9 rides (before: 4/9, every BLUE ride Unavailable); pass-up label on 9/9, all Low under both v1 and v2 (before: 0/9, all Unknown). BLUE at stop 10638 toward University of Manitoba, weekend 16:00–17:59: 121 visits, median 4.4 min late. In the app the rides read: BLUE 37% not on time (blue); F8 18% (green) or 46% (red, 38% left early); F9 31% (blue) or 50% (red, 40% left early); no pass-up warning on any ride.
 
+## Nearest-only pass-up matching update
+
+`build_history.py` now matches each report to the nearest stop on the same
+route, destination and report date, using that stop's average valid coordinates
+for the date. Coordinate spread does not exclude a stop. The nearest stop must
+still be within 150 metres; an exact distance tie uses the stop ID.
+
+At the selected stop, choose the recorded visit with the closest actual departure
+within 300 seconds, including visits crossing midnight. There is no minimum gap
+from the second-closest stop or visit. Exact time ties use the recorded visit ID.
+Each of the existing 60 m/120 s, 100 m/180 s and 150 m/300 s profiles then applies
+its own limits. Multiple reports matched to the same visit still count once per
+profile. Missing candidates are audited as `noNearbyStop` or `noTimedVisit`,
+replacing the previous `noUnambiguousNearbyStop`/`noUnambiguousTimedVisit` names.
+
+New artifacts and reports record `passupMatchingMethod` as
+`nearest-stop-nearest-visit-v1`. The category thresholds and `reported-pattern-v2`
+label policy remain unchanged. This changes matching semantics and can change
+pass-up counts/labels after a rebuild. Previously published counts below describe
+the older matching method; no full-history rebuild or deployment is included here.
+The legacy `audit_passups.py` audit retains its own conservative matching rules.
+
 # Expanded post-overhaul history
 
 The current build combines all 13 `data/on_time_performance_YYYY_MM.zip` archives (July 2025 through July 2026) and `Recent_Transit_On-Time_Performance_Data_20260925.csv`. The cutoff is June 29, 2025; the provided files begin in July, so June 29–30 are not reconstructed. Older pass-up reports are only used on dates with retained departure observations.
@@ -44,7 +66,7 @@ Schema 2 manifests reference per-route files. The backend supports the old schem
 - Exclude invalid rows, deviations over seven days, and rows whose reported service day disagrees with the calendar. Records marked Holiday are excluded; this does not claim to recognize every possible special-service date. Source rows outside the ordinary calendar comparison are counted in the audit.
 - Departure timing uses observations within one hour of schedule; pass-up denominators retain larger deviations up to the structural validity bound. Do not remove very late visits from the denominator merely for being late.
 - Group by exact route, stop, normalized destination, weekday/weekend and two-hour window; all seasons are pooled (earlier builds separated season and used one-hour bins). Old destination labels are not fuzzily merged into current destinations. No historical timetable is inferred from the current GTFS feed.
-- Use stop coordinates and route/destination membership observed on each report's date. Stops with unstable coordinates within that date are excluded. This avoids using one latest stop location across a year of history. Matching still lacks shared trip identifiers and manual ground truth; local timestamps at the repeated daylight-saving hour remain an ambiguity.
+- Use stop coordinates and route/destination membership observed on each report's date. Use the date-specific average even when coordinates vary within that date; do not apply a coordinate-spread exclusion. This avoids using one latest stop location across a year of history. Matching still lacks shared trip identifiers and manual ground truth; local timestamps at the repeated daylight-saving hour remain an ambiguity.
 - Keep the approved Low/Medium/High thresholds and all three matching-sensitivity checks unchanged (policy `reported-pattern-v2` only dropped the unresolved-nearby-report rule). No rebalance was applied. Zero-report groups still require adequate history and uncertain matches remain Unknown.
 
 The departure artifact retains exact observed median and p10/p90 offsets. Stored share intervals now use a daily-cluster variance calculation with a normal 95% approximation rather than 100 bootstrap repetitions, allowing aggregation of the longer history. They are descriptive uncertainty estimates, not calibrated future-arrival intervals, and are not shown in the two-line UI. No new predictive holdout claim is made; earlier pilot evaluation numbers do not evaluate this expanded release.

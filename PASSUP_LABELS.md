@@ -1,3 +1,13 @@
+## Current production matcher
+
+The `build_history.py` nearest-only matcher uses the nearest stop and nearest
+actual departure within the existing profile limits. It does not exclude stops
+for coordinate spread or require separation from runner-up candidates. See
+[HISTORICAL_DATA.md](HISTORICAL_DATA.md#nearest-only-pass-up-matching-update) for
+tie handling, audit names, and artifact metadata. Historical counts and legacy
+audit rules below predate this matcher; regenerate artifacts before claiming new
+coverage or label counts.
+
 # Current grouping: two-hour window, all seasons pooled (`route-stop-destination-daytype-2hour-v1`)
 
 Departure timing and pass-up risk use the same groups: exact route, boarding stop, normalized destination (direction), weekday/weekend and a fixed two-hour Winnipeg local window. Windows start on even hours and are keyed by that hour: `16` covers 16:00–17:59, `18` covers 18:00–19:59. Season is no longer part of the group; July 2025–September 2026 history is pooled. Statistics are recalculated from individual visits and matched reports, not by averaging hourly or seasonal summaries. Evidence thresholds are unchanged: timing needs 30 visits across 5 dates; pass-up categories use `reported-pattern-v2`: every gate below except the dropped unresolved-report rule. Both manifests record `grouping` and `groupWindowMinutes: 120`, and the backend refuses artifacts with any other grouping (timing Unavailable, risk Unknown), so older one-hour or seasonal files cannot be matched by mistake. Sections below that mention season or one-hour bins describe earlier releases.

@@ -59,15 +59,13 @@ MIN_OBSERVATIONS = 30
 MIN_DATES = 5
 Z_95 = 1.96                            # normal quantile for 95% share intervals
 
-# Pass-up report matching. A report must sit near one stop clearly closer than any
-# other, and near one visit clearly closer in time than any other.
+# Match each report to the nearest stop, then the nearest recorded visit there.
+# Distance/time limits still apply; no runner-up separation or coordinate-spread gate.
 STOP_MAX_METRES = 150
-STOP_MIN_GAP_METRES = 30               # nearest stop must beat the runner-up by this
-UNSTABLE_STOP_METRES = 30              # a stop that moved more than this in a day is skipped
 VISIT_MAX_SECONDS = 300
-VISIT_MIN_GAP_SECONDS = 60             # nearest visit must beat the runner-up by this
 # (name, max metres, max seconds): labels must agree under all three tolerances.
 PROFILES = [('60m_120s', 60, 120), ('100m_180s', 100, 180), ('150m_300s', 150, 300)]
+MATCHING_METHOD = 'nearest-stop-nearest-visit-v1'
 TIMING_REPORT_PROFILE = '100m_180s'    # profile behind nearbyFullBusReports
 
 INTERVAL_METHOD = '95% normal approximation with daily cluster-robust variance; descriptive, not forecast coverage'
@@ -267,40 +265,34 @@ def read_reports(passups, covered_dates, audit):
     return reports
 
 def stops_on_report_days(db):
-    """Where each stop of a route/direction was on each day that has a report.
-
-    Uses that day's recorded coordinates, since stops move over a year. A stop whose
-    coordinates spread more than UNSTABLE_STOP_METRES within the day is unstable.
-    """
+    """Average each stop's valid coordinates on the report's route/direction/date."""
     db.execute('''CREATE OR REPLACE TABLE day_stops AS
-      SELECT v.route, v.dest, v.day, v.stop, avg(v.lon) lon, avg(v.lat) lat,
-             min(v.lon) lo_lon, max(v.lon) hi_lon, min(v.lat) lo_lat, max(v.lat) hi_lat
+      SELECT v.route, v.dest, v.day, v.stop, avg(v.lon) lon, avg(v.lat) lat
       FROM grouped_visits v SEMI JOIN (SELECT DISTINCT route, dest, day FROM reports) r USING (route, dest, day)
       WHERE v.lon BETWEEN -180 AND 180 AND v.lat BETWEEN -90 AND 90
       GROUP BY v.route, v.dest, v.day, v.stop''')
-    stops, unstable = defaultdict(dict), set()
-    for route, dest, day, stop, lon, lat, lo_lon, hi_lon, lo_lat, hi_lat in db.execute('SELECT * FROM day_stops').fetchall():
+    stops = defaultdict(dict)
+    for route, dest, day, stop, lon, lat in db.execute('SELECT * FROM day_stops').fetchall():
         stops[(route, dest, day)][stop] = (lon, lat)
-        if distance((lo_lon, lo_lat), (hi_lon, hi_lat)) > UNSTABLE_STOP_METRES:
-            unstable.add((route, dest, day, stop))
-    return stops, unstable
+    return stops
 
-def nearest_stop_candidates(reports, stops, unstable, audit):
-    """Assign each report to its nearest stop when that stop is clearly the one meant."""
+
+def nearest_stop_candidates(reports, stops, audit):
+    """Pick the nearest stop within STOP_MAX_METRES; stop ID breaks distance ties."""
     candidates = []
     for rid, route, dest, dt, day, lon, lat in reports:
-        ranked = sorted((distance((lon, lat), p), s) for s, p in stops[(route, dest, day)].items())[:2]
-        clear = (ranked and ranked[0][0] <= STOP_MAX_METRES
-                 and (len(ranked) == 1 or ranked[1][0] - ranked[0][0] >= STOP_MIN_GAP_METRES)
-                 and (route, dest, day, ranked[0][1]) not in unstable)
-        if clear:
-            candidates.append((rid, route, dest, ranked[0][1], dt, day, ranked[0][0]))
-        else:
-            audit['noUnambiguousNearbyStop'] += 1
+        nearest = min(((distance((lon, lat), coords), stop)
+                       for stop, coords in stops.get((route, dest, day), {}).items()), default=None)
+        if nearest is None or nearest[0] > STOP_MAX_METRES:
+            audit['noNearbyStop'] += 1
+            continue
+        meters, stop = nearest
+        candidates.append((rid, route, dest, stop, dt, day, meters))
     return candidates
 
+
 def nearest_visits(db, candidates):
-    """For each report, the two recorded visits at its stop closest in actual departure time.
+    """Pick the single nearest actual departure at the selected stop (visit ID breaks ties).
 
     Visits on the report day and the days either side are considered (a late bus can
     cross midnight), within VISIT_MAX_SECONDS of the report time.
@@ -317,38 +309,38 @@ def nearest_visits(db, candidates):
       FROM report_days c
       JOIN grouped_visits v ON c.route = v.route AND c.dest = v.dest AND c.stop = v.stop AND c.join_day = v.actual_day
       WHERE abs(epoch(v.actual) - epoch(c.reported)) <= {VISIT_MAX_SECONDS}
-      QUALIFY ranking <= 2''')
-    timed = defaultdict(list)
-    for rid, vid, g, day, delta, ranking in db.execute('SELECT * FROM timed ORDER BY rid, ranking').fetchall():
-        timed[rid].append((vid, g, day, delta))
-    return timed
+      QUALIFY ranking = 1''')
+    return {rid: (vid, group, day, delta)
+            for rid, vid, group, day, delta in db.execute(
+                'SELECT rid, vid, g, day, delta FROM timed ORDER BY rid').fetchall()}
 
 def match_reports(db, passups, meta, work):
     """Stage 4: count matched pass-up reports per group, per matching profile.
 
     Returns (profile_groups, audit): profile_groups[g][profile] = (matched visits,
-    distinct dates). A report counts once, for its single clearly nearest visit;
+    distinct dates). A report counts once, for its single nearest visit within the limits;
     several reports on one visit count once. Unmatched reports are only audited
     (policy reported-pattern-v2). Writes matches.json and passup-audit.json to `work`.
     """
     audit = Counter()
     reports = read_reports(passups, {r['date'] for r in meta['dailyCoverage']}, audit)
     db.execute('CREATE OR REPLACE TABLE reports(rid VARCHAR, route VARCHAR, dest VARCHAR, reported TIMESTAMP, day DATE, lon DOUBLE, lat DOUBLE)')
-    db.executemany('INSERT INTO reports VALUES (?,?,?,?,?,?,?)', reports)
+    if reports:
+        db.executemany('INSERT INTO reports VALUES (?,?,?,?,?,?,?)', reports)
     print('Matching ' + str(len(reports)) + ' reports with date-specific route stops', flush=True)
-    stops, unstable = stops_on_report_days(db)
-    candidates = nearest_stop_candidates(reports, stops, unstable, audit)
+    stops = stops_on_report_days(db)
+    candidates = nearest_stop_candidates(reports, stops, audit)
     timed = nearest_visits(db, candidates)
 
     accepted, match_rows = defaultdict(dict), []   # accepted[profile][visit id] = (group, date)
     for rid, route, dest, stop, dt, day, meters in candidates:
-        visits = timed[rid]
-        clear = visits and (len(visits) == 1 or visits[1][3] - visits[0][3] >= VISIT_MIN_GAP_SECONDS)
-        if not clear:
-            audit['noUnambiguousTimedVisit'] += 1
+        visit = timed.get(rid)
+        if visit is None:
+            audit['noTimedVisit'] += 1
+            continue
+        vid, g, visit_day, delta = visit
         for profile, max_metres, max_seconds in PROFILES:
-            if clear and meters <= max_metres and visits[0][3] <= max_seconds:
-                vid, g, visit_day, delta = visits[0]
+            if meters <= max_metres and delta <= max_seconds:
                 accepted[profile][vid] = (g, visit_day)
                 audit[profile + 'Reports'] += 1
                 match_rows.append({'report': rid, 'profile': profile, 'visit': vid, 'group': g, 'date': str(visit_day),
@@ -479,6 +471,7 @@ def export(db, meta, passups, out, work):
     db.execute(f"CREATE OR REPLACE TEMP VIEW grouped_visits AS SELECT * EXCLUDE (g), "
                f"cast(json_array(route, stop, dest, daytype, hour - hour % {WINDOW_HOURS}) AS VARCHAR) g FROM visits")
     profiles, report_audit = match_reports(db, passups, meta, work)
+    meta['passupMatchingMethod'] = MATCHING_METHOD
     meta['sources']['passups'] = {'file': Path(passups).name, 'sha256': digest(passups)}
 
     routes = [r[0] for r in db.execute('SELECT DISTINCT route FROM visits ORDER BY route').fetchall()]
@@ -493,7 +486,7 @@ def export(db, meta, passups, out, work):
         total_groups += len(timing)
 
     # Manifests: the backend reads these, then loads one route file per ride on demand.
-    common = {'schemaVersion': 2, 'grouping': GROUPING, 'groupWindowMinutes': WINDOW_MINUTES, 'coverageStart': meta['coverageStart'],
+    common = {'schemaVersion': 2, 'grouping': GROUPING, 'groupWindowMinutes': WINDOW_MINUTES, 'passupMatchingMethod': MATCHING_METHOD, 'coverageStart': meta['coverageStart'],
               'coverageEnd': meta['coverageEnd'], 'sources': meta['sources'], 'routes': routes}
     timing = {**common, 'groups': {}, 'routeFiles': timing_files, 'eligibleGroups': total_groups, 'intervalMethod': INTERVAL_METHOD,
               'minObservations': MIN_OBSERVATIONS, 'minDates': MIN_DATES}
