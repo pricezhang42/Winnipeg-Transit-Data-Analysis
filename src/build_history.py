@@ -234,12 +234,11 @@ def write_source_report(db, manifest, audit, work):
 
 def ingest(files, work, resume=False):
     """Stages 1-3: build the working database of visits from the departure files."""
-    db = connect(work)
-    manifest = import_sources(db, files, work, resume)
-    audit = clean_visits(db)
-    write_source_report(db, manifest, audit, work)
-    db.execute('CHECKPOINT')
-    db.close()
+    with connect(work) as db:
+        manifest = import_sources(db, files, work, resume)
+        audit = clean_visits(db)
+        write_source_report(db, manifest, audit, work)
+        db.execute('CHECKPOINT')
     print('Imported ' + str(audit['retainedRecordedVisits']) + ' deduplicated visits', flush=True)
 
 # --- Stage 4: pass-up report matching ---------------------------------------------------
@@ -370,48 +369,81 @@ def match_reports(db, passups, meta, work):
 
 # --- Stage 5: per-route summaries ------------------------------------------------------
 
-def share_intervals(shares, n, moments):
-    """95% intervals for the early/within/late shares, treating each date as a cluster.
+def query_records(db, sql):
+    """Read SQL results by column name instead of positional tuple offsets."""
+    result = db.execute(sql)
+    columns = [column[0] for column in result.description]
+    return [dict(zip(columns, row)) for row in result.fetchall()]
 
-    Same-day departures share traffic and weather, so they are not independent. For a
-    share p = x / n built from daily counts (x_d of n_d), the cluster-robust variance is
-        D/(D-1) * sum_d (x_d - p n_d)^2 / n^2
-    and sum_d (x_d - p n_d)^2 = sum x_d^2 - 2p sum x_d n_d + p^2 sum n_d^2,
-    which is why `moments` holds those daily sums.
+
+def share_intervals(shares, daily):
+    """95% descriptive intervals, treating each date as an independent cluster.
+
+    For share p, expand sum((daily_count - p * daily_visits)**2) using
+    the daily sums of squares and cross-products. This avoids retaining raw
+    departures in Python while accounting for shared traffic/weather within a day.
     """
-    days, nn, ee, ww, ll, en, wn, ln = moments
+    dates = daily['dates']
+    visits = daily['visits']
     intervals = []
-    for p, xx, xn in zip(shares, [ee, ww, ll], [en, wn, ln]):
-        se = math.sqrt(max(0, days / (days - 1) * (xx - 2 * p * xn + p * p * nn) / (n * n)))
-        intervals.append([round(max(0, p - Z_95 * se), 4), round(min(1, p + Z_95 * se), 4)])
+    for category, share in zip(('early', 'within', 'late'), shares):
+        squared_residuals = (daily[category + '_squares']
+                             - 2 * share * daily[category + '_cross']
+                             + share * share * daily['visit_squares'])
+        variance = dates / (dates - 1) * squared_residuals / (visits * visits)
+        margin = Z_95 * math.sqrt(max(0, variance))
+        intervals.append([round(max(0, share - margin), 4), round(min(1, share + margin), 4)])
     return intervals
 
-def timing_groups(db, profiles):
-    """Departure-timing statistics for every group of the current route with enough evidence.
 
-    Only visits within TIMING_MAX_DELAY of schedule count here. (Pass-up denominators
-    keep very late visits: a late bus still visited the stop.)
+def timing_groups(db, profiles):
+    """Summarize timing in three steps: daily counts, eligible groups, quantiles.
+
+    All timing counts use the same filtered visits and threshold definitions.
+    Pass-up denominators are separate and still retain very late recorded visits.
     """
-    early, within, late = f'delay < {EARLY_BELOW}', f'delay BETWEEN {EARLY_BELOW} AND {LATE_ABOVE}', f'delay > {LATE_ABOVE}'
-    # Per group and date: visits and early/within/late counts, for the interval sums.
     db.execute(f'''CREATE OR REPLACE TEMP TABLE daily AS
-      SELECT g, day, count(*) n, count(*) FILTER (WHERE {early}) e, count(*) FILTER (WHERE {within}) w, count(*) FILTER (WHERE {late}) l
-      FROM route_visits WHERE abs(delay) <= {TIMING_MAX_DELAY} GROUP BY g, day''')
-    moments = {row[0]: row[1:] for row in db.execute(
-        'SELECT g, count(*), sum(n*n), sum(e*e), sum(w*w), sum(l*l), sum(e*n), sum(w*n), sum(l*n) FROM daily GROUP BY g').fetchall()}
-    rows = db.execute(f'''
-      SELECT g, count(*) n, count(DISTINCT day) d, min(day), max(day), quantile_cont(delay, [0.1, 0.5, 0.9]),
-             count(*) FILTER (WHERE {early}), count(*) FILTER (WHERE {within}), count(*) FILTER (WHERE {late}), count(*) FILTER (WHERE delay < 0)
+      SELECT g, day, count(*) AS visits,
+             count(*) FILTER (WHERE delay < {EARLY_BELOW}) AS early,
+             count(*) FILTER (WHERE delay BETWEEN {EARLY_BELOW} AND {LATE_ABOVE}) AS within_window,
+             count(*) FILTER (WHERE delay > {LATE_ABOVE}) AS late,
+             count(*) FILTER (WHERE delay < 0) AS before_schedule
       FROM route_visits WHERE abs(delay) <= {TIMING_MAX_DELAY}
-      GROUP BY g HAVING n >= {MIN_OBSERVATIONS} AND d >= {MIN_DATES}''').fetchall()
+      GROUP BY g, day''')
+    summaries = query_records(db, f'''
+      SELECT g, sum(visits) AS visits, count(*) AS dates,
+             min(day) AS coverage_start, max(day) AS coverage_end,
+             sum(early) AS early, sum(within_window) AS within_window,
+             sum(late) AS late, sum(before_schedule) AS before_schedule,
+             sum(visits*visits) AS visit_squares,
+             sum(early*early) AS early_squares,
+             sum(within_window*within_window) AS within_squares,
+             sum(late*late) AS late_squares,
+             sum(early*visits) AS early_cross,
+             sum(within_window*visits) AS within_cross,
+             sum(late*visits) AS late_cross
+      FROM daily GROUP BY g
+      HAVING visits >= {MIN_OBSERVATIONS} AND dates >= {MIN_DATES}''')
+    if not summaries:
+        return {}
+    quantiles = dict(db.execute(f'''
+      SELECT g, quantile_cont(delay, [0.1, 0.5, 0.9])
+      FROM route_visits WHERE abs(delay) <= {TIMING_MAX_DELAY} GROUP BY g''').fetchall())
     timing = {}
-    for g, n, d, lo, hi, (p10, median, p90), e, w, l, before in rows:
-        shares = [e / n, w / n, l / n]
-        timing[g] = {'observations': n, 'distinctDates': d, 'coverageStart': str(lo), 'coverageEnd': str(hi),
-                     'medianSeconds': median, 'p10Seconds': p10, 'p90Seconds': p90,
-                     'earlyShare': shares[0], 'withinShare': shares[1], 'lateShare': shares[2], 'beforeScheduleShare': before / n,
-                     'shareIntervals': share_intervals(shares, n, moments[g]),
-                     'nearbyFullBusReports': profiles[g].get(TIMING_REPORT_PROFILE, (0, 0))[0]}
+    for summary in summaries:
+        group = summary['g']
+        visits = summary['visits']
+        shares = [summary[name] / visits for name in ('early', 'within_window', 'late')]
+        p10, median, p90 = quantiles[group]
+        timing[group] = {
+            'observations': visits, 'distinctDates': summary['dates'],
+            'coverageStart': str(summary['coverage_start']), 'coverageEnd': str(summary['coverage_end']),
+            'medianSeconds': median, 'p10Seconds': p10, 'p90Seconds': p90,
+            'earlyShare': shares[0], 'withinShare': shares[1], 'lateShare': shares[2],
+            'beforeScheduleShare': summary['before_schedule'] / visits,
+            'shareIntervals': share_intervals(shares, summary),
+            'nearbyFullBusReports': profiles.get(group, {}).get(TIMING_REPORT_PROFILE, (0, 0))[0],
+        }
     return timing
 
 def risk_groups(db, profiles, labels, reasons):
@@ -433,6 +465,13 @@ def risk_groups(db, profiles, labels, reasons):
 
 # --- Stage 6: export -------------------------------------------------------------------
 
+def write_route_groups(out, folder, route, groups):
+    """Write one route shard and return its relative path for the manifest."""
+    relative_path = folder + '/' + quote(route, safe='') + '.json'
+    write(out / relative_path, {'groups': groups})
+    return relative_path
+
+
 def export(db, meta, passups, out, work):
     """Stages 4-6: match reports, summarise each route and write all artifacts to `out`."""
     # Recompute group keys from the stored columns, so a database imported with an
@@ -449,11 +488,8 @@ def export(db, meta, passups, out, work):
         db.execute('CREATE OR REPLACE TEMP TABLE route_visits AS SELECT * FROM grouped_visits WHERE route=?', [route])
         timing = timing_groups(db, profiles)
         risk = risk_groups(db, profiles, labels, reasons)
-        filename = quote(route, safe='') + '.json'
-        timing_files[route] = 'reliability-routes/' + filename
-        risk_files[route] = 'passup-risk-routes/' + filename
-        write(out / timing_files[route], {'groups': timing})
-        write(out / risk_files[route], {'groups': risk})
+        timing_files[route] = write_route_groups(out, 'reliability-routes', route, timing)
+        risk_files[route] = write_route_groups(out, 'passup-risk-routes', route, risk)
         total_groups += len(timing)
 
     # Manifests: the backend reads these, then loads one route file per ride on demand.
@@ -483,9 +519,9 @@ def main():
     out.mkdir(parents=True, exist_ok=True)
     if not args.skip_import:
         ingest(args.departures, work, args.resume_import)
-    db = connect(work)
-    export(db, json.loads((work / 'source-report.json').read_text()), args.passups, out, work)
-    db.close()
+    with connect(work) as db:
+        meta = json.loads((work / 'source-report.json').read_text())
+        export(db, meta, args.passups, out, work)
 
 if __name__ == '__main__':
     main()

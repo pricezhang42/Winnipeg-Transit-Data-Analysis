@@ -65,3 +65,26 @@ The backend's 30-day data freshness and trip-horizon rules still apply. Having w
 - Dates within the coverage range with no retained observations: August 4, 2025; February 16, May 18, July 1, August 1–7, and September 6–8, 2026. These gaps can result from absent inputs or the cleaning/service-day filters; the report does not claim they are all missing downloads. There is no June 2025 archive in the supplied folder.
 
 Validation: ZIP/CSV timestamp parsing, overlap removal, conflicting source/visit identities, cutoff filtering and winter/summer separation tested with fixtures. Backend loader tests pass for both artifact schemas, missing files and path containment. All 341,722 timing groups and all 150,296 supported labels passed export/lookup checks. Example integrated lookup: route 662, stop 60188, University of Manitoba, September weekday 16:00–16:59 returns Medium. No emulator test or production deployment was performed for this data refresh.
+
+
+## Timing implementation
+
+`build_history.py` derives timing statistics from daily group counts:
+
+1. Filter recorded visits to deviations within one hour of schedule and count
+   early, within-window, late and before-schedule departures per group/date.
+2. Sum those daily counts and retain groups with at least 30 visits on five dates.
+   The same daily counts supply the sums used by the cluster-robust share intervals.
+3. Calculate p10, median and p90 from the individual filtered departure offsets.
+   Quantiles are not averages of daily or seasonal quantiles.
+
+Timing SQL results use named columns. Pass-up denominators and matching remain
+separate. Route shard naming/writing is shared by both artifact types. Working
+connections close even when import or export fails. The artifact schema, two-hour
+all-season grouping, thresholds and pass-up policy are unchanged by this refactor.
+
+Regression tests cover the inclusive sample minimums, timing cutoffs, before-schedule
+share, daily-cluster interval calculation and empty results. During the refactor,
+all six artifact JSON files and both matching audit files from the existing
+ZIP/CSV integration fixture matched the previous implementation exactly as parsed
+JSON. This is fixture validation, not a new full-history build or deployment.

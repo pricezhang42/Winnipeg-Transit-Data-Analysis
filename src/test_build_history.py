@@ -48,4 +48,61 @@ class HistoryTests(unittest.TestCase):
             risk=next(iter(json.loads((out/'passup-risk-routes/F8.json').read_text())['groups'].values()))
             self.assertEqual(risk['level'],'low');self.assertEqual(risk['profiles']['60m_120s']['reportedVisits'],1)
             db.close()
+
+    def test_timing_boundaries_and_evidence_gates(self):
+        import duckdb
+        from build_history import timing_groups
+
+        with duckdb.connect() as db:
+            db.execute('CREATE TABLE route_visits(g VARCHAR, day DATE, delay BIGINT)')
+            # Both +/-3600 are retained; +/-3601 are excluded. Exactly -60 and
+            # +300 are within the on-time window, while -1 is before schedule.
+            delays = [-3601, -3600, -61, -60, -1, 0, 300, 301, 3600, 3601]
+            rows = [('eligible', f'2026-09-{day:02}', delay)
+                    for day in range(1, 7) for delay in delays]
+            rows += [('minimum', f'2026-09-{day:02}', 0)
+                     for day in range(1, 6) for _ in range(6)]
+            rows += [('too_few_dates', f'2026-09-{day:02}', 0)
+                     for day in range(1, 5) for _ in range(10)]
+            rows += [('too_few_visits', f'2026-09-{day % 5 + 1:02}', 0)
+                     for day in range(29)]
+            db.executemany('INSERT INTO route_visits VALUES (?, ?, ?)', rows)
+            result = timing_groups(db, {'eligible': {'100m_180s': (2, 1)}})
+            self.assertEqual(set(result), {'eligible', 'minimum'})
+            self.assertEqual(result['minimum']['observations'], 30)
+            self.assertEqual(result['minimum']['distinctDates'], 5)
+            group = result['eligible']
+            self.assertEqual(group['observations'], 48)
+            self.assertEqual(group['distinctDates'], 6)
+            self.assertEqual(group['medianSeconds'], -0.5)
+            self.assertEqual([group[name] for name in ('earlyShare', 'withinShare', 'lateShare')], [.25, .5, .25])
+            self.assertEqual(group['beforeScheduleShare'], .5)
+            self.assertEqual(group['shareIntervals'], [[.25, .25], [.5, .5], [.25, .25]])
+            self.assertEqual(group['nearbyFullBusReports'], 2)
+            self.assertEqual(timing_groups(db, {})['eligible']['nearbyFullBusReports'], 0)
+            db.execute('DELETE FROM route_visits')
+            self.assertEqual(timing_groups(db, {}), {})
+
+    def test_share_intervals_use_daily_clusters(self):
+        import math
+        from build_history import share_intervals
+
+        # Unequal daily volumes and different outcomes expose weighting errors.
+        visits = [4, 8, 3, 6, 9]
+        early = [1, 0, 2, 1, 6]
+        within = [2, 8, 0, 4, 2]
+        late = [1, 0, 1, 1, 1]
+        summary = {'dates': len(visits), 'visits': sum(visits),
+                   'visit_squares': sum(n*n for n in visits)}
+        shares, expected = [], []
+        for name, counts in [('early', early), ('within', within), ('late', late)]:
+            share = sum(counts) / sum(visits)
+            shares.append(share)
+            summary[name + '_squares'] = sum(n*n for n in counts)
+            summary[name + '_cross'] = sum(a*b for a, b in zip(counts, visits))
+            residuals = sum((x - share*n)**2 for x, n in zip(counts, visits))
+            margin = 1.96 * math.sqrt(5/4 * residuals / sum(visits)**2)
+            expected.append([round(max(0, share-margin), 4), round(min(1, share+margin), 4)])
+        self.assertEqual(share_intervals(shares, summary), expected)
+
 if __name__=='__main__':unittest.main()
