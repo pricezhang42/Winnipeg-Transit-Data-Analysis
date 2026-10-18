@@ -1,3 +1,8 @@
+> **Current builder (October 18, 2026):** [report-time pass-up aggregation](REPORT_TIME_PASSUPS.md)
+> supersedes the visit-matching procedure below. It exports report counts and policy
+> comparisons separately; it does not publish visit-based risk labels for those counts.
+> Older build results below remain historical snapshots.
+
 ## Current production matcher
 
 The `build_history.py` nearest-only matcher uses the nearest stop and nearest

@@ -1,3 +1,8 @@
+> **Current builder (October 18, 2026):** [report-time pass-up aggregation](REPORT_TIME_PASSUPS.md)
+> supersedes the visit-matching procedure below. It exports report counts and policy
+> comparisons separately; it does not publish visit-based risk labels for those counts.
+> Older build results below remain historical snapshots.
+
 # Current grouping: two-hour window, all seasons pooled (`route-stop-destination-daytype-2hour-v1`)
 
 Departure timing and pass-up risk use the same groups: exact route, boarding stop, normalized destination (direction), weekday/weekend and a fixed two-hour Winnipeg local window. Windows start on even hours and are keyed by that hour: `16` covers 16:00–17:59, `18` covers 18:00–19:59. Season is no longer part of the group; July 2025–September 2026 history is pooled. Statistics are recalculated from individual visits and matched reports, not by averaging hourly or seasonal summaries. Evidence thresholds are unchanged: timing needs 30 visits across 5 dates; pass-up categories use `reported-pattern-v2`: every gate below except the dropped unresolved-report rule. Both manifests record `grouping` and `groupWindowMinutes: 120`, and the backend refuses artifacts with any other grouping (timing Unavailable, risk Unknown), so older one-hour or seasonal files cannot be matched by mistake. Sections below that mention season or one-hour bins describe earlier releases.

@@ -1,4 +1,4 @@
-"""Nearest-only matching retains limits, route/date context and visit deduplication."""
+"""Report-only grouping never requires an actual departure or a visit identity."""
 import csv
 import json
 import tempfile
@@ -8,8 +8,8 @@ from datetime import datetime
 from pathlib import Path
 
 import duckdb
-
-from build_history import match_reports, nearest_stop_candidates, nearest_visits, stops_on_report_days
+from build_history import match_reports, nearest_stop_candidates, report_evidence
+from report_policy_review import candidate_level, summarize_candidates
 
 
 class MatchingTests(unittest.TestCase):
@@ -17,80 +17,118 @@ class MatchingTests(unittest.TestCase):
         self.db = duckdb.connect()
         self.addCleanup(self.db.close)
         self.day = datetime(2026, 9, 25).date()
+        # Deliberately omit actual departure timestamps and visit IDs.
         self.db.execute('''CREATE TABLE grouped_visits(
-          vid BIGINT, route VARCHAR, dest VARCHAR, day DATE, stop VARCHAR,
-          lon DOUBLE, lat DOUBLE, g VARCHAR, actual TIMESTAMP, actual_day DATE)''')
-        self.group = '["F8","A","downtown","weekday",12]'
-        # A's coordinates span >30 m, but average exactly to the report position.
-        # B is only about 7 m away: it must not disqualify A as a runner-up.
-        self.db.executemany('INSERT INTO grouped_visits VALUES (?,?,?,?,?,?,?,?,?,?)', [
-            (1, 'F8', 'downtown', self.day, 'A', -97.001, 49, self.group, '2026-09-25T13:00:00', self.day),
-            (2, 'F8', 'downtown', self.day, 'A', -96.999, 49, self.group, '2026-09-25T13:00:20', self.day),
-            (3, 'F8', 'downtown', self.day, 'B', -97.0001, 49, 'other', '2026-09-25T13:00:09', self.day),
+          route VARCHAR, dest VARCHAR, day DATE, stop VARCHAR, lon DOUBLE, lat DOUBLE)''')
+        self.db.executemany('INSERT INTO grouped_visits VALUES (?,?,?,?,?,?)', [
+            ('F8', 'downtown', self.day, 'A', -97.001, 49),
+            ('F8', 'downtown', self.day, 'A', -96.999, 49),
+            ('F8', 'downtown', self.day, 'B', -97.0001, 49),
+            ('F8', 'downtown', '2026-09-26', 'A', -97, 49),
         ])
+        self.folder = tempfile.TemporaryDirectory()
+        self.addCleanup(self.folder.cleanup)
+        self.work = Path(self.folder.name)
 
-    def candidate(self, report='r', time='2026-09-25T13:00:09', stop='A'):
-        when = datetime.fromisoformat(time)
-        return (report, 'F8', 'downtown', stop, when, when.date(), 0)
+    def match(self, entries):
+        source = self.work / 'reports.csv'
+        base = {'Pass-Up ID': 'r', 'Pass-Up Type': 'Full Bus Pass-Up',
+                'Time': '09/25/2026 01:00:09 PM', 'Route Number': 'F8',
+                'Route Destination': 'Downtown', 'Location': 'POINT (-97 49)'}
+        with source.open('w', newline='') as f:
+            writer = csv.DictWriter(f, fieldnames=list(base))
+            writer.writeheader()
+            writer.writerows({**base, **entry} for entry in entries)
+        return match_reports(self.db, source, {'dailyCoverage': [{'date': '2026-09-25'}, {'date': '2026-09-26'}]}, self.work)
 
-    def test_spread_and_close_runner_ups_do_not_disqualify_nearest(self):
-        with tempfile.TemporaryDirectory() as folder:
-            work = Path(folder)
-            source = work / 'reports.csv'
-            row = {'Pass-Up ID': 'r1', 'Pass-Up Type': 'Full Bus Pass-Up',
-                   'Time': '09/25/2026 01:00:09 PM', 'Route Number': 'F8',
-                   'Route Destination': 'Downtown', 'Location': 'POINT (-97 49)'}
-            with source.open('w', newline='') as f:
-                writer = csv.DictWriter(f, fieldnames=list(row))
-                writer.writeheader()
-                writer.writerows([row, {**row, 'Pass-Up ID': 'r2'}])
-            groups, audit = match_reports(self.db, source, {'dailyCoverage': [{'date': str(self.day)}]}, work)
-            stops = stops_on_report_days(self.db)
-            self.assertEqual(set(stops[('F8', 'downtown', self.day)]), {'A', 'B'})
-            for profile in ['60m_120s', '100m_180s', '150m_300s']:
-                self.assertEqual(groups[self.group][profile], (1, 1))
-                self.assertEqual(audit[profile + 'Reports'], 2)
-            matches = json.loads((work / 'matches.json').read_text())
-            self.assertEqual({m['visit'] for m in matches}, {1})
-            self.assertNotIn('noNearbyStop', audit)
-            self.assertNotIn('noTimedVisit', audit)
+    def test_reports_count_independently_and_duplicate_ids_do_not(self):
+        groups, audit = self.match([{'Pass-Up ID': 'r1'}, {'Pass-Up ID': 'r2'}, {'Pass-Up ID': 'r1'}])
+        group = groups['["F8","A","downtown","weekday",12]']
+        for name in ('60m', '100m', '150m'):
+            self.assertEqual(group['profiles'][name], {'reports': 2, 'reportDates': 1})
+        self.assertEqual(audit['matchedReports'], 2)
+        self.assertEqual(audit['duplicateReports'], 1)
+        matches = json.loads((self.work / 'matches.json').read_text())
+        self.assertTrue(all('visit' not in row and 'timeSeconds' not in row for row in matches))
+        self.assertEqual({row['stop'] for row in matches}, {'A'})
+        self.assertEqual(group['coverageStart'], '2026-09-25')
 
-    def test_nearest_stop_limits_context_and_ties(self):
+    def test_report_timestamp_controls_window_date_and_weekend(self):
+        groups, audit = self.match([
+            {'Pass-Up ID': 'before', 'Time': '09/25/2026 01:59:59 PM'},
+            {'Pass-Up ID': 'after', 'Time': '09/25/2026 02:00:00 PM'},
+            {'Pass-Up ID': 'midnight-before', 'Time': '09/25/2026 11:59:59 PM'},
+            {'Pass-Up ID': 'midnight-after', 'Time': '09/26/2026 12:00:00 AM'},
+        ])
+        contexts = {(json.loads(g)[3], json.loads(g)[4]) for g in groups}
+        self.assertEqual(contexts, {('weekday', 12), ('weekday', 14), ('weekday', 22), ('weekend', 0)})
+        self.assertEqual(audit['matchedReports'], 4)
+
+    def test_spatial_profiles_and_outer_limit_remain(self):
+        groups, audit = self.match([
+            {'Pass-Up ID': '70m', 'Location': 'POINT (-97 49.00063)'},
+            {'Pass-Up ID': 'far', 'Location': 'POINT (-97 49.002)'},
+        ])
+        group = next(iter(groups.values()))
+        self.assertNotIn('60m', group['profiles'])
+        self.assertEqual(group['profiles']['100m']['reports'], 1)
+        self.assertEqual(audit['noNearbyStop'], 1)
+        self.assertEqual(audit['matchedReports'], 1)
+
+    def test_report_group_without_departures_is_preserved(self):
+        reports, _ = self.match([{'Time': '09/25/2026 02:00:00 PM'}])
+        self.db.execute('CREATE TABLE route_visits(g VARCHAR, day DATE)')
+        self.db.execute("INSERT INTO route_visits VALUES ('[\"F8\",\"A\",\"downtown\",\"weekday\",12]', '2026-09-25')")
+        groups = report_evidence(self.db, reports, 'F8')
+        reported = groups['["F8","A","downtown","weekday",14]']
+        self.assertEqual(reported['reportCount'], 1)
+        self.assertEqual(reported['recordedDepartures'], 0)
+        scheduled = groups['["F8","A","downtown","weekday",12]']
+        self.assertEqual(scheduled['reportCount'], 0)
+        self.assertEqual(scheduled['recordedDepartures'], 1)
+
+    def test_nearest_stop_missing_context_and_ties(self):
         when = datetime(2026, 9, 25, 13)
         reports = [('r', 'F8', 'downtown', when, self.day, -97, 49)]
         context = ('F8', 'downtown', self.day)
         audit = Counter()
-        stops = {context: {'B': (-97, 49), 'A': (-97, 49)}}
-        self.assertEqual(nearest_stop_candidates(reports, stops, audit)[0][3], 'A')
-        for stops in [{}, {context: {'far': (-98, 49)}}, {('F8', 'other', self.day): {'A': (-97, 49)}}]:
-            self.assertEqual(nearest_stop_candidates(reports, stops, audit), [])
-        self.assertEqual(audit['noNearbyStop'], 3)
+        self.assertEqual(nearest_stop_candidates(reports, {context: {'B': (-97, 49), 'A': (-97, 49)}}, audit)[0][3], 'A')
+        self.assertEqual(nearest_stop_candidates(reports, {}, audit), [])
+        self.assertEqual(audit['noNearbyStop'], 1)
 
-    def test_nearest_visit_ties_limits_and_missing_stop(self):
-        candidates = [self.candidate('tie', '2026-09-25T13:00:10'),
-                      self.candidate('limit', '2026-09-25T12:55:00'),
-                      self.candidate('outside', '2026-09-25T12:54:59'),
-                      self.candidate('missing', stop='missing')]
-        nearest = nearest_visits(self.db, candidates)
-        self.assertEqual(set(nearest), {'tie', 'limit'})
-        self.assertEqual(nearest['tie'][0], 1)
-        self.assertEqual(nearest['limit'][3], 300)
+    def test_empty_and_out_of_scope_reports(self):
+        groups, audit = self.match([])
+        self.assertEqual(groups, {})
+        self.assertEqual(audit['matchedReports'], 0)
+        groups, audit = self.match([
+            {'Pass-Up ID': 'other', 'Pass-Up Type': 'Wheelchair User Pass-Up'},
+            {'Pass-Up ID': 'old', 'Time': '09/24/2026 01:00:00 PM'},
+            {'Pass-Up ID': 'bad', 'Location': 'invalid'},
+        ])
+        self.assertEqual(groups, {})
+        self.assertEqual(audit['nonFullBusReports'], 1)
+        self.assertEqual(audit['outsideCoveredDates'], 1)
+        self.assertEqual(audit['invalidCoordinates'], 1)
 
-    def test_visit_matching_crosses_midnight(self):
-        self.db.execute("UPDATE grouped_visits SET actual='2026-09-25T23:59:59' WHERE vid=1")
-        nearest = nearest_visits(self.db, [self.candidate(time='2026-09-26T00:00:01')])
-        self.assertEqual(nearest['r'][0], 1)
-        self.assertEqual(nearest['r'][3], 2)
 
-    def test_no_covered_reports_is_an_empty_match(self):
-        with tempfile.TemporaryDirectory() as folder:
-            work = Path(folder)
-            source = work / 'empty.csv'
-            source.write_text('Pass-Up ID,Pass-Up Type,Time,Route Number,Route Destination,Location\n')
-            groups, audit = match_reports(self.db, source, {'dailyCoverage': []}, work)
-            self.assertEqual(groups, {})
-            self.assertEqual(audit.get('sourceReports', 0), 0)
-            self.assertEqual(json.loads((work / 'matches.json').read_text()), [])
+class CandidateReviewTests(unittest.TestCase):
+    def test_candidate_comparisons_are_not_production_labels(self):
+        group = {'recordedDepartures': 120, 'departureDates': 12, 'reportCount': 5, 'reportDates': 3,
+                 'profiles': {p: {'reports': 5, 'reportDates': 3} for p in ('60m', '100m', '150m')}}
+        result = summarize_candidates({'g': group})
+        self.assertFalse(result['productionLabelsAssigned'])
+        self.assertEqual(result['status'], 'pending_policy_review')
+        self.assertEqual(result['candidates']['report_count_and_persistence']['labelCounts']['high'], 1)
+        group['profiles']['60m']['reports'] = 1
+        result = summarize_candidates({'g': group})
+        self.assertEqual(result['candidates']['report_count_and_persistence']['labelCounts']['unknown'], 1)
+
+    def test_reports_are_not_capped_at_recorded_departures(self):
+        group = {'recordedDepartures': 60, 'departureDates': 10,
+                 'profiles': {'150m': {'reports': 100, 'reportDates': 3}}}
+        self.assertEqual(candidate_level(group, '150m', 'report_count_and_persistence'), 'high')
+        group['recordedDepartures'] = 0
+        self.assertEqual(candidate_level(group, '150m', 'report_count_and_persistence'), 'unknown')
 
 
 if __name__ == '__main__':
