@@ -4,9 +4,9 @@ The `build_history.py` nearest-only matcher uses the nearest stop and nearest
 actual departure within the existing profile limits. It does not exclude stops
 for coordinate spread or require separation from runner-up candidates. See
 [HISTORICAL_DATA.md](HISTORICAL_DATA.md#nearest-only-pass-up-matching-update) for
-tie handling, audit names, and artifact metadata. Historical counts and legacy
-audit rules below predate this matcher; regenerate artifacts before claiming new
-coverage or label counts.
+tie handling, audit names, and artifact metadata. The October 17 rebuild produced 70,532 Low, 30 Medium, no High and 23,045
+Unknown groups; see the linked rebuild audit. Historical counts and legacy audit
+rules below predate this matcher. Backend artifacts have not been replaced.
 
 # Current grouping: two-hour window, all seasons pooled (`route-stop-destination-daytype-2hour-v1`)
 

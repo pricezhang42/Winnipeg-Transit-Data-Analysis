@@ -2,7 +2,7 @@
 
 Departure timing and pass-up risk use the same groups: exact route, boarding stop, normalized destination (direction), weekday/weekend and a fixed two-hour Winnipeg local window. Windows start on even hours and are keyed by that hour: `16` covers 16:00–17:59, `18` covers 18:00–19:59. Season is no longer part of the group; July 2025–September 2026 history is pooled. Statistics are recalculated from individual visits and matched reports, not by averaging hourly or seasonal summaries. Evidence thresholds are unchanged: timing needs 30 visits across 5 dates; pass-up categories use `reported-pattern-v2`: every gate below except the dropped unresolved-report rule. Both manifests record `grouping` and `groupWindowMinutes: 120`, and the backend refuses artifacts with any other grouping (timing Unavailable, risk Unknown), so older one-hour or seasonal files cannot be matched by mistake. Sections below that mention season or one-hour bins describe earlier releases.
 
-Build of September 26, 2026 (`reports/history-2hour-20260926`, same 13 archives + recent CSV, 46,948,677 retained visits, coverage July 1, 2025–September 24, 2026, 72 routes):
+Previous build of September 26, 2026 (`reports/history-2hour-20260926`, same 13 archives + recent CSV, 46,948,677 retained visits, coverage July 1, 2025–September 24, 2026, 72 routes):
 
 - 83,568 departure-timing groups (previous hourly seasonal build: 341,722 smaller groups).
 - Pass-up categories (`reported-pattern-v2`): 70,544 Low, 28 Medium, 0 High, 23,035 Unknown (22,983 insufficient history/persistence, 52 matching-sensitive). Previous hourly seasonal build (v1): 150,266 Low, 30 Medium, 0 High.
@@ -28,8 +28,35 @@ New artifacts and reports record `passupMatchingMethod` as
 `nearest-stop-nearest-visit-v1`. The category thresholds and `reported-pattern-v2`
 label policy remain unchanged. This changes matching semantics and can change
 pass-up counts/labels after a rebuild. Previously published counts below describe
-the older matching method; no full-history rebuild or deployment is included here.
+the older matching method. The October 17 rebuild results are recorded below;
+backend artifacts have not been replaced or deployed.
 The legacy `audit_passups.py` audit retains its own conservative matching rules.
+
+## Nearest-only rebuild: October 17, 2026
+
+Outputs: `reports/history-nearest-20261017/`; comparison and validation:
+[`build-comparison.json`](reports/history-nearest-20261017/build-comparison.json).
+All 14 departure input fingerprints were verified before reusing the cleaned
+46,948,677-visit database with `--skip-import`. Coverage remains July 1, 2025–
+September 24, 2026; rebuilding does not extend data freshness.
+
+| Matching profile | Previous reports | Nearest-only reports | Previous distinct visits | Nearest-only distinct visits |
+|---|---:|---:|---:|---:|
+| 60 m / 120 s | 4,557 | 4,947 | 4,411 | 4,784 |
+| 100 m / 180 s | 5,979 | 6,575 | 5,763 | 6,326 |
+| 150 m / 300 s | 7,213 | 8,021 | 6,910 | 7,667 |
+
+Of 16,049 covered full-bus reports, one has invalid coordinates, 4,561 have no
+stop within the broad distance limit, and 3,466 have no visit within the broad
+time limit. This leaves 8,021 reports; repeated reports collapse to 7,667 visits.
+Pass-up labels: 70,532 Low, 30 Medium, no High, 23,045 Unknown (22,983 insufficient
+history/persistence; 62 matching-sensitive).
+
+All 83,568 timing groups were compared against the previous backend artifacts:
+departure statistics are identical, with only the auxiliary report count changing
+in 263 groups. All 70,562 supported risk groups were checked against the evidence
+and category rules for each profile. The artifacts have not been installed into
+the backend or deployed. Raw data and previous build outputs remain unchanged.
 
 # Expanded post-overhaul history
 
