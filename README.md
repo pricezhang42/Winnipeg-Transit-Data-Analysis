@@ -2,6 +2,17 @@
 
 Prepare the downloaded on-time performance CSV, audit the data, and establish a historical-median baseline for BLUE. The original download remains the source of record. No API key or live service is required.
 
+## Current reliability artifacts
+
+For the all-route departure-timing and pass-up report-count pipeline, use
+[HISTORICAL_DATA.md](HISTORICAL_DATA.md) and
+[REPORT_TIME_PASSUPS.md](REPORT_TIME_PASSUPS.md). `src/build_history.py` is the
+current builder. It matches reports to stops and groups by report timestamps;
+report-based category rules and backend integration remain under review.
+
+The separate BLUE prediction, collection and dashboard workflows below remain
+available for analysis and visualization.
+
 ## Run
 
 Python 3.12 is the verified version. To set up a fresh environment:

@@ -10,11 +10,12 @@ Pipeline (each stage is a function below):
                  stop (`visits`). Counts of everything dropped go into the audit.
   3. Coverage    Write `source-report.json`: input file hashes, the audit and how
                  many visits each date has.
-  4. Pass-ups    Match City full-bus pass-up reports to the recorded visit they most
-                 likely describe, under three distance/time tolerance profiles.
-  5. Summaries   For each route, compute departure-timing statistics per group and a
-                 Low/Medium/High pass-up label per group (see passup_policy.py).
-  6. Export      Write per-route JSON files plus the two manifests the backend loads.
+  4. Pass-ups    Match reports to the nearest date-specific route stop and group
+                 by report time, under three spatial-only tolerance profiles.
+  5. Summaries   For each route, compute departure timing and report-count evidence.
+                 Candidate labels are reviewed separately, never published as policy.
+  6. Export      Write timing artifacts, versioned report evidence and policy review.
+                 Report evidence is not a visit-based pass-up-risk artifact.
 
 A "group" is route + boarding stop + destination (direction) + weekday/weekend +
 two-hour window. All seasons are pooled. Group keys are JSON arrays such as
@@ -37,13 +38,12 @@ from urllib.parse import quote
 
 import duckdb
 
-from export_reliability import destination, digest, distance, point
-from passup_policy import POLICY, classify
+from history_utils import destination, digest, distance, point
+from report_policy_review import summarize_candidates
 
 # --- Settings ---------------------------------------------------------------
 
 OVERHAUL_START = '2025-06-29'          # Winnipeg's new network launched this day
-START = OVERHAUL_START                 # older name, kept for callers
 GROUPING = 'route-stop-destination-daytype-2hour-v1'
 WINDOW_HOURS = 2
 WINDOW_MINUTES = WINDOW_HOURS * 60
@@ -59,16 +59,13 @@ MIN_OBSERVATIONS = 30
 MIN_DATES = 5
 Z_95 = 1.96                            # normal quantile for 95% share intervals
 
-# Pass-up report matching. A report must sit near one stop clearly closer than any
-# other, and near one visit clearly closer in time than any other.
+# Match reports spatially, then group by their own Winnipeg local timestamps.
+# Profiles test spatial sensitivity only; there is no visit or time-gap matching.
 STOP_MAX_METRES = 150
-STOP_MIN_GAP_METRES = 30               # nearest stop must beat the runner-up by this
-UNSTABLE_STOP_METRES = 30              # a stop that moved more than this in a day is skipped
-VISIT_MAX_SECONDS = 300
-VISIT_MIN_GAP_SECONDS = 60             # nearest visit must beat the runner-up by this
-# (name, max metres, max seconds): labels must agree under all three tolerances.
-PROFILES = [('60m_120s', 60, 120), ('100m_180s', 100, 180), ('150m_300s', 150, 300)]
-TIMING_REPORT_PROFILE = '100m_180s'    # profile behind nearbyFullBusReports
+PROFILES = [('60m', 60), ('100m', 100), ('150m', 150)]
+MATCHING_METHOD = 'nearest-stop-report-time-v1'
+TIMING_REPORT_PROFILE = '100m'         # profile behind nearbyFullBusReports
+REPORT_EVIDENCE_VERSION = 'stop-report-counts-v1'
 
 INTERVAL_METHOD = '95% normal approximation with daily cluster-robust variance; descriptive, not forecast coverage'
 
@@ -199,15 +196,12 @@ def clean_visits(db):
     audit['conflictingVisitIdentities'] = count(db, 'SELECT count(*) FROM identities WHERE is_conflict')
     audit['collapsedConsistentCopies'] = count(db, 'SELECT coalesce(sum(copies - 1), 0) FROM identities WHERE NOT is_conflict')
 
-    # vid: visit id used by pass-up matching. actual/actual_day: when the bus really
-    # left, which is what a pass-up report's timestamp is compared with.
+    # Retain only fields used by timing, stop matching and exposure references.
     # hour: start of the two-hour window. g: the group key (see module docstring).
     db.execute(f'''CREATE OR REPLACE TABLE visits AS
       SELECT *, cast(json_array(route, stop, dest, daytype, hour) AS VARCHAR) AS g FROM (
-        SELECT row_number() OVER () AS vid, route, stop, dest, scheduled, delay, lon, lat,
-               scheduled + delay * INTERVAL 1 SECOND AS actual,
+        SELECT route, stop, dest, scheduled, delay, lon, lat,
                cast(scheduled AS DATE) AS day,
-               cast(scheduled + delay * INTERVAL 1 SECOND AS DATE) AS actual_day,
                CASE WHEN dayofweek(scheduled) IN (0, 6) THEN 'weekend' ELSE 'weekday' END AS daytype,
                cast(hour(scheduled) - hour(scheduled) % {WINDOW_HOURS} AS INTEGER) AS hour
         FROM identities WHERE NOT is_conflict)''')
@@ -250,9 +244,11 @@ def read_reports(passups, covered_dates, audit):
         for row in csv.DictReader(f):
             audit['sourceReports'] += 1
             if row['Pass-Up Type'] != 'Full Bus Pass-Up':
+                audit['nonFullBusReports'] += 1
                 continue
             dt = datetime.strptime(row['Time'], '%m/%d/%Y %I:%M:%S %p')
             if dt.date().isoformat() not in covered_dates:
+                audit['outsideCoveredDates'] += 1
                 continue
             audit['reportsOnCoveredDates'] += 1
             if row['Pass-Up ID'] in seen:
@@ -267,105 +263,68 @@ def read_reports(passups, covered_dates, audit):
     return reports
 
 def stops_on_report_days(db):
-    """Where each stop of a route/direction was on each day that has a report.
-
-    Uses that day's recorded coordinates, since stops move over a year. A stop whose
-    coordinates spread more than UNSTABLE_STOP_METRES within the day is unstable.
-    """
+    """Average each stop's valid coordinates on the report's route/direction/date."""
     db.execute('''CREATE OR REPLACE TABLE day_stops AS
-      SELECT v.route, v.dest, v.day, v.stop, avg(v.lon) lon, avg(v.lat) lat,
-             min(v.lon) lo_lon, max(v.lon) hi_lon, min(v.lat) lo_lat, max(v.lat) hi_lat
+      SELECT v.route, v.dest, v.day, v.stop, avg(v.lon) lon, avg(v.lat) lat
       FROM grouped_visits v SEMI JOIN (SELECT DISTINCT route, dest, day FROM reports) r USING (route, dest, day)
       WHERE v.lon BETWEEN -180 AND 180 AND v.lat BETWEEN -90 AND 90
       GROUP BY v.route, v.dest, v.day, v.stop''')
-    stops, unstable = defaultdict(dict), set()
-    for route, dest, day, stop, lon, lat, lo_lon, hi_lon, lo_lat, hi_lat in db.execute('SELECT * FROM day_stops').fetchall():
+    stops = defaultdict(dict)
+    for route, dest, day, stop, lon, lat in db.execute('SELECT * FROM day_stops').fetchall():
         stops[(route, dest, day)][stop] = (lon, lat)
-        if distance((lo_lon, lo_lat), (hi_lon, hi_lat)) > UNSTABLE_STOP_METRES:
-            unstable.add((route, dest, day, stop))
-    return stops, unstable
+    return stops
 
-def nearest_stop_candidates(reports, stops, unstable, audit):
-    """Assign each report to its nearest stop when that stop is clearly the one meant."""
+
+def nearest_stop_candidates(reports, stops, audit):
+    """Pick the nearest stop within STOP_MAX_METRES; stop ID breaks distance ties."""
     candidates = []
     for rid, route, dest, dt, day, lon, lat in reports:
-        ranked = sorted((distance((lon, lat), p), s) for s, p in stops[(route, dest, day)].items())[:2]
-        clear = (ranked and ranked[0][0] <= STOP_MAX_METRES
-                 and (len(ranked) == 1 or ranked[1][0] - ranked[0][0] >= STOP_MIN_GAP_METRES)
-                 and (route, dest, day, ranked[0][1]) not in unstable)
-        if clear:
-            candidates.append((rid, route, dest, ranked[0][1], dt, day, ranked[0][0]))
-        else:
-            audit['noUnambiguousNearbyStop'] += 1
+        nearest = min(((distance((lon, lat), coords), stop)
+                       for stop, coords in stops.get((route, dest, day), {}).items()), default=None)
+        if nearest is None or nearest[0] > STOP_MAX_METRES:
+            audit['noNearbyStop'] += 1
+            continue
+        meters, stop = nearest
+        candidates.append((rid, route, dest, stop, dt, day, meters))
     return candidates
 
-def nearest_visits(db, candidates):
-    """For each report, the two recorded visits at its stop closest in actual departure time.
-
-    Visits on the report day and the days either side are considered (a late bus can
-    cross midnight), within VISIT_MAX_SECONDS of the report time.
-    """
-    db.execute('CREATE OR REPLACE TABLE candidates(rid VARCHAR, route VARCHAR, dest VARCHAR, stop VARCHAR, reported TIMESTAMP, day DATE, meters DOUBLE)')
-    if candidates:
-        db.executemany('INSERT INTO candidates VALUES (?,?,?,?,?,?,?)', candidates)
-    db.execute(f'''CREATE OR REPLACE TABLE timed AS
-      WITH report_days AS (
-        SELECT *, cast(day + shift * INTERVAL 1 DAY AS DATE) AS join_day
-        FROM candidates CROSS JOIN (VALUES (-1), (0), (1)) d(shift))
-      SELECT c.rid, v.vid, v.g, v.day, abs(epoch(v.actual) - epoch(c.reported)) AS delta,
-             row_number() OVER (PARTITION BY c.rid ORDER BY abs(epoch(v.actual) - epoch(c.reported)), v.vid) AS ranking
-      FROM report_days c
-      JOIN grouped_visits v ON c.route = v.route AND c.dest = v.dest AND c.stop = v.stop AND c.join_day = v.actual_day
-      WHERE abs(epoch(v.actual) - epoch(c.reported)) <= {VISIT_MAX_SECONDS}
-      QUALIFY ranking <= 2''')
-    timed = defaultdict(list)
-    for rid, vid, g, day, delta, ranking in db.execute('SELECT * FROM timed ORDER BY rid, ranking').fetchall():
-        timed[rid].append((vid, g, day, delta))
-    return timed
 
 def match_reports(db, passups, meta, work):
-    """Stage 4: count matched pass-up reports per group, per matching profile.
+    """Match a nearest stop and count unique report IDs by report time and date.
 
-    Returns (profile_groups, audit): profile_groups[g][profile] = (matched visits,
-    distinct dates). A report counts once, for its single clearly nearest visit;
-    several reports on one visit count once. Unmatched reports are only audited
-    (policy reported-pattern-v2). Writes matches.json and passup-audit.json to `work`.
+    Different IDs are different reports even if they may describe the same bus.
+    Departure timestamps and visit IDs never determine report membership.
     """
     audit = Counter()
     reports = read_reports(passups, {r['date'] for r in meta['dailyCoverage']}, audit)
     db.execute('CREATE OR REPLACE TABLE reports(rid VARCHAR, route VARCHAR, dest VARCHAR, reported TIMESTAMP, day DATE, lon DOUBLE, lat DOUBLE)')
-    db.executemany('INSERT INTO reports VALUES (?,?,?,?,?,?,?)', reports)
-    print('Matching ' + str(len(reports)) + ' reports with date-specific route stops', flush=True)
-    stops, unstable = stops_on_report_days(db)
-    candidates = nearest_stop_candidates(reports, stops, unstable, audit)
-    timed = nearest_visits(db, candidates)
-
-    accepted, match_rows = defaultdict(dict), []   # accepted[profile][visit id] = (group, date)
-    for rid, route, dest, stop, dt, day, meters in candidates:
-        visits = timed[rid]
-        clear = visits and (len(visits) == 1 or visits[1][3] - visits[0][3] >= VISIT_MIN_GAP_SECONDS)
-        if not clear:
-            audit['noUnambiguousTimedVisit'] += 1
-        for profile, max_metres, max_seconds in PROFILES:
-            if clear and meters <= max_metres and visits[0][3] <= max_seconds:
-                vid, g, visit_day, delta = visits[0]
-                accepted[profile][vid] = (g, visit_day)
+    if reports:
+        db.executemany('INSERT INTO reports VALUES (?,?,?,?,?,?,?)', reports)
+    print('Matching ' + str(len(reports)) + ' reports to date-specific route stops', flush=True)
+    candidates = nearest_stop_candidates(reports, stops_on_report_days(db), audit)
+    grouped = defaultdict(lambda: defaultdict(dict))
+    match_rows = []
+    for rid, route, dest, stop, reported, day, meters in candidates:
+        group = key(route, stop, dest, reported)
+        for profile, max_metres in PROFILES:
+            if meters <= max_metres:
+                grouped[group][profile][rid] = day.isoformat()
                 audit[profile + 'Reports'] += 1
-                match_rows.append({'report': rid, 'profile': profile, 'visit': vid, 'group': g, 'date': str(visit_day),
-                                   'distanceMeters': round(meters, 2), 'timeSeconds': delta})
-
-    profile_groups = defaultdict(dict)
-    for profile, visits in accepted.items():
-        matched, dates = Counter(), defaultdict(set)
-        for g, day in visits.values():
-            matched[g] += 1
-            dates[g].add(day)
-        for g, n in matched.items():
-            profile_groups[g][profile] = (n, len(dates[g]))
-        audit[profile + 'DistinctVisits'] = len(visits)
+                match_rows.append({'report': rid, 'profile': profile, 'stop': stop, 'group': group,
+                                   'reportedTime': reported.isoformat(), 'date': day.isoformat(),
+                                   'distanceMeters': round(meters, 2)})
+    evidence = {}
+    for group, profiles in grouped.items():
+        dates = list(profiles['150m'].values())
+        evidence[group] = {
+            'coverageStart': min(dates), 'coverageEnd': max(dates),
+            'profiles': {name: {'reports': len(ids), 'reportDates': len(set(ids.values()))}
+                         for name, ids in profiles.items()},
+        }
+    audit['matchedReports'] = len(candidates)
     write(work / 'matches.json', match_rows)
     write(work / 'passup-audit.json', dict(audit))
-    return profile_groups, dict(audit)
+    return evidence, dict(audit)
 
 # --- Stage 5: per-route summaries ------------------------------------------------------
 
@@ -396,11 +355,11 @@ def share_intervals(shares, daily):
     return intervals
 
 
-def timing_groups(db, profiles):
+def timing_groups(db, reports):
     """Summarize timing in three steps: daily counts, eligible groups, quantiles.
 
     All timing counts use the same filtered visits and threshold definitions.
-    Pass-up denominators are separate and still retain very late recorded visits.
+    Departure exposure references are separate and retain very late recorded visits.
     """
     db.execute(f'''CREATE OR REPLACE TEMP TABLE daily AS
       SELECT g, day, count(*) AS visits,
@@ -442,26 +401,34 @@ def timing_groups(db, profiles):
             'earlyShare': shares[0], 'withinShare': shares[1], 'lateShare': shares[2],
             'beforeScheduleShare': summary['before_schedule'] / visits,
             'shareIntervals': share_intervals(shares, summary),
-            'nearbyFullBusReports': profiles.get(group, {}).get(TIMING_REPORT_PROFILE, (0, 0))[0],
+            'nearbyFullBusReports': reports.get(group, {}).get('profiles', {}).get(TIMING_REPORT_PROFILE, {}).get('reports', 0),
         }
     return timing
 
-def risk_groups(db, profiles, labels, reasons):
-    """Pass-up label for every group of the current route; only Low/Medium/High are kept.
+def report_evidence(db, reports, route):
+    """Keep report groups even when no scheduled departures share their window.
 
-    Every recorded visit counts in the denominator, however late. Label and reason
-    tallies are added to `labels` and `reasons`.
+    Recorded departures are exposure context, not a denominator for a probability:
+    report groups use reported times; reference visits use scheduled times.
     """
-    risk = {}
-    for g, n, days, lo, hi in db.execute('SELECT g, count(*), count(DISTINCT day), min(day), max(day) FROM route_visits GROUP BY g').fetchall():
-        level, reason = classify(n, days, profiles[g])
-        labels[level] += 1
-        reasons[reason] += 1
-        if level != 'unknown':
-            risk[g] = {'level': level, 'recordedVisits': n, 'distinctDates': days, 'coverageStart': str(lo), 'coverageEnd': str(hi),
-                       'profiles': {p: {'reportedVisits': profiles[g].get(p, (0, 0))[0], 'reportDates': profiles[g].get(p, (0, 0))[1]}
-                                    for p in POLICY['profiles']}}
-    return risk
+    references = {g: {'recordedDepartures': n, 'departureDates': dates,
+                      'referenceCoverageStart': str(lo), 'referenceCoverageEnd': str(hi)}
+                  for g, n, dates, lo, hi in db.execute(
+                      'SELECT g, count(*), count(DISTINCT day), min(day), max(day) FROM route_visits GROUP BY g').fetchall()}
+    groups = set(references) | {g for g in reports if json.loads(g)[0] == route}
+    evidence = {}
+    for group in sorted(groups):
+        matched = reports.get(group, {})
+        profiles = {name: matched.get('profiles', {}).get(name, {'reports': 0, 'reportDates': 0})
+                    for name, _ in PROFILES}
+        evidence[group] = {
+            **references.get(group, {'recordedDepartures': 0, 'departureDates': 0,
+                                     'referenceCoverageStart': None, 'referenceCoverageEnd': None}),
+            'reportCount': profiles['150m']['reports'], 'reportDates': profiles['150m']['reportDates'],
+            'coverageStart': matched.get('coverageStart'), 'coverageEnd': matched.get('coverageEnd'),
+            'profiles': profiles,
+        }
+    return evidence
 
 # --- Stage 6: export -------------------------------------------------------------------
 
@@ -473,37 +440,45 @@ def write_route_groups(out, folder, route, groups):
 
 
 def export(db, meta, passups, out, work):
-    """Stages 4-6: match reports, summarise each route and write all artifacts to `out`."""
+    """Stages 4-6: aggregate reports, summarize timing and write evidence/review files."""
     # Recompute group keys from the stored columns, so a database imported with an
     # older grouping (e.g. one-hour or seasonal keys) is still exported correctly.
     db.execute(f"CREATE OR REPLACE TEMP VIEW grouped_visits AS SELECT * EXCLUDE (g), "
                f"cast(json_array(route, stop, dest, daytype, hour - hour % {WINDOW_HOURS}) AS VARCHAR) g FROM visits")
-    profiles, report_audit = match_reports(db, passups, meta, work)
+    reports, report_audit = match_reports(db, passups, meta, work)
+    meta['passupMatchingMethod'] = MATCHING_METHOD
     meta['sources']['passups'] = {'file': Path(passups).name, 'sha256': digest(passups)}
 
     routes = [r[0] for r in db.execute('SELECT DISTINCT route FROM visits ORDER BY route').fetchall()]
-    timing_files, risk_files, labels, reasons, total_groups = {}, {}, Counter(), Counter(), 0
+    timing_files, report_files, total_groups = {}, {}, 0
+    review_groups = {}
     for route in routes:
         print('Summarizing ' + route, flush=True)
         db.execute('CREATE OR REPLACE TEMP TABLE route_visits AS SELECT * FROM grouped_visits WHERE route=?', [route])
-        timing = timing_groups(db, profiles)
-        risk = risk_groups(db, profiles, labels, reasons)
+        timing = timing_groups(db, reports)
+        evidence = report_evidence(db, reports, route)
+        review_groups.update(evidence)
         timing_files[route] = write_route_groups(out, 'reliability-routes', route, timing)
-        risk_files[route] = write_route_groups(out, 'passup-risk-routes', route, risk)
+        report_files[route] = write_route_groups(out, 'passup-report-routes', route, evidence)
         total_groups += len(timing)
 
     # Manifests: the backend reads these, then loads one route file per ride on demand.
-    common = {'schemaVersion': 2, 'grouping': GROUPING, 'groupWindowMinutes': WINDOW_MINUTES, 'coverageStart': meta['coverageStart'],
+    common = {'schemaVersion': 2, 'grouping': GROUPING, 'groupWindowMinutes': WINDOW_MINUTES, 'passupMatchingMethod': MATCHING_METHOD, 'coverageStart': meta['coverageStart'],
               'coverageEnd': meta['coverageEnd'], 'sources': meta['sources'], 'routes': routes}
     timing = {**common, 'groups': {}, 'routeFiles': timing_files, 'eligibleGroups': total_groups, 'intervalMethod': INTERVAL_METHOD,
               'minObservations': MIN_OBSERVATIONS, 'minDates': MIN_DATES}
-    risk = {**common, 'groups': {}, 'routeFiles': risk_files, 'policy': POLICY, 'labelCounts': dict(labels), 'reasonCounts': dict(reasons)}
+    report_counts = {**common, 'schemaVersion': 3, 'evidenceVersion': REPORT_EVIDENCE_VERSION,
+                     'evidenceUnit': 'unique-report-id', 'groupTimeBasis': 'reported-local-time',
+                     'referenceTimeBasis': 'scheduled-local-time', 'labelStatus': 'pending_policy_review',
+                     'groups': {}, 'routeFiles': report_files, 'passupAudit': report_audit}
+    review = summarize_candidates(review_groups)
     write(out / 'reliability.json', timing)
-    write(out / 'passup-risk.json', risk)
+    write(out / 'passup-report-counts.json', report_counts)
     write(out / 'reliability.report.json', {**meta, 'eligibleGroups': total_groups, 'intervalMethod': INTERVAL_METHOD, 'passupAudit': report_audit})
-    write(out / 'passup-risk.report.json', {k: v for k, v in risk.items() if k not in ['groups', 'routeFiles']})
+    write(out / 'passup-report-counts.report.json', {k: v for k, v in report_counts.items() if k not in ['groups', 'routeFiles']})
+    write(out / 'passup-policy-review.json', review)
     print(json.dumps({'coverage': [meta['coverageStart'], meta['coverageEnd']], 'routes': len(routes), 'timingGroups': total_groups,
-                      'labels': dict(labels), 'passups': report_audit}), flush=True)
+                      'reportGroups': len(review_groups), 'passups': report_audit}), flush=True)
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)

@@ -1,0 +1,98 @@
+{
+  "matchingMethod": "nearest-stop-report-time-v1",
+  "coverageStart": "2025-07-01",
+  "coverageEnd": "2026-09-24",
+  "previousVisitMatchedAudit": {
+    "sourceReports": 199249,
+    "reportsOnCoveredDates": 16049,
+    "invalidCoordinates": 1,
+    "noNearbyStop": 4561,
+    "60m_120sReports": 4947,
+    "100m_180sReports": 6575,
+    "150m_300sReports": 8021,
+    "noTimedVisit": 3466,
+    "60m_120sDistinctVisits": 4784,
+    "100m_180sDistinctVisits": 6326,
+    "150m_300sDistinctVisits": 7667
+  },
+  "reportTimeAudit": {
+    "sourceReports": 199249,
+    "outsideCoveredDates": 172209,
+    "reportsOnCoveredDates": 16049,
+    "nonFullBusReports": 10991,
+    "invalidCoordinates": 1,
+    "noNearbyStop": 4561,
+    "60mReports": 7760,
+    "100mReports": 10018,
+    "150mReports": 11487,
+    "matchedReports": 11487
+  },
+  "broadReportIncrease": 3466,
+  "policyReview": {
+    "status": "pending_policy_review",
+    "productionLabelsAssigned": false,
+    "warning": "Experimental descriptions, not probabilities. Multiple reports can describe one bus; report and departure time bases differ.",
+    "groups": 93609,
+    "groupsWithReports": 2008,
+    "groupsWithReportsWithoutReferenceDepartures": 2,
+    "reportCountDistributionAmongPositiveGroups": {
+      "minimum": 1,
+      "median": 2.0,
+      "maximum": 200
+    },
+    "candidates": {
+      "legacy_score_adapted_to_reports": {
+        "rules": {
+          "description": "Comparison only: reports/(recorded departures+50), with legacy score boundaries.",
+          "minimumDepartures": 60,
+          "minimumDepartureDates": 10,
+          "zeroReportMinimumDepartures": 120,
+          "scorePenalty": 50,
+          "mediumScore": 0.01,
+          "highScore": 0.025,
+          "mediumReportDates": 2,
+          "highReportDates": 3
+        },
+        "labelCounts": {
+          "low": 70446,
+          "medium": 83,
+          "high": 12,
+          "unknown": 23068
+        }
+      },
+      "report_count_and_persistence": {
+        "rules": {
+          "description": "Comparison only: report counts and reporting-date persistence, with exposure coverage checks.",
+          "minimumDepartures": 60,
+          "minimumDepartureDates": 10,
+          "zeroReportMinimumDepartures": 120,
+          "mediumReports": 2,
+          "mediumReportDates": 2,
+          "highReports": 5,
+          "highReportDates": 3
+        },
+        "labelCounts": {
+          "low": 69535,
+          "medium": 353,
+          "high": 370,
+          "unknown": 23351
+        }
+      }
+    }
+  },
+  "validation": {
+    "timingGroupsChecked": 83568,
+    "timingStatisticsUnchanged": true,
+    "groupsWithChangedReportCounts": 1301,
+    "evidenceGroupsChecked": 93609,
+    "referenceDepartureTotal": 46948677,
+    "reportGroupsWithoutReferenceDepartures": 2,
+    "auditMatchRowsChecked": 29265,
+    "uniqueReportIDsVerified": true
+  },
+  "limitations": [
+    "Report counts are not distinct affected visits or boarding-failure probabilities.",
+    "Candidate labels are not production labels; thresholds and backend integration remain pending.",
+    "No new source data or deployment."
+  ]
+}

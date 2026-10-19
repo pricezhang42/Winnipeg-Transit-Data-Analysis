@@ -35,6 +35,8 @@ class HistoryTests(unittest.TestCase):
             self.assertEqual(audit['collapsedConsistentCopies'],1)
             db=connect(work)
             self.assertEqual(db.execute('select count(*) from visits').fetchone()[0],156)
+            columns={row[0] for row in db.execute('describe visits').fetchall()}
+            self.assertTrue(columns.isdisjoint({'vid', 'actual', 'actual_day'}))
             self.assertEqual(json.loads(db.execute('select g from visits limit 1').fetchone()[0]),['F8','1','downtown','weekday',12])
             report={'Pass-Up ID':'x','Pass-Up Type':'Full Bus Pass-Up','Time':'07/02/2025 01:02:00 PM','Route Number':'F8','Route Destination':'Downtown','Location':'POINT (-97 49)'}
             with (root/'passups.csv').open('w') as f:
@@ -45,8 +47,14 @@ class HistoryTests(unittest.TestCase):
             self.assertEqual(len(groups),1)
             self.assertEqual(group['medianSeconds'],120);self.assertEqual(group['observations'],156)
             self.assertEqual(group['distinctDates'],16)
-            risk=next(iter(json.loads((out/'passup-risk-routes/F8.json').read_text())['groups'].values()))
-            self.assertEqual(risk['level'],'low');self.assertEqual(risk['profiles']['60m_120s']['reportedVisits'],1)
+            report_group=next(iter(json.loads((out/'passup-report-routes/F8.json').read_text())['groups'].values()))
+            self.assertEqual(report_group['reportCount'],1)
+            self.assertEqual(report_group['profiles']['60m']['reports'],1)
+            self.assertNotIn('level', report_group)
+            manifest=json.loads((out/'passup-report-counts.json').read_text())
+            self.assertEqual(manifest['evidenceUnit'],'unique-report-id')
+            self.assertEqual(manifest['labelStatus'],'pending_policy_review')
+            self.assertFalse((out/'passup-risk.json').exists())
             db.close()
 
     def test_timing_boundaries_and_evidence_gates(self):
@@ -67,7 +75,7 @@ class HistoryTests(unittest.TestCase):
             rows += [('too_few_visits', f'2026-09-{day % 5 + 1:02}', 0)
                      for day in range(29)]
             db.executemany('INSERT INTO route_visits VALUES (?, ?, ?)', rows)
-            result = timing_groups(db, {'eligible': {'100m_180s': (2, 1)}})
+            result = timing_groups(db, {'eligible': {'profiles': {'100m': {'reports': 2, 'reportDates': 1}}}})
             self.assertEqual(set(result), {'eligible', 'minimum'})
             self.assertEqual(result['minimum']['observations'], 30)
             self.assertEqual(result['minimum']['distinctDates'], 5)
