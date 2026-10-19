@@ -38,13 +38,12 @@ from urllib.parse import quote
 
 import duckdb
 
-from export_reliability import destination, digest, distance, point
+from history_utils import destination, digest, distance, point
 from report_policy_review import summarize_candidates
 
 # --- Settings ---------------------------------------------------------------
 
 OVERHAUL_START = '2025-06-29'          # Winnipeg's new network launched this day
-START = OVERHAUL_START                 # older name, kept for callers
 GROUPING = 'route-stop-destination-daytype-2hour-v1'
 WINDOW_HOURS = 2
 WINDOW_MINUTES = WINDOW_HOURS * 60
@@ -197,15 +196,12 @@ def clean_visits(db):
     audit['conflictingVisitIdentities'] = count(db, 'SELECT count(*) FROM identities WHERE is_conflict')
     audit['collapsedConsistentCopies'] = count(db, 'SELECT coalesce(sum(copies - 1), 0) FROM identities WHERE NOT is_conflict')
 
-    # vid: visit id used by pass-up matching. actual/actual_day: when the bus really
-    # left, which is what a pass-up report's timestamp is compared with.
+    # Retain only fields used by timing, stop matching and exposure references.
     # hour: start of the two-hour window. g: the group key (see module docstring).
     db.execute(f'''CREATE OR REPLACE TABLE visits AS
       SELECT *, cast(json_array(route, stop, dest, daytype, hour) AS VARCHAR) AS g FROM (
-        SELECT row_number() OVER () AS vid, route, stop, dest, scheduled, delay, lon, lat,
-               scheduled + delay * INTERVAL 1 SECOND AS actual,
+        SELECT route, stop, dest, scheduled, delay, lon, lat,
                cast(scheduled AS DATE) AS day,
-               cast(scheduled + delay * INTERVAL 1 SECOND AS DATE) AS actual_day,
                CASE WHEN dayofweek(scheduled) IN (0, 6) THEN 'weekend' ELSE 'weekday' END AS daytype,
                cast(hour(scheduled) - hour(scheduled) % {WINDOW_HOURS} AS INTEGER) AS hour
         FROM identities WHERE NOT is_conflict)''')

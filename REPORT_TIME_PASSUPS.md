@@ -65,8 +65,8 @@ The October 18 output directory is `reports/history-report-time-20261018/`.
 Use the documented full-source build command in `HISTORICAL_DATA.md`, changing
 `--output` to that directory. `--skip-import` can reuse the completed cleaned
 visits database only after verifying the input fingerprints. The rebuild reuses
-data through September 24, 2026; it does not extend data freshness. Previous
-visit-matched builds and the legacy conservative audit remain historical references.
+data through September 24, 2026; it does not extend data freshness. Superseded visit-based builds and their code are recoverable in Git history;
+the retained build comparison embeds the prior matching audit for reference.
 
 ## October 18 validation results
 

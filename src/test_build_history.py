@@ -35,6 +35,8 @@ class HistoryTests(unittest.TestCase):
             self.assertEqual(audit['collapsedConsistentCopies'],1)
             db=connect(work)
             self.assertEqual(db.execute('select count(*) from visits').fetchone()[0],156)
+            columns={row[0] for row in db.execute('describe visits').fetchall()}
+            self.assertTrue(columns.isdisjoint({'vid', 'actual', 'actual_day'}))
             self.assertEqual(json.loads(db.execute('select g from visits limit 1').fetchone()[0]),['F8','1','downtown','weekday',12])
             report={'Pass-Up ID':'x','Pass-Up Type':'Full Bus Pass-Up','Time':'07/02/2025 01:02:00 PM','Route Number':'F8','Route Destination':'Downtown','Location':'POINT (-97 49)'}
             with (root/'passups.csv').open('w') as f:
