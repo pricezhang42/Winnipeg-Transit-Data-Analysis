@@ -13,8 +13,8 @@ Pipeline (each stage is a function below):
   4. Pass-ups    Match reports to the nearest date-specific route stop and group
                  by report time, under three spatial-only tolerance profiles.
   5. Summaries   For each route, compute departure timing and report-count evidence.
-                 Candidate labels are reviewed separately, never published as policy.
-  6. Export      Write timing artifacts, versioned report evidence and policy review.
+                 Apply the versioned report/recorded-visit ratio category policy.
+  6. Export      Write timing artifacts, versioned report evidence and policy audit.
                  Report evidence is not a visit-based pass-up-risk artifact.
 
 A "group" is route + boarding stop + destination (direction) + weekday/weekend +
@@ -39,7 +39,7 @@ from urllib.parse import quote
 import duckdb
 
 from history_utils import destination, digest, distance, point
-from report_policy_review import summarize_candidates
+from report_policy import POLICY, summarize_policy
 
 # --- Settings ---------------------------------------------------------------
 
@@ -440,7 +440,7 @@ def write_route_groups(out, folder, route, groups):
 
 
 def export(db, meta, passups, out, work):
-    """Stages 4-6: aggregate reports, summarize timing and write evidence/review files."""
+    """Stages 4-6: aggregate reports, summarize timing and write evidence/policy files."""
     # Recompute group keys from the stored columns, so a database imported with an
     # older grouping (e.g. one-hour or seasonal keys) is still exported correctly.
     db.execute(f"CREATE OR REPLACE TEMP VIEW grouped_visits AS SELECT * EXCLUDE (g), "
@@ -451,13 +451,13 @@ def export(db, meta, passups, out, work):
 
     routes = [r[0] for r in db.execute('SELECT DISTINCT route FROM visits ORDER BY route').fetchall()]
     timing_files, report_files, total_groups = {}, {}, 0
-    review_groups = {}
+    policy_groups = {}
     for route in routes:
         print('Summarizing ' + route, flush=True)
         db.execute('CREATE OR REPLACE TEMP TABLE route_visits AS SELECT * FROM grouped_visits WHERE route=?', [route])
         timing = timing_groups(db, reports)
         evidence = report_evidence(db, reports, route)
-        review_groups.update(evidence)
+        policy_groups.update(evidence)
         timing_files[route] = write_route_groups(out, 'reliability-routes', route, timing)
         report_files[route] = write_route_groups(out, 'passup-report-routes', route, evidence)
         total_groups += len(timing)
@@ -469,16 +469,16 @@ def export(db, meta, passups, out, work):
               'minObservations': MIN_OBSERVATIONS, 'minDates': MIN_DATES}
     report_counts = {**common, 'schemaVersion': 3, 'evidenceVersion': REPORT_EVIDENCE_VERSION,
                      'evidenceUnit': 'unique-report-id', 'groupTimeBasis': 'reported-local-time',
-                     'referenceTimeBasis': 'scheduled-local-time', 'labelStatus': 'pending_policy_review',
+                     'referenceTimeBasis': 'scheduled-local-time', 'labelStatus': 'approved', 'policy': POLICY,
                      'groups': {}, 'routeFiles': report_files, 'passupAudit': report_audit}
-    review = summarize_candidates(review_groups)
+    policy_report = summarize_policy(policy_groups)
     write(out / 'reliability.json', timing)
     write(out / 'passup-report-counts.json', report_counts)
     write(out / 'reliability.report.json', {**meta, 'eligibleGroups': total_groups, 'intervalMethod': INTERVAL_METHOD, 'passupAudit': report_audit})
     write(out / 'passup-report-counts.report.json', {k: v for k, v in report_counts.items() if k not in ['groups', 'routeFiles']})
-    write(out / 'passup-policy-review.json', review)
+    write(out / 'passup-policy-report.json', policy_report)
     print(json.dumps({'coverage': [meta['coverageStart'], meta['coverageEnd']], 'routes': len(routes), 'timingGroups': total_groups,
-                      'reportGroups': len(review_groups), 'passups': report_audit}), flush=True)
+                      'reportGroups': len(policy_groups), 'passups': report_audit}), flush=True)
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)

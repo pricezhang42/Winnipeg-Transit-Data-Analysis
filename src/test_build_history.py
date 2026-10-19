@@ -53,7 +53,10 @@ class HistoryTests(unittest.TestCase):
             self.assertNotIn('level', report_group)
             manifest=json.loads((out/'passup-report-counts.json').read_text())
             self.assertEqual(manifest['evidenceUnit'],'unique-report-id')
-            self.assertEqual(manifest['labelStatus'],'pending_policy_review')
+            self.assertEqual(manifest['labelStatus'],'approved')
+            self.assertEqual(manifest['policy']['version'], 'report-scheduled-visit-ratio-v1')
+            policy_report=json.loads((out/'passup-policy-report.json').read_text())
+            self.assertEqual(policy_report['labelCounts']['low'], 1)
             self.assertFalse((out/'passup-risk.json').exists())
             db.close()
 

@@ -8,7 +8,8 @@ For the all-route departure-timing and pass-up report-count pipeline, use
 [HISTORICAL_DATA.md](HISTORICAL_DATA.md) and
 [REPORT_TIME_PASSUPS.md](REPORT_TIME_PASSUPS.md). `src/build_history.py` is the
 current builder. It matches reports to stops and groups by report timestamps;
-report-based category rules and backend integration remain under review.
+report-based categories use the approved report/recorded-visit ratio policy; see
+[REPORT_TIME_PASSUPS.md](REPORT_TIME_PASSUPS.md) for rules and integration.
 
 The separate BLUE prediction, collection and dashboard workflows below remain
 available for analysis and visualization.
