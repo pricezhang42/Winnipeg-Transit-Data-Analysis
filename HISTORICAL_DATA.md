@@ -2,8 +2,8 @@
 
 `src/build_history.py` is the sole current reliability artifact builder. It imports
 monthly ZIP/recent CSV data, cleans recorded departures, matches pass-up reports
-to stops, and exports per-route artifacts. See [report-time counting and policy
-review](REPORT_TIME_PASSUPS.md) for the pass-up evidence contract.
+to stops, and exports per-route artifacts. See [report-time counting and category
+policy](REPORT_TIME_PASSUPS.md) for the pass-up evidence contract.
 
 ## Inputs and grouping
 
@@ -29,6 +29,7 @@ python3 -m venv .venv
   --work data/history-work \
   --output reports/history-report-time-20261018
 .venv/bin/python -m unittest discover -s src -p 'test_*history*.py'
+.venv/bin/python -m unittest discover -s src -p 'test_report_policy.py'
 ```
 
 The working database is several GB and stays outside version control. Import
@@ -75,8 +76,8 @@ The retained build is [history-report-time-20261018](reports/history-report-time
 - `reliability.json`, `reliability.report.json`, `reliability-routes/`: departure timing.
 - `passup-report-counts.json`, `passup-report-counts.report.json`,
   `passup-report-routes/`: report counts, dates and departure exposure context.
-- `passup-audit.json`, `build-comparison.json`, `passup-policy-review.json`: matching
-  totals, validation and explicitly unapproved category comparisons.
+- `passup-audit.json`, `build-comparison.json`, `passup-policy-report.json`: matching
+  totals, validation and the approved report/recorded-visit category distribution.
 
 The cleaned source has 46,948,677 recorded departures across 72 routes, covering
 July 1, 2025–September 24, 2026. Timing has 83,568 supported groups. Stop matching
@@ -93,11 +94,16 @@ and visualization workflows remain documented in README and dashboard docs.
 
 ## Backend integration boundary
 
-The existing backend still consumes visit-based `passup-risk.json` under policy
-`reported-pattern-v2`. The new report-count schema deliberately has a different
-filename/evidence unit and must not be copied into that old contract. Category
-selection and compatible backend integration remain pending. The current rebuild
-has not replaced backend artifacts or been deployed.
+The backend's independent report reader consumes schema-3 report evidence with
+`labelStatus: approved` and policy `report-scheduled-visit-ratio-v1`. Its
+ride-level `passupRisk` uses the 150 m reports divided by recorded visits in the
+scheduled-time group. Medium starts at 1% with two reporting dates, High at 2.5%
+with three, subject to the reference minimums in REPORT_TIME_PASSUPS.md. The
+analysis and backend copies of the policy are checked for all-group parity.
+
+Report manifests and all route shards are installed in the backend checkout.
+Legacy visit-based artifacts/readers remain for old clients; they are not
+reinterpreted as reports. No hosted deployment was performed.
 
 Source coverage still ends September 24, 2026. The backend's current 30-day
 freshness/trip-horizon checks and 2026 calendar restrictions remain relevant;

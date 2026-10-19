@@ -1,0 +1,29 @@
+{
+  "status": "approved",
+  "policy": {
+    "version": "report-scheduled-visit-ratio-v1",
+    "profile": "150m",
+    "minimumDepartures": 60,
+    "minimumDepartureDates": 10,
+    "zeroReportMinimumDepartures": 120,
+    "mediumRatio": 0.01,
+    "highRatio": 0.025,
+    "mediumReportDates": 2,
+    "highReportDates": 3
+  },
+  "warning": "Descriptive report-to-recorded-visit ratios, not boarding probabilities. Reports use report time; recorded visits use scheduled time.",
+  "groups": 93609,
+  "groupsWithReports": 2008,
+  "labelCounts": {
+    "low": 70428,
+    "medium": 161,
+    "high": 35,
+    "unknown": 22985
+  },
+  "unknownReasons": {
+    "insufficient_reference_history": 15790,
+    "insufficient_reporting_dates": 18,
+    "insufficient_zero_report_history": 7177
+  },
+  "groupsWithReportsWithoutReferenceDepartures": 2
+}

@@ -9,7 +9,6 @@ from pathlib import Path
 
 import duckdb
 from build_history import match_reports, nearest_stop_candidates, report_evidence
-from report_policy_review import candidate_level, summarize_candidates
 
 
 class MatchingTests(unittest.TestCase):
@@ -109,26 +108,6 @@ class MatchingTests(unittest.TestCase):
         self.assertEqual(audit['nonFullBusReports'], 1)
         self.assertEqual(audit['outsideCoveredDates'], 1)
         self.assertEqual(audit['invalidCoordinates'], 1)
-
-
-class CandidateReviewTests(unittest.TestCase):
-    def test_candidate_comparisons_are_not_production_labels(self):
-        group = {'recordedDepartures': 120, 'departureDates': 12, 'reportCount': 5, 'reportDates': 3,
-                 'profiles': {p: {'reports': 5, 'reportDates': 3} for p in ('60m', '100m', '150m')}}
-        result = summarize_candidates({'g': group})
-        self.assertFalse(result['productionLabelsAssigned'])
-        self.assertEqual(result['status'], 'pending_policy_review')
-        self.assertEqual(result['candidates']['report_count_and_persistence']['labelCounts']['high'], 1)
-        group['profiles']['60m']['reports'] = 1
-        result = summarize_candidates({'g': group})
-        self.assertEqual(result['candidates']['report_count_and_persistence']['labelCounts']['unknown'], 1)
-
-    def test_reports_are_not_capped_at_recorded_departures(self):
-        group = {'recordedDepartures': 60, 'departureDates': 10,
-                 'profiles': {'150m': {'reports': 100, 'reportDates': 3}}}
-        self.assertEqual(candidate_level(group, '150m', 'report_count_and_persistence'), 'high')
-        group['recordedDepartures'] = 0
-        self.assertEqual(candidate_level(group, '150m', 'report_count_and_persistence'), 'unknown')
 
 
 if __name__ == '__main__':
